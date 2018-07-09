@@ -10,10 +10,71 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_09_125522) do
+ActiveRecord::Schema.define(version: 2018_07_09_133618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bet_users", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "bet_id"
+    t.bigint "parlay_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bet_id"], name: "index_bet_users_on_bet_id"
+    t.index ["parlay_id"], name: "index_bet_users_on_parlay_id"
+    t.index ["user_id"], name: "index_bet_users_on_user_id"
+  end
+
+  create_table "bets", force: :cascade do |t|
+    t.bigint "event_id"
+    t.bigint "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_bets_on_event_id"
+    t.index ["team_id"], name: "index_bets_on_team_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.integer "odds"
+    t.integer "team_a_id"
+    t.integer "team_b_id"
+    t.integer "winner_id"
+    t.bigint "sport_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sport_id"], name: "index_events_on_sport_id"
+  end
+
+  create_table "parlays", force: :cascade do |t|
+    t.bigint "user_id"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_parlays_on_user_id"
+  end
+
+  create_table "payouts", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "parlay_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "amount_cents", default: 0, null: false
+    t.index ["parlay_id"], name: "index_payouts_on_parlay_id"
+    t.index ["user_id"], name: "index_payouts_on_user_id"
+  end
+
+  create_table "sports", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,4 +93,13 @@ ActiveRecord::Schema.define(version: 2018_07_09_125522) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bet_users", "bets"
+  add_foreign_key "bet_users", "parlays"
+  add_foreign_key "bet_users", "users"
+  add_foreign_key "bets", "events"
+  add_foreign_key "bets", "teams"
+  add_foreign_key "events", "sports"
+  add_foreign_key "parlays", "users"
+  add_foreign_key "payouts", "parlays"
+  add_foreign_key "payouts", "users"
 end
