@@ -1,0 +1,11 @@
+<h1>Events <%= @events[0].sport.name %></h1>
+
+<% @events.each do |event| %>
+  <b> <%= event.league %> </b>
+  <p> <%= event.team_a.name %> vs <%= event.team_b.name %> </p>
+  <p> Score: <%= event.score %> </p>
+  <p> Status: <%= event.status %></p>
+
+  <hr>
+  <br>
+<% end %>
