@@ -1,0 +1,27 @@
+.bfixed {
+  position: fixed;
+  margin-left: 40%;
+  width: 20%;
+  bottom: 0;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  text-align: center;
+  background-color: #07DCA6; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-decoration: none;
+
+  font-size: 16px;
+
+  }
+
+
+
+  .bfixed a:link{
+    color:black;
+  }
+
+
+  .bfixed a:visited{
+    color:black;
+  }
