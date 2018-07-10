@@ -2,13 +2,19 @@
 
 <% @events.each do |event| %>
   <b> <%= event.league %> </b>
-  <p> <%= event.team_a.name %> vs <%= event.team_b.name %> </p>
   <p> Score: <%= event.score %> </p>
   <p> Status: <%= event.status %></p>
-
-  <%= link_to event.team_a.name.truncate(10) + "WIN", bets_path(event: event,winner:  event.team_a), :method => :post%>
-  <%= link_to event.team_a.name.truncate(10) + "LOSE", bets_path(event: event,winner:  event.team_b), :method => :post%>
-
+  <% bet = @bets.find_by(event: event) %>
+  <div class="bet-button-wrapper">
+    <%= link_to event.team_a.name.truncate(10), post_bet_path(event: event,winner:  event.team_a),
+      :class => (!bet.nil? && !bet.team.nil? && bet.team == event.team_a ? "bet-active" : "bet-default")  %>
+    <%= link_to event.team_b.name.truncate(10), post_bet_path(event: event,winner:  event.team_b),
+      :class => (!bet.nil? && !bet.team.nil? && bet.team == event.team_b ? "bet-active" : "bet-default") %>
+    <% if(@events[0].sport.name == "soccer")%>
+      <%= link_to "Draw".truncate(10), post_bet_path(event: event,winner: nil),
+      :class => (!bet.nil? && bet.team.nil? ? "bet-active" : "bet-default") %>
+    <% end %>
+  </div>
   <hr>
   <br>
 <% end %>
