@@ -18,7 +18,7 @@ sports.each do |sport|
     team1 = Team.find_or_create_by(name: info[:team1])
     team2 = Team.find_or_create_by(name: info[:team2])
 
-    Event.find_or_create_by(team_a: team1, team_b: team2, sport: Sport.find_by(name: sport), league: info[:league], status: info[:status], score: info[:score],unique_event_id: info[:unique_event_id])
+    Event.find_or_create_by(team_a: team1, team_b: team2, sport: Sport.find_by(name: sport), league: info[:league], status: info[:status], score: info[:score], unique_event_id: info[:unique_event_id])
   end
 end
 

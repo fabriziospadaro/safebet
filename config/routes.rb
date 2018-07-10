@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  get 'bets/new'
-  get 'bets/create'
-  get 'bets/update'
-  get 'bets/edit'
-  get 'bets/destroy'
+  resources :bets,  except:[:new]
   get "events", to: "events#index", as: :events
   get "sport", to: "sports#index", as: :sport
   devise_for :users

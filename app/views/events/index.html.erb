@@ -6,6 +6,9 @@
   <p> Score: <%= event.score %> </p>
   <p> Status: <%= event.status %></p>
 
+  <%= link_to event.team_a.name.truncate(10) + "WIN", bets_path(event: event,winner:  event.team_a), :method => :post%>
+  <%= link_to event.team_a.name.truncate(10) + "LOSE", bets_path(event: event,winner:  event.team_b), :method => :post%>
+
   <hr>
   <br>
 <% end %>
