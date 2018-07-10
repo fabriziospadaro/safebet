@@ -12,8 +12,8 @@ class BetsController < ApplicationController
         mybet.update(team: nil)
       end
     end
-
-    redirect_back fallback_location:{ action: "index"}
+    # redirect_back fallback_location:{ action: "index", anchor: params[:event] }
+    redirect_to events_path(sport: params[:sport],anchor: params[:event])
   end
 
 
