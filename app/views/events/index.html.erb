@@ -8,17 +8,17 @@
       <div class="card event-card">
 
 
-        <p class="league-name"><b> <%= event.league %> </b></p>
+        <p class="league-name" id = <%=event.id%> ><b> <%= event.league %> </b></p>
             <% bet = @bets.find_by(event: event) %>
 
             <div class="bet-button-wrapper">
 
-            <%= link_to event.team_a.name.truncate(10), post_bet_path(event: event,winner: event.team_a),
+            <%= link_to event.team_a.name.truncate(10), post_bet_path(event: event,winner: event.team_a,sport: params["sport"]),
               :class => (!bet.nil? && !bet.team.nil? && bet.team == event.team_a ? "bet-active" : "bet-default") %>
-            <%= link_to event.team_b.name.truncate(10), post_bet_path(event: event,winner: event.team_b),
+            <%= link_to event.team_b.name.truncate(10), post_bet_path(event: event,winner: event.team_b, sport: params["sport"]),
               :class => (!bet.nil? && !bet.team.nil? && bet.team == event.team_b ? "bet-active" : "bet-default") %>
             <% if(@events[0].sport.name == "soccer")%>
-              <%= link_to "Draw".truncate(10), post_bet_path(event: event,winner: nil),
+              <%= link_to "Draw".truncate(10), post_bet_path(event: event,winner: nil, sport: params["sport"]),
               :class => (!bet.nil? && bet.team.nil? ? "bet-active" : "bet-default") %>
             <% end %>
             </div>
@@ -27,11 +27,11 @@
 
             <br>
 
-            <% end %>
 
         </div>
 
       </div>
+    <% end %>
     </div>
   </div>
 </div>
