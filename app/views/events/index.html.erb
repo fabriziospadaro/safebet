@@ -1,11 +1,14 @@
-<div class="container">
-  <div class="header">
+<div class="events-header-wrapper">
   <h1><%= @events[0].sport.name.capitalize %></h1>
-  </div>
+</div>
+
+<div class="container">
+
   <div class="row">
+    <% counter = 0 %>
     <% @events.each do |event| %>
     <div class="col-xs-12">
-      <div class="card event-card">
+      <div class=  <%=  counter%2 == 0 ? "event-card-white" : "event-card-grey" %> >
 
 
         <p class="league-name" id = <%=event.id%> ><b> <%= event.league %> </b></p>
@@ -13,25 +16,28 @@
 
             <div class="bet-button-wrapper">
 
-            <%= link_to event.team_a.name.truncate(10), post_bet_path(event: event,winner: event.team_a,sport: params["sport"]),
+            <%= link_to event.team_a.name.truncate(20), post_bet_path(event: event,winner: event.team_a,sport: params["sport"]),
               :class => (!bet.nil? && !bet.team.nil? && bet.team == event.team_a ? "bet-active" : "bet-default") %>
-            <%= link_to event.team_b.name.truncate(10), post_bet_path(event: event,winner: event.team_b, sport: params["sport"]),
+            <%= link_to event.team_b.name.truncate(20), post_bet_path(event: event,winner: event.team_b, sport: params["sport"]),
               :class => (!bet.nil? && !bet.team.nil? && bet.team == event.team_b ? "bet-active" : "bet-default") %>
             <% if(@events[0].sport.name == "soccer")%>
-              <%= link_to "Draw".truncate(10), post_bet_path(event: event,winner: nil, sport: params["sport"]),
+              <%= link_to "Draw".truncate(20), post_bet_path(event: event,winner: nil, sport: params["sport"]),
               :class => (!bet.nil? && bet.team.nil? ? "bet-active" : "bet-default") %>
             <% end %>
             </div>
 
-            <hr>
-
-            <br>
-
-
         </div>
 
       </div>
-    <% end %>
+      <% counter += 1 %>
+      <% end %>
     </div>
   </div>
+
+
+  <div class="bfixed bet-slip">
+    <a href="">Bet Slip</a>
+  </div>
 </div>
+
+
