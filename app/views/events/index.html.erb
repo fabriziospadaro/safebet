@@ -1,20 +1,37 @@
-<h1>Events <%= @events[0].sport.name %></h1>
-
-<% @events.each do |event| %>
-  <b> <%= event.league %> </b>
-  <p> Score: <%= event.score %> </p>
-  <p> Status: <%= event.status %></p>
-  <% bet = @bets.find_by(event: event) %>
-  <div class="bet-button-wrapper">
-    <%= link_to event.team_a.name.truncate(10), post_bet_path(event: event,winner:  event.team_a),
-      :class => (!bet.nil? && !bet.team.nil? && bet.team == event.team_a ? "bet-active" : "bet-default")  %>
-    <%= link_to event.team_b.name.truncate(10), post_bet_path(event: event,winner:  event.team_b),
-      :class => (!bet.nil? && !bet.team.nil? && bet.team == event.team_b ? "bet-active" : "bet-default") %>
-    <% if(@events[0].sport.name == "soccer")%>
-      <%= link_to "Draw".truncate(10), post_bet_path(event: event,winner: nil),
-      :class => (!bet.nil? && bet.team.nil? ? "bet-active" : "bet-default") %>
-    <% end %>
+<div class="container">
+  <div class="header">
+  <h1><%= @events[0].sport.name.capitalize %></h1>
   </div>
-  <hr>
-  <br>
-<% end %>
+  <div class="row">
+    <% @events.each do |event| %>
+    <div class="col-xs-12">
+      <div class="card event-card">
+
+
+        <p class="league-name"><b> <%= event.league %> </b></p>
+            <% bet = @bets.find_by(event: event) %>
+
+            <div class="bet-button-wrapper">
+
+            <%= link_to event.team_a.name.truncate(10), post_bet_path(event: event,winner: event.team_a),
+              :class => (!bet.nil? && !bet.team.nil? && bet.team == event.team_a ? "bet-active" : "bet-default") %>
+            <%= link_to event.team_b.name.truncate(10), post_bet_path(event: event,winner: event.team_b),
+              :class => (!bet.nil? && !bet.team.nil? && bet.team == event.team_b ? "bet-active" : "bet-default") %>
+            <% if(@events[0].sport.name == "soccer")%>
+              <%= link_to "Draw".truncate(10), post_bet_path(event: event,winner: nil),
+              :class => (!bet.nil? && bet.team.nil? ? "bet-active" : "bet-default") %>
+            <% end %>
+            </div>
+
+            <hr>
+
+            <br>
+
+            <% end %>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
