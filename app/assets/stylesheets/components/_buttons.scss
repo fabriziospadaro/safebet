@@ -1,0 +1,18 @@
+.bet-active{
+  width: 80;
+  background-color: green;
+  text-decoration:  none;
+  color: black;
+}
+
+.bet-default{
+  width: 80;
+  background-color: white;
+  text-decoration:  none;
+  color: black;
+}
+
+.bet-button-wrapper{
+  display: flex;
+  flex-direction: column;
+}
