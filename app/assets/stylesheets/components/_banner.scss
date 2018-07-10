@@ -1,0 +1,86 @@
+.banner {
+  color: white;
+  text-align: center;
+  height: 100vh;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); or 100vh*/
+  background-size: cover !important;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-family: 'Abel', sans-serif;
+}
+
+.banner-content h1 {
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  font-family: 'Abel', sans-serif;
+  font-size: 64px;
+  font-weight: regular;
+  color: #FFDEDE;
+}
+
+.banner-content h4 {
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  font-family: 'Abel', sans-serif;
+  font-size: 28px;
+  font-weight: regular;
+  color: #07DCA6;
+}
+
+.btn-green {
+  background-color: #07DCA6;
+  border-color: #07DCA6;
+  border-radius: 3px;
+  color: #000000;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  font-family: 'Abel', sans-serif;
+  font-size: 24px;
+  font-weight: regular;
+  width: 200px;
+  height: 50px;
+}
+
+.btn-green:hover {
+  background-color: #113a5d;
+}
+
+.banner-content h5 {
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  font-family: 'Abel', sans-serif;
+  font-size: 18px;
+  font-weight: regular;
+  color: #FFDEDE;
+}
+
+.banner-title {
+  margin-bottom: 45%;
+}
+
+.banner-button {
+  margin-bottom: 35%;
+}
+
+.banner-bottom {
+  margin-bottom: 10%;
+}
+
+.sign-in-link a {
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  font-family: 'Abel', sans-serif;
+  font-size: 18px;
+  font-weight: regular;
+  color: #07DCA6;
+  text-decoration: underline;
+}
+
+
+
+
+// .banner p {
+//   font-size: 25px;
+//   font-weight: lighter;
+//   color: rgb(255, 255, 255);
+//   opacity: 0.6;
+//   margin-bottom: 30px;
+//   font-family: 'Abel', sans-serif;
+// }
+

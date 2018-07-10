@@ -1,2 +1,30 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://i.pinimg.com/originals/e1/11/9d/e1119d01d80a44c9e1deacda9dde00cd.jpg');">
+
+  <div class="banner-content">
+
+  <div class="banner-title">
+    <h1>Bet On It</h1>
+    <h4>Risk nothing... win daily</h4>
+  </div>
+
+  <div class="banner-button">
+    <p> <%= link_to "Start playing", sport_path, class: "btn btn-primary btn-green" %></p>
+  </div>
+
+  <div class="banner-bottom">
+    <h5>Already winning?</h5>
+      <div class="sign-in-link">
+       <%= link_to "Sign in", new_user_session_path %>
+    </div>
+  </div>
+
+
+  <!-- Ending Div for banner-content -->
+  </div>
+<!-- Ending Div for banner -->
+</div>
+
+
+<!-- REFERENCE -- sport_path:
+ sport      GET    /sport(.:format)   sports#index -->
