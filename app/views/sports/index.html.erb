@@ -1,45 +1,29 @@
 
 
-<div class = "container-fluid", "container">
-
-
-
+<div class = "container-fluid">
  <div class = "header">
-
-<div class = "header-title">
+  <div class = "header-title">
     <h1>Select a sport</h1>
-     </div>
-
   </div>
+ </div>
 
   <div class = "row">
-
     <% @sports.each do |sport| %>
-
-    <div class="col-xs-12">
-      <div class="card-sport">
-
-        <%=link_to sport.name, events_path(sport: sport.name)%>
-
-
-      </div>
-
-    </div>
-
-
+      <%=link_to events_path(sport: sport.name) do %>
+        <div class="col-xs-12">
+          <div class="card-sport">
+            <%= sport.name %>
+          </div>
+        </div>
+      <% end %>
     <% end %>
-
   </div>
 
+  <div class = "bfixed">
+    <a href="www.corriere.it" >CURRENT BETS: 0 </a>
+  </div>
 
-<div class = "bfixed">
-
-<a href="www.corriere.it" >CURRENT BETS: 0 </a>
-
-</div>
-
-
-  <%# final end%>
+<%# final end%>
 
 </div>
 
