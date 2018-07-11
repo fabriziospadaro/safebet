@@ -8,6 +8,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: sticky;
+  top: 0px;
+  z-index: 1;
 }
 
 /* Logo */
@@ -20,6 +23,7 @@
   height: 35px;
   width: 35px;
   border-radius: 50%;
+
 }
 
 /* Right section */
@@ -74,4 +78,8 @@
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+
+h2 {
+  color: white;
 }
