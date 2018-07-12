@@ -25,18 +25,18 @@ class BetsController < ApplicationController
    current_user.bet_users.last.update(parlay: ParlayAssigner.call(current_user))
  end
 
- def change_bet
-  mybet = current_user.bets.where(event: Event.find(params[:event])).first
+  def change_bet
 
-  if(!params[:winner].nil?)
-    if(mybet.team.nil? || mybet.team != Team.find(params[:winner]))
+    mybet = current_user.today_bets.find_by(event: Event.find(params[:event]))
+
+    if(Team.find(params[:winner]) != mybet.team)
+      puts "Update this bet"
       mybet.update(team: Team.find(params[:winner]))
     else
-      mybet.destroy()
+      raise
+      mybet.destroy
     end
-  else
-    mybet.update(team: nil)
+
   end
-end
 
 end

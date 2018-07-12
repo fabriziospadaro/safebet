@@ -1,6 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
-
+require 'digest'
 class SportScraper
 
   #scrape an entire day of that sport returning: live,schedule and results for the seleted sport
@@ -21,9 +21,9 @@ class SportScraper
   #scrape schedules for the current day
   def self.scrape_schedule(sport)
     array = []
-    date = Time.now.to_s.split(" ")[0].split("-")
 
-    date = date[1] + "/" + date[2]
+    date = DateTime.now
+
     for i in 1..99999
       url = "https://betsapi.com/cs/#{sport}/p.#{i}"
       r = Nokogiri::HTML(open(url))
@@ -33,9 +33,13 @@ class SportScraper
           better_info = tr.text.split("\n").map { |e| e.strip }.reject { |e| e.empty? }
           teams = better_info[2].split("v")
           #show only schedule for today
-          if(date == better_info[1].split(" ")[0])
-            _hash = {sport: sport,league: better_info[0].downcase,date: better_info[1],team1: teams[0].strip.downcase,team2: teams[1].strip.downcase,status: "Scheduled"}
-            _hash[:unique_id] = _hash[:league] + _hash[:team1] + _hash[:team2] + _hash[:date].to_s.split(" ")[0]
+          #d.beginning_of_day == dd.beginning_of_day
+          game_date = DateTime.parse(better_info[1])
+          #play with hours to get even different results
+          if(date.strftime('%Y-%m-%d') == game_date.strftime('%Y-%m-%d'))
+            _hash = {sport: sport,league: better_info[0].downcase,date: game_date,team1: teams[0].strip.downcase,team2: teams[1].strip.downcase,status: "Scheduled"}
+            _hash[:unique_id] = _hash[:league] + _hash[:team1] + _hash[:team2] + _hash[:date].strftime('%Y-%m-%d')
+            _hash[:unique_id] = Digest::SHA1.hexdigest _hash[:unique_id]
             array << _hash
           end
         end
@@ -49,12 +53,11 @@ class SportScraper
   #scrape results of the finishes games for the current day
   def self.scrape_results(sport,date)
     array = []
-
     for i in 1..99999
       if(date.nil?)
         url = "https://betsapi.com/ce/#{sport}/p.#{i}"
       else
-        url = "https://betsapi.com/cs/#{sport}/#{date}/p.#{i}"
+        url = "https://betsapi.com/cs/#{sport}/#{date.strftime('%Y-%m-%d')}/p.#{i}"
       end
       r = Nokogiri::HTML(open(url))
       table = r.at('table')
@@ -62,7 +65,8 @@ class SportScraper
         table.search('tr').each do |tr|
           better_info = tr.text.split("\n").map { |e| e.strip }.reject { |e| e.empty? }
           teams = better_info[2].split("v")
-          _hash = {sport: sport,league: better_info[0].downcase,date: better_info[1],team1: teams[0].strip.downcase,team2: teams[1].strip.downcase}
+          game_date = DateTime.parse(better_info[1])
+          _hash = {sport: sport,league: better_info[0].downcase,date: game_date,team1: teams[0].strip.downcase,team2: teams[1].strip.downcase}
           #separate with comma CHECK IT
           score = better_info.last.gsub(",","-")
           score = score.split("-")
@@ -72,13 +76,14 @@ class SportScraper
             else
               winner = score[-2].to_i > score[-1].to_i ? _hash[:team1] : _hash[:team2]
             end
-            _hash[:status] = "Fineshed"
+            _hash[:status] = "Finished"
             _hash[:score] = better_info.last
             _hash[:winner] = winner
           else
             _hash[:status] = "ERROR"
           end
-          _hash[:unique_id] = _hash[:league] + _hash[:team1] + _hash[:team2] + _hash[:date].to_s.split(" ")[0]
+          _hash[:unique_id] = _hash[:league] + _hash[:team1] + _hash[:team2] + _hash[:date].strftime('%Y-%m-%d')
+          _hash[:unique_id] = Digest::SHA1.hexdigest _hash[:unique_id]
           array << _hash
         end
       else
@@ -109,10 +114,10 @@ class SportScraper
         team2.shift
         team2 = team2.join(" ")
       end
-      date = Time.now.to_s.split(" ")[0].split("-")
-      date = date[1] + "/" + date[2]
-      _hash = {sport: sport,league: better_info[0].downcase,time: better_info[1],team1: team1.strip.downcase,team2: team2.strip.downcase,score: better_info[3],status:  "In Progress",date: date}
-      _hash[:unique_id] = _hash[:league] + _hash[:team1] + _hash[:team2] + _hash[:date]
+      game_date = DateTime.now.beginning_of_day
+      _hash = {sport: sport,league: better_info[0].downcase,time: better_info[1],team1: team1.strip.downcase,team2: team2.strip.downcase,score: better_info[3],status:  "In Progress",date: game_date}
+      _hash[:unique_id] = _hash[:league] + _hash[:team1] + _hash[:team2] + _hash[:date].strftime('%Y-%m-%d')
+      _hash[:unique_id] = Digest::SHA1.hexdigest _hash[:unique_id]
       array << _hash
     end
     return array
