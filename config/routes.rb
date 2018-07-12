@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'current_parlays/show'
   get "edit_bet", to: "bets#update_bet", as: :post_bet
   get "events", to: "events#index", as: :events
   get "sport", to: "sports#index", as: :sport

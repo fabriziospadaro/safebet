@@ -15,7 +15,7 @@ class UpdateEventsJob < ApplicationJob
         puts "+ Created: #{a[:unique_id]}"
         team1 = Team.find_or_create_by(name: a[:team1])
         team2 = Team.find_or_create_by(name: a[:team2])
-        hash_ = {team_a: team1, team_b: team2, sport: Sport.find_by(name: a[:sport]), league: a[:league], status: a[:status],unique_event_id: a[:unique_id],date: a[:date]}
+        hash_ = {team_a: team1, team_b: team2, sport: Sport.find_by(name: a[:sport]), league: a[:league], status: a[:status],unique_event_id: a[:unique_id],starts_at: a[:date]}
         if(!a[:score].nil?)
           hash_[:score] = a[:score]
         end
@@ -29,7 +29,7 @@ class UpdateEventsJob < ApplicationJob
       #already there: just update: score? winner? time? status?
       else
         puts "/ Updated: #{a[:unique_id]}"
-        event.update(score: a[:score], winner: Team.find_by(name: a[:winner]), time: a[:time], status: a[:status])
+        event.update(scraped_score: a[:score], winner: Team.find_by(name: a[:winner]), time: a[:time], status: a[:status])
       end
 
     end
