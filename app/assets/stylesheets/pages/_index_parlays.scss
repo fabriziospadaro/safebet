@@ -1,0 +1,37 @@
+// .container {
+//   width: 95vw;
+// }
+
+.header-bet-history {
+  background-color: #C4C4C4;
+  padding: 20px 8px;
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+
+hr {
+  color: #C4C4C4;
+}
+
+
+p {
+  font-size: 12px;
+}
+
+h3 {
+  margin: 4px;
+}
+
+.parlay-history {
+
+}
+
+.loss {
+  color: black
+}
+
+.win {
+  color: #07DCA6;
+  font-style: bold;
+}

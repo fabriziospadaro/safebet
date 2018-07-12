@@ -1,0 +1,152 @@
+<!-- <div class="container">
+  <div class="header">
+  <h1><%= @events[0].sport.name.capitalize %></h1>
+  </div>
+  <div class="row">
+    <div class="column xs-12">
+      <div class="card event-match">
+      <% @events.each do |event| %>
+        <b> <%= event.league %> </b>
+        <p> <%= event.team_a.name %> vs <%= event.team_b.name %> </p>
+        <p> Score: <%= event.score %> </p>
+        <p> Status: <%= event.status %></p>
+
+        <%= link_to event.team_a.name.truncate(10) + "WIN", bets_path(event: event,winner:  event.team_a), :method => :post%>
+        <%= link_to event.team_a.name.truncate(10) + "LOSE", bets_path(event: event,winner:  event.team_b), :method => :post%>
+
+        <hr>
+        <br>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+        <div class="teams-button-container">
+        <button type="button" class="btn btn-team">
+         <%= link_to event.team_a.name.truncate(10) + "WIN", bets_path(event: event,winner:  event.team_a), :method => :post%> </button>
+         <br>
+
+        <button type="button" class="btn btn-team">
+       <%= link_to event.team_b.name.truncate(10) + "LOSE", bets_path(event: event,winner:  event.team_b), :method => :post%> </button>
+     <!--    <p> Score: <%= event.score %> </p>
+        <p> Status: <%= event.status %></p>   --> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container">
+  <div class="header">
+  <h1><%= @events[0].sport.name.capitalize %></h1>
+  </div>
+  <div class="row">
+    <% @events.each do |event| %>
+    <div class="col-xs-12">
+      <div class="card event-card">
+
+
+        <p class="league-name"><b> <%= event.league %> </b></p>
+            <% bet = @bets.find_by(event: event) %>
+
+            <div class="bet-button-wrapper">
+
+            <%= link_to event.team_a.name.truncate(10), post_bet_path(event: event,winner: event.team_a),
+              :class => (!bet.nil? && !bet.team.nil? && bet.team == event.team_a ? "bet-active" : "bet-default") %>
+            <%= link_to event.team_b.name.truncate(10), post_bet_path(event: event,winner: event.team_b),
+              :class => (!bet.nil? && !bet.team.nil? && bet.team == event.team_b ? "bet-active" : "bet-default") %>
+            <% if(@events[0].sport.name == "soccer")%>
+              <%= link_to "Draw".truncate(10), post_bet_path(event: event,winner: nil),
+              :class => (!bet.nil? && bet.team.nil? ? "bet-active" : "bet-default") %>
+            <% end %>
+            </div>
+
+        </div>
+
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+event
+.teams-button-container {
+  padding: 5px;
+}
+
+.event-card {
+  background: grey;
+  margin-bottom: 30px;
+  padding: 20px;
+
+}
+
+.btn-team {
+  background: lightgrey;
+  font-color: black;
+  text-decoration: none;
+  margin: 10px;
+  :hover {
+    text-decoration: none;
+  }
+  :active {
+    background-color: green;
+  }
+}
+
+.league-name {
+
+}
+
+
+buttons
+.bet-active{
+  width: 30%wv;
+  background-color: green;
+  text-decoration:  none;
+  color: black;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  margin: 5px;
+}
+
+.bet-default{
+  width: 30%vw;
+  background-color: white;
+  text-decoration:  none;
+  color: black;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  margin: 5px;
+}
+
+.bet-button-wrapper{
+  display: flex;
+  flex-direction: column;
+}
