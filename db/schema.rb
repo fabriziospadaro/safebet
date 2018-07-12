@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_10_102604) do
+ActiveRecord::Schema.define(version: 2018_07_12_082104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2018_07_10_102604) do
     t.string "score"
     t.string "unique_event_id"
     t.datetime "date"
+    t.string "time"
     t.index ["sport_id"], name: "index_events_on_sport_id"
   end
 
@@ -56,6 +57,8 @@ ActiveRecord::Schema.define(version: 2018_07_10_102604) do
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "prize", default: 0
+    t.boolean "withdrawn", default: false
     t.index ["user_id"], name: "index_parlays_on_user_id"
   end
 

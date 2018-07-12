@@ -20,9 +20,9 @@
               :class => (!bet.nil? && !bet.team.nil? && bet.team == event.team_a ? "bet-active" : "bet-default") %>
             <%= link_to event.team_b.name.truncate(20), post_bet_path(event: event,winner: event.team_b, sport: params["sport"]),
               :class => (!bet.nil? && !bet.team.nil? && bet.team == event.team_b ? "bet-active" : "bet-default") %>
-            <% if(@events[0].sport.name == "soccer")%>
-              <%= link_to "Draw".truncate(20), post_bet_path(event: event,winner: nil, sport: params["sport"]),
-              :class => (!bet.nil? && bet.team.nil? ? "bet-active" : "bet-default") %>
+            <% if(@events[0].sport.name.downcase == "soccer")%>
+              <%= link_to "Draw".truncate(20), post_bet_path(event: event,winner: Team.find_by(name: "TIE"), sport: params["sport"]),
+              :class => (!bet.nil? && bet.team == Team.find_by(name: "TIE") ? "bet-active" : "bet-default") %>
             <% end %>
             </div>
 
