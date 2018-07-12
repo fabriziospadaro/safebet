@@ -1,3 +1,88 @@
+puts 'Cleaning Events database...'
+Event.destroy_all
+
+# ===== # Creating Sports  ====
+puts 'Cleaning Sports database...'
+Sport.destroy_all
+
+puts 'Creating sports...'
+sports_attributes = [
+ {
+   name: 'Soccer',
+ },
+ {
+   name: 'Basketball',
+ },
+ {
+   name: 'Tennis',
+ },
+ {
+   name: 'Baseball',
+ }
+]
+Sport.create!(sports_attributes)
+puts 'Finished creating Sports!'
+
+# ===== # Creating teams for "Round of 16" in the real World Cup 2018 ====
+puts 'Cleaning Teams database...'
+Team.destroy_all
+
+puts 'Creating teams...'
+teams_attributes = [
+ {
+   name: 'TIE'
+   # Display this team TIE as a winner when the result of a game is a TIE
+ },
+ {
+   name: 'Russia',
+ },
+ {
+   name: 'France',
+ },
+ {
+   name: 'England',
+ },
+ {
+   name: 'Argentina',
+ },
+ {
+   name: 'Brazil',
+ },
+ {
+   name: 'Belgium',
+ },
+ {
+   name: 'Denmark',
+ },
+ {
+   name: 'Sweden',
+ },
+ {
+   name: 'Spain',
+ },
+ {
+   name: 'Mexico',
+ },
+ {
+   name: 'Switzerland',
+ },
+ {
+   name: 'Uruguay',
+ },
+ {
+   name: 'Portugal',
+ },
+ {
+   name: 'Croatia',
+ },
+ {
+   name: 'Japan',
+ },
+ {
+   name: 'Colombia',
+ }
+ ]
+Team.create!(teams_attributes)
 puts 'Finished creating Teams!'
 
 # ===== # Creating Events for World Cup 2018 ====
@@ -126,4 +211,3 @@ puts 'Finished creating Events!'
 #     t.integer "team_b_score" - NOT USING FOR NOW
 #     t.datetime "starts_at" - USING
 #     t.index ["sport_id"], name: "index_events_on_sport_id"
-=======
