@@ -3,12 +3,16 @@ class UpdateEventsJob < ApplicationJob
 
   #da creare il job che aggiorna tutti gli event isenza fottersene
   def perform(option)
+    ##add migration to sport to store an array of league
+
+
     puts "------------------------------------------"
     puts "Starting Job for #{option[:sport]}"
     puts "---Starting scrape---"
-    results = SportScraper.scrape_day(option)
+    results = SportScraper.scrape_day(option).filter_by_league(Sport.find_by(name: option[:sport]).leagues.split("-"))
+
     puts "---  Scrape done  ---"
-    results.all.each do |a|
+    results.each do |a|
       event = Event.find_by(unique_event_id: a[:unique_id])
       #create an event when it's not there
       if(event.nil?)
