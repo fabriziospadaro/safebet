@@ -45,9 +45,11 @@ ActiveRecord::Schema.define(version: 2018_07_12_082104) do
     t.datetime "updated_at", null: false
     t.string "league"
     t.string "status"
-    t.string "score"
+    t.string "scraped_score"
+    t.integer "team_a_score"
+    t.integer "team_b_score"
     t.string "unique_event_id"
-    t.datetime "date"
+    t.datetime "starts_at"
     t.string "time"
     t.index ["sport_id"], name: "index_events_on_sport_id"
   end

@@ -2,11 +2,22 @@ class ExtractWinningParlayJob < ApplicationJob
   queue_as :default
 
   def perform(win_pot)
-    parlays = []
+    winning_parlays = []
+
     User.all.each do |user|
-      parlays << user.parlays.last if user.parlays.last.correct?
+      winning_parlays << user.parlays.last if user.parlays.last.correct?
     end
-    parlays.each do |parlay|
+
+    longest = 0
+    winning_parlays.each do |parlay|
+      if(longest < parlay.bets.size)
+        longest = parlay.bets.size
+      end
+    end
+
+    winning_parlays = winning_parlays.select { |parlay| parlays.size == longest}
+
+    winning_parlays.each do |parlay|
       parlay.prize = win_pot / winners.size
     end
   end
