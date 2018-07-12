@@ -17,7 +17,7 @@ class UpdateEventsJob < ApplicationJob
         team2 = Team.find_or_create_by(name: a[:team2])
         hash_ = {team_a: team1, team_b: team2, sport: Sport.find_by(name: a[:sport]), league: a[:league], status: a[:status],unique_event_id: a[:unique_id],starts_at: a[:date]}
         if(!a[:score].nil?)
-          hash_[:score] = a[:score]
+          hash_[:scraped_score] = a[:score]
         end
         if(!a[:winner].nil?)
           hash_[:winner] = Team.find_by(name: a[:winner])
