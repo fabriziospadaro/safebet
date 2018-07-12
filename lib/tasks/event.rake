@@ -7,4 +7,8 @@ namespace :event do
     end
   end
 
+  desc "Fake scheduler"
+  task fake_scheduler: :environment do
+    FakeScheduleUpdaterJob.perform_later
+  end
 end
