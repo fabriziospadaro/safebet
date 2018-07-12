@@ -4,6 +4,13 @@
     <%= image_tag "logo.png", height: 50 %>
   <% end %>
 
+<% if !(params[:sport].nil?) %>
+<h2> <%= params[:sport] %> </h2>
+<% else %>
+  <h2>Sports</h2>
+<% end %>
+
+
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
