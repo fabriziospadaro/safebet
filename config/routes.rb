@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'current_parlays/show'
   get "edit_bet", to: "bets#update_bet", as: :post_bet
   get "events", to: "events#index", as: :events
   get "sport", to: "sports#index", as: :sport
-    get "test", to: "pages#test", as: :test
+  get "slip", to: "current_parlays#show", as: :slip
+  get "test", to: "pages#test", as: :test
 
   devise_for :users
   root to: 'pages#home'
