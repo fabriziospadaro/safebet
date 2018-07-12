@@ -16,7 +16,7 @@ Sport.destroy_all
 puts 'Creating sports...'
 sports_attributes = [
  {
-   name: 'Football',
+   name: 'Soccer',
  },
  {
    name: 'Basketball',
@@ -104,80 +104,96 @@ events_attributes = [
    team_b: Team.find_by(name: "France"),
    # # not played yet - winner_id: Optional / Will be created later
    winner: Team.find_by(name: "Russia"),
-   sport:  Sport.find_by(name: "Football"),
+   sport:  Sport.find_by(name: "Soccer"),
+   league: "World Cup 2018",
+   status: "Finished",
    # type of this 'date' parameter is DATETIME
-   date: '2018-07-09T20:00:00',
-   score: "2-1"
+   starts_at: '2018-07-09T20:00:00',
+   scraped_score: "2-1"
  },
 {
    team_a: Team.find_by(name: "England"),
    team_b: Team.find_by(name: "Argentina"),
    # # not played yet - winner_id: Optional / Game not played yet - false
    winner: Team.find_by(name: "TIE"),
-   sport:  Sport.find_by(name: "Football"),
+   sport:  Sport.find_by(name: "Soccer"),
+   league: "World Cup 2018",
+   status: "Finished",
    # type of this 'date' parameter is DATETIME
-   date: '2018-07-10T06:00:00',
-   score: "1-1"
+   starts_at: '2018-07-10T06:00:00',
+   scraped_score: "1-1"
  },
 {
    team_a: Team.find_by(name: "Brazil"),
    team_b: Team.find_by(name: "Belgium"),
    # # not played yet - winner_id: Optional / Game not played yet - false
-   winner_id: false,
-   sport:  Sport.find_by(name: "Football"),
+   # winner_id: false,
+   sport:  Sport.find_by(name: "Soccer"),
+   league: "World Cup 2018",
+   status: "In Progress",
    # type of this 'date' parameter is DATETIME
-   date: '2018-07-10T18:00:00',
-   score: "-"
+   starts_at: '2018-07-12T12:30:00',
+   scraped_score: "-"
  },
  {
    team_a: Team.find_by(name: "Denmark"),
    team_b: Team.find_by(name: "Sweden"),
    # # not played yet - winner_id: Optional / Game not played yet - false
-   winner_id: false,
-   sport:  Sport.find_by(name: "Football"),
+   # winner_id: false,
+   sport:  Sport.find_by(name: "Soccer"),
+   league: "World Cup 2018",
+   status: "Scheduled",
    # type of this 'date' parameter is DATETIME
-   date:  '2018-07-10T19:00:00',
-   score: "-"
+   starts_at: '2018-07-12T19:00:00',
+   scraped_score: "-"
  },
  {
    team_a: Team.find_by(name: "Spain"),
    team_b: Team.find_by(name: "Mexico"),
    # # not played yet - winner_id: Optional / Game not played yet - false
    # winner_id: false,
-   sport:  Sport.find_by(name: "Football"),
+   sport:  Sport.find_by(name: "Soccer"),
+   league: "World Cup 2018",
+   status: "Scheduled",
    # type of this 'date' parameter is DATETIME
-   date: '2018-07-10T20:00:00',
-   score: "-"
+   starts_at: '2018-07-12T20:00:00',
+   scraped_score: "-"
  },
  {
    team_a: Team.find_by(name: "Switzerland"),
    team_b: Team.find_by(name: "Uruguay"),
    # # not played yet - winner_id: Optional / Game not played yet - false
    # winner_id: false,
-   sport:  Sport.find_by(name: "Football"),
+   sport:  Sport.find_by(name: "Soccer"),
+   league: "World Cup 2018",
+    status: "Scheduled",
    # type of this 'date' parameter is DATETIME
-   date: '2018-07-10T21:00:00',
-   score: "-"
+   starts_at: '2018-07-12T21:00:00',
+   scraped_score: "-"
  },
 {
    team_a: Team.find_by(name: "Portugal"),
    team_b: Team.find_by(name: "Croatia"),
    # # not played yet - winner_id: Optional / Game not played yet - false
    # winner_id: false,
-   sport:  Sport.find_by(name: "Football"),
-   # type of this 'date' parameter is DATETIME
-   date: '2018-07-10T22:00:00',
-   score: "-"
+   sport:  Sport.find_by(name: "Soccer"),
+   league: "World Cup 2018",
+    status: "Scheduled",
+    # type of this 'date' parameter is DATETIME
+   starts_at: '2018-07-12T22:00:00',
+   scraped_score: "-"
  },
 {
    team_a: Team.find_by(name: "Japan"),
    team_b: Team.find_by(name: "Colombia"),
    # # not played yet - winner_id: Optional / Game not played yet - false
    # winner_id: false,
-   sport:  Sport.find_by(name: "Football"),
-   # type of this 'date' parameter is DATETIME
-   date: '2018-07-11T06:00:00',
-   score: "-"
+   sport:  Sport.find_by(name: "Soccer"),
+   league: "World Cup 2018",
+    status: "Scheduled",
+  # type of this 'date' parameter is DATETIME
+   starts_at: '2018-07-14T12:00:00',
+   scraped_score: "-"
  },
 ]
 
@@ -185,24 +201,21 @@ Event.create!(events_attributes)
 puts 'Finished creating Events!'
 
 
-# ==== REFERENCE ===
-
-# date: Date.today,
-# date: 4.days.ago,
-# p Time.now
+# ==== REFERENCE === Schema as of 12-30pm, 12 July 2018 ===
 
 # create_table "events", force: :cascade do |t|
-#     t.integer "odds"
-#     t.integer "team_a_id"
-#     t.integer "team_b_id"
-#     t.integer "winner_id"
-#     t.bigint "sport_id"
+#     t.integer "odds". - OPTIONAL, NOT USING
+#     t.integer "team_a_id" - USING
+#     t.integer "team_b_id" - USING
+#     t.integer "winner_id" - ONLY FOR THE GAMES FINISHED
+#     t.bigint "sport_id" - USING
 #     t.datetime "created_at", null: false
 #     t.datetime "updated_at", null: false
-#     t.string "league"
-#     t.string "status"
-#     t.string "score"
-#     t.string "unique_event_id"
-#     t.datetime "date"
+#     t.string "league" - USING
+#     t.string "status" - USING
+#     t.string "unique_event_id" - OPTIONAL, NOT USING
+#     t.string "scraped_score" - USING
+#     t.integer "team_a_score" - NOT USING FOR NOW
+#     t.integer "team_b_score" - NOT USING FOR NOW
+#     t.datetime "starts_at" - USING
 #     t.index ["sport_id"], name: "index_events_on_sport_id"
-#   end
