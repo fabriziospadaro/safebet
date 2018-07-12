@@ -6,18 +6,49 @@ puts 'Cleaning Sports database...'
 Sport.destroy_all
 
 puts 'Creating sports...'
+
+
+SoccerLeague = [
+"World Cup 2018",
+"UEFA Europa League Qualifying",
+"SDSDSD",
+]
+
+BasketballLeague = [
+"DSD",
+"GFG",
+"GRGRG",
+]
+
+TennisLeague = [
+"GRGRG",
+"GRG",
+"GRGR",
+]
+
+BaseballLeague = [
+"WDFG",
+"GRG",
+"GRG",
+]
+
+
 sports_attributes = [
  {
    name: 'Soccer',
+   leagues: SoccerLeague.join("-"),
  },
  {
    name: 'Basketball',
+   leagues: BasketballLeague.join("-"),
  },
  {
    name: 'Tennis',
+   leagues: TennisLeague.join("-"),
  },
  {
    name: 'Baseball',
+   leagues: BaseballLeague.join("-"),
  }
 ]
 Sport.create!(sports_attributes)

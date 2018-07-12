@@ -3,4 +3,25 @@ class Event < ApplicationRecord
   belongs_to :team_b, class_name: 'Team', foreign_key: 'team_b_id'
   belongs_to :winner, class_name: 'Team', foreign_key: 'winner_id', optional: true
   belongs_to :sport
+
+  def open?
+    return (today? || (tomorrow? && before_am?(2)))
+  end
+
+
+  def before_am?(hour)
+    return starts_at.hour <= hour
+  end
+
+  def today?
+    today = DateTime.now
+    return (starts_at.day == today.day && starts_at.month == today.month)
+  end
+
+  def tomorrow?
+    tomorrow = DateTime.tomorrow
+    return (starts_at.day == tomorrow.day && starts_at.month == tomorrow.month)
+  end
+
+
 end

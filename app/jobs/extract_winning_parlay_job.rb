@@ -10,12 +10,12 @@ class ExtractWinningParlayJob < ApplicationJob
 
     longest = 0
     winning_parlays.each do |parlay|
-      if(longest < parlay.bets.size)
+      if(parlay.bets.size > longest)
         longest = parlay.bets.size
       end
     end
 
-    winning_parlays = winning_parlays.select { |parlay| parlays.size == longest}
+    winning_parlays = winning_parlays.select { |parlay| parlays.bets.size == longest}
 
     winning_parlays.each do |parlay|
       parlay.prize = win_pot / winners.size
