@@ -7,4 +7,7 @@ class PagesController < ApplicationController
   def test
 
   end
+
+  def profile
+  end
 end

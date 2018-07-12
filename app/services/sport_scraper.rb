@@ -35,13 +35,10 @@ class SportScraper
           #show only schedule for today
           #d.beginning_of_day == dd.beginning_of_day
           game_date = DateTime.parse(better_info[1])
-          #play with hours to get even different results
-          if(date.strftime('%Y-%m-%d') == game_date.strftime('%Y-%m-%d'))
-            _hash = {sport: sport,league: better_info[0].downcase,date: game_date,team1: teams[0].strip.downcase,team2: teams[1].strip.downcase,status: "Scheduled"}
-            _hash[:unique_id] = _hash[:league] + _hash[:team1] + _hash[:team2] + _hash[:date].strftime('%Y-%m-%d')
-            _hash[:unique_id] = Digest::SHA1.hexdigest _hash[:unique_id]
-            array << _hash
-          end
+          _hash = {sport: sport,league: better_info[0].downcase,date: game_date,team1: teams[0].strip.downcase,team2: teams[1].strip.downcase,status: "Scheduled"}
+          _hash[:unique_id] = _hash[:league] + _hash[:team1] + _hash[:team2] + _hash[:date].strftime('%Y-%m-%d')
+          _hash[:unique_id] = Digest::SHA1.hexdigest _hash[:unique_id]
+          array << _hash
         end
       else
         break

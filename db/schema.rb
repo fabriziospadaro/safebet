@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_12_082104) do
+ActiveRecord::Schema.define(version: 2018_07_12_151955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,9 +45,11 @@ ActiveRecord::Schema.define(version: 2018_07_12_082104) do
     t.datetime "updated_at", null: false
     t.string "league"
     t.string "status"
-    t.string "score"
+    t.string "scraped_score"
+    t.integer "team_a_score"
+    t.integer "team_b_score"
     t.string "unique_event_id"
-    t.datetime "date"
+    t.datetime "starts_at"
     t.string "time"
     t.index ["sport_id"], name: "index_events_on_sport_id"
   end
@@ -76,6 +78,7 @@ ActiveRecord::Schema.define(version: 2018_07_12_082104) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "leagues"
   end
 
   create_table "teams", force: :cascade do |t|

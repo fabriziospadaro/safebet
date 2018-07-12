@@ -1,0 +1,46 @@
+<div class="parlay-wrapper">
+  <% if(@parlay.bets&.size == 0)  %>
+     <a href="/sport" >
+         <div class = "betnow" style = "margin-top: 100px">
+    BET NOW!
+  </div>
+  <% else %>
+    <% @parlay.bets.each do |bet|  %>
+      <div class="bet-wrapper">
+        <div class="bet-container">
+
+          <div class="game-info">
+
+            <p><%=  bet.event.starts_at.strftime('%l:%M %p') %></p>
+
+            <p class = <%= (bet.event.status == "In Progress" ? "red-text" : "black-text") %> >
+              <%=  bet.event.scraped_score %>
+            </p>
+          </div>
+
+          <div class="team-container">
+            <p class = <%= (bet.event.team_a == bet.team ? "green-text" : "black-text") %> >
+              <%= bet.event.team_a.name %>
+            </p>
+
+            <p>|</p>
+
+            <p class = <%= (bet.event.team_b == bet.team ? "green-text" : "black-text") %> >
+              <%= bet.event.team_b.name %>
+            </p>
+
+            <p>|</p>
+
+            <p class = <%= (Team.find_by(name: "TIE") == bet.team ? "green-text" : "black-text") %> >
+              <%= Team.find_by(name: "TIE").name %>
+            </p>
+          </div>
+
+        </div>
+        <div style= "margin-right: 30px; line-height: 80px">
+          <%= link_to "Remove bet", post_bet_path(event: bet.event,destroy: true)%>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
