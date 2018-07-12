@@ -1,6 +1,9 @@
 <div class="parlay-wrapper">
   <% if(@parlay.bets&.size == 0)  %>
-    <p>START BETTING</p>
+     <a href="/sport" >
+         <div class = "betnow" style = "margin-top: 100px">
+    BET NOW!
+  </div>
   <% else %>
     <% @parlay.bets.each do |bet|  %>
       <div class="bet-wrapper">
@@ -34,7 +37,7 @@
           </div>
 
         </div>
-        <div style= "padding-right: 10px; line-height: 80px">
+        <div style= "margin-right: 30px; line-height: 80px">
           <%= link_to "Remove bet", post_bet_path(event: bet.event,destroy: true)%>
         </div>
       </div>
