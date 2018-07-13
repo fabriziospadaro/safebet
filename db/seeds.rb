@@ -1,33 +1,26 @@
-puts 'Cleaning Events database...'
-Event.destroy_all
-
 # ===== # Creating Sports  ====
-puts 'Cleaning Sports database...'
-Sport.destroy_all
-
-puts 'Creating sports...'
-
-
+#deleting A SPORT WILL REMOVE ALL THE EVENTS ASSOCIATED WITH HIM VERY DANGEROUS
+puts 'Updating or creating sports/leagues...'
 SoccerLeague = [
 "World Cup 2018",
 "UEFA Europa League Qualifying",
-"SDSDSD",
+"all",
 ]
 
 BasketballLeague = [
-"DSD",
+"all",
 "GFG",
 "GRGRG",
 ]
 
 TennisLeague = [
-"GRGRG",
+"all",
 "GRG",
 "GRGR",
 ]
 
 BaseballLeague = [
-"WDFG",
+"all",
 "GRG",
 "GRG",
 ]
@@ -51,14 +44,25 @@ sports_attributes = [
    leagues_string: BaseballLeague.join("-"),
  }
 ]
-Sport.create!(sports_attributes)
-puts 'Finished creating Sports!'
+sports_attributes.each do |sport|
+  if(Sport.find_by(name: sport[:name]).nil?)
+    Sport.create(sport)
+  else
+    Sport.find_by(name: sport[:name]).update(sport)
+  end
+end
 
-# ===== # Creating teams for "Round of 16" in the real World Cup 2018 ====
-puts 'Cleaning Teams database...'
-Team.destroy_all
+puts 'Finished updating or creating sports/leagues...'
+puts ""
+puts ""
 
-puts 'Creating teams...'
+puts "Do you want to remove all the teams [DO NOT DO IT]? y-n"
+response = STDIN.gets.chomp
+if(response.downcase == "y")
+  Team.destroy_all
+end
+
+puts 'Updating or creating seed teams...'
 teams_attributes = [
  {
    name: 'TIE'
@@ -113,14 +117,26 @@ teams_attributes = [
    name: 'Colombia',
  }
  ]
-Team.create!(teams_attributes)
+
+teams_attributes.each do |team|
+  Team.create(team) if !Team.find_by(name: team[:name])
+end
+
 puts 'Finished creating Teams!'
 
-# ===== # Creating Events for World Cup 2018 ====
-puts 'Cleaning Events database...'
-Event.destroy_all
 
-puts 'Creating events...'
+puts "Do you want to reset ALL the events [DO NOT DO IT]? y-n"
+response = STDIN.gets.chomp
+if(response.downcase == "y")
+  Event.destroy_all
+end
+count = 0
+Event.where(unique_event_id: "seed").each do |event|
+  event.destroy
+  count += 1
+end
+puts "Removing only seed events...[#{count}]"
+puts 'Creating seed events...'
 events_attributes = [
  {
    team_a: Team.find_by(name: "Russia"),
@@ -132,7 +148,8 @@ events_attributes = [
    status: "Finished",
    # type of this 'date' parameter is DATETIME
    starts_at: '2018-07-09T20:00:00',
-   scraped_score: "2-1"
+   scraped_score: "2-1",
+   unique_event_id: "seed"
  },
 {
    team_a: Team.find_by(name: "England"),
@@ -144,7 +161,8 @@ events_attributes = [
    status: "Finished",
    # type of this 'date' parameter is DATETIME
    starts_at: '2018-07-10T06:00:00',
-   scraped_score: "1-1"
+   scraped_score: "1-1",
+   unique_event_id: "seed"
  },
 {
    team_a: Team.find_by(name: "Brazil"),
@@ -156,7 +174,9 @@ events_attributes = [
    status: "In Progress",
    # type of this 'date' parameter is DATETIME
    starts_at: '2018-07-12T12:30:00',
-   scraped_score: "-"
+   scraped_score: "-",
+   unique_event_id: "seed"
+
  },
  {
    team_a: Team.find_by(name: "Denmark"),
@@ -168,7 +188,8 @@ events_attributes = [
    status: "Scheduled",
    # type of this 'date' parameter is DATETIME
    starts_at: '2018-07-12T19:00:00',
-   scraped_score: "-"
+   scraped_score: "-",
+   unique_event_id: "seed"
  },
  {
    team_a: Team.find_by(name: "Spain"),
@@ -180,7 +201,8 @@ events_attributes = [
    status: "Scheduled",
    # type of this 'date' parameter is DATETIME
    starts_at: '2018-07-12T20:00:00',
-   scraped_score: "-"
+   scraped_score: "-",
+   unique_event_id: "seed"
  },
  {
    team_a: Team.find_by(name: "Switzerland"),
@@ -192,7 +214,8 @@ events_attributes = [
     status: "Scheduled",
    # type of this 'date' parameter is DATETIME
    starts_at: '2018-07-12T21:00:00',
-   scraped_score: "-"
+   scraped_score: "-",
+   unique_event_id: "seed"
  },
 {
    team_a: Team.find_by(name: "Portugal"),
@@ -204,7 +227,8 @@ events_attributes = [
     status: "Scheduled",
     # type of this 'date' parameter is DATETIME
    starts_at: '2018-07-12T22:00:00',
-   scraped_score: "-"
+   scraped_score: "-",
+   unique_event_id: "seed"
  },
 {
    team_a: Team.find_by(name: "Japan"),
@@ -216,12 +240,13 @@ events_attributes = [
     status: "Scheduled",
   # type of this 'date' parameter is DATETIME
    starts_at: '2018-07-14T12:00:00',
-   scraped_score: "-"
+   scraped_score: "-",
+   unique_event_id: "seed"
  },
 ]
 
 Event.create!(events_attributes)
-puts 'Finished creating Events!'
+puts 'Finished creating seed events!'
 
 
 # ==== REFERENCE === Schema as of 12-30pm, 12 July 2018 ===

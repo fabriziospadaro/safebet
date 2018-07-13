@@ -29,11 +29,12 @@ class Event < ApplicationRecord
     Event.where(sport: sport, status: "Scheduled").each do |event|
       events << event if event.open?
     end
-
     filter_leagues = sport.leagues.map(&:downcase)
-    events = events.select { |e| filter_leagues.include? e.league.downcase }
 
-    return events.sort_by {|obj| obj.league}
+    filter_events = events.select do |e|
+      (filter_leagues.include?(e.league.downcase) || filter_leagues.include?("all"))
+    end
+    return filter_events.sort_by {|obj| obj.league}
   end
 
 end

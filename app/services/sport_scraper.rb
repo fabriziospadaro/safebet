@@ -38,7 +38,9 @@ class SportScraper
           _hash = {sport: sport,league: better_info[0].downcase,date: game_date,team1: teams[0].strip.downcase,team2: teams[1].strip.downcase,status: "Scheduled"}
           _hash[:unique_id] = _hash[:league] + _hash[:team1] + _hash[:team2] + _hash[:date].strftime('%Y-%m-%d')
           _hash[:unique_id] = Digest::SHA1.hexdigest _hash[:unique_id]
-          array << _hash
+          unless(_hash[:team1].length < 2 || _hash[:team2].length < 2)
+            array << _hash
+          end
         end
       else
         break
@@ -81,7 +83,10 @@ class SportScraper
           end
           _hash[:unique_id] = _hash[:league] + _hash[:team1] + _hash[:team2] + _hash[:date].strftime('%Y-%m-%d')
           _hash[:unique_id] = Digest::SHA1.hexdigest _hash[:unique_id]
-          array << _hash
+          unless(_hash[:team1].length < 2 || _hash[:team2].length < 2)
+            array << _hash
+          end
+
         end
       else
         break
@@ -115,7 +120,9 @@ class SportScraper
       _hash = {sport: sport,league: better_info[0].downcase,time: better_info[1],team1: team1.strip.downcase,team2: team2.strip.downcase,score: better_info[3],status:  "In Progress",date: game_date}
       _hash[:unique_id] = _hash[:league] + _hash[:team1] + _hash[:team2] + _hash[:date].strftime('%Y-%m-%d')
       _hash[:unique_id] = Digest::SHA1.hexdigest _hash[:unique_id]
-      array << _hash
+      unless(_hash[:team1].length < 2 || _hash[:team2].length < 2)
+        array << _hash
+      end
     end
     return array
 
