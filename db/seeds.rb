@@ -200,7 +200,7 @@ events_attributes = [
    league: "World Cup 2018",
    status: "Scheduled",
    # type of this 'date' parameter is DATETIME
-   starts_at: '2018-07-13T20:00:00',
+   starts_at: '2018-07-13T21:00:00',
    scraped_score: "-",
    unique_event_id: "seed"
  },
