@@ -4,10 +4,23 @@
     <%= image_tag "logo.png", height: 50 %>
   <% end %>
 
+  <% @header = params[:sport] %>
+<%#= raise %>
+
+<% string = "/parlays/show/" + "#{params[:id]}" %>
+
 <% if !(params[:sport].nil?) %>
+
 <h2> <%= params[:sport] %> </h2>
 <% else %>
-  <h2>Sports</h2>
+<% if current_page?("/slip")  %>
+<h2>  <%= "Bet Slip" %> </h2>
+<% elsif current_page?("/profile") %>
+<h2>  <%= "User Profile" %> </h2>
+<% elsif current_page?("/parlays/index") || current_page?("/parlays/show/" + "#{params[:id]}") %>
+<h2>  <%= "Bet History" %> </h2>
+
+<% end %>
 <% end %>
 
 

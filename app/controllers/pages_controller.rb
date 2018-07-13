@@ -9,5 +9,13 @@ class PagesController < ApplicationController
   end
 
   def profile
+     @parlays = current_user.parlays
+
+    @wins = []
+    current_user.parlays.each do |parlay|
+      if parlay.prize > 0
+        @wins << parlay
+      end
+    end
   end
 end

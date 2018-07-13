@@ -10,7 +10,7 @@
     </div>
     <div class="col-xs-12">
       <div class="bet-info">
-        <p>Total Parlays: </p>
+        <p>Total Parlays: </p
         <h3><%= current_user.parlays.size %></h3>
         <p>Total Wins: </p>
         <h3> <%= @wins.size %></h3>
@@ -19,5 +19,46 @@
     </div>
   </div>
 
+<div class="container parlay-history">
+    <hr>
+    <div class="parlay-info">
+      <%  if (@parlay.prize > 0) %>
+    <%= @parlay.date.strftime('%Y-%m-%d') + " - WIN" %>
+      <% else %>
+    <%= @parlay.date.strftime('%Y-%m-%d') + " - LOSS" %>
+    <% end %>
+    <hr>
+    </div>
+</div>
+
+
+      <% @parlay.bets.each do |bet|  %>
+      <div class="bet-wrapper">
+        <div class="bet-container">
+          <div class="game-info">
+            <p><%=  bet.event.starts_at.strftime('%l:%M %p') %></p>
+            <p class = <%= (bet.event.status == "In Progress" ? "red-text" : "black-text") %> >
+              <%=  bet.event.scraped_score %>
+            </p>
+          </div>
+          <div class="team-container">
+            <p class = <%= (bet.event.team_a == bet.team ? "green-text" : "black-text") %> >
+              <%= bet.event.team_a.name.capitalize %>
+            </p>
+            <p class="divider">|</p>
+            <p class = <%= (bet.event.team_b == bet.team ? "green-text" : "black-text") %> >
+              <%= bet.event.team_b.name.capitalize %>
+            </p>
+            <p class="divider">|</p>
+            <p class = <%= (Team.find_by(name: "TIE") == bet.team ? "green-text" : "black-text") %> >
+              <%= Team.find_by(name: "TIE").name %>
+            </p>
+          </div>
+        </div>
+      </div>
+     <% end %>
+
 <hr>
+
+</div>
 
