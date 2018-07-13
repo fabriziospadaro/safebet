@@ -5,7 +5,7 @@
 
 <div class="container">
 
-    <% counter = 0 %>
+    <% counter = 1 %>
     <% last_league = " " %>
 
     <% @events.each do |event| %>
@@ -13,13 +13,14 @@
         <% if(last_league != " ") %>
           </div>
         <% end %>
+        <% counter = 1  %>
         <div class = "league-container" >
           <p class = "league-name"> <%= event.league.capitalize %> </p>
           <hr>
         <% last_league = event.league %>
       <% end %>
         <div class=  <%=  counter%2 == 0 ? "event-card-white" : "event-card-grey" %> >
-          <h5 id= <%= event.id %> > <%= event.team_a.name %> vs <%= event.team_b.name %> </h5>
+          <h5 id= <%= event.id %> > <%= event.team_a.name.capitalize %> vs <%= event.team_b.name.capitalize %> </h5>
           <p class="date-time"> <%= event.starts_at.strftime('%A, %d %b %l:%M %p') %> </b>
           <% bet = @bets.find_by(event: event) %>
           <div class="bet-button-wrapper">
