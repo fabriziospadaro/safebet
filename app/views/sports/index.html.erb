@@ -3,7 +3,7 @@
 <div class = "container-fluid">
  <div class = "header">
   <div class = "header-title">
-    <h1>Select a sport</h1>
+    <h1>Choose a sport</h1>
   </div>
  </div>
 
@@ -19,11 +19,9 @@
     <% end %>
   </div>
 
-  <a href="/slip" >
-  <div class = "bfixed">
-    CURRENT BETS: 0
-  </div>
-  </a>
+<div class="white-blur"></div>
+<div class="green-tab"></div>
+<%= link_to "Bet Slip: " + @parlays.bets.size.to_s, slip_path,class: "bfixed bet-slip" %>
 
 <%# final end%>
 
