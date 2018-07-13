@@ -1,8 +1,8 @@
 require 'nokogiri'
 require 'open-uri'
 require 'digest'
-class SportScraper
 
+class SportScraper
   #scrape an entire day of that sport returning: live,schedule and results for the seleted sport
   def self.scrape_day(params)
     #convert to scrape parameter format
@@ -31,7 +31,7 @@ class SportScraper
       if(!table.search('tr')[0].nil?)
         table.search('tr').each do |tr|
           better_info = tr.text.split("\n").map { |e| e.strip }.reject { |e| e.empty? }
-          teams = better_info[2].split("v")
+          teams = better_info[2].split(" v ")
           #show only schedule for today
           #d.beginning_of_day == dd.beginning_of_day
           game_date = DateTime.parse(better_info[1])
@@ -63,7 +63,7 @@ class SportScraper
       if(!table.search('tr')[0].nil?)
         table.search('tr').each do |tr|
           better_info = tr.text.split("\n").map { |e| e.strip }.reject { |e| e.empty? }
-          teams = better_info[2].split("v")
+          teams = better_info[2].split(" v ")
           game_date = DateTime.parse(better_info[1])
           _hash = {sport: sport,league: better_info[0].downcase,date: game_date,team1: teams[0].strip.downcase,team2: teams[1].strip.downcase}
           #separate with comma CHECK IT
@@ -104,8 +104,8 @@ class SportScraper
     table = r.at('table')
     table.search('tr').each do |tr|
       better_info = tr.text.split("\n").map { |e| e.strip }.reject { |e| e.empty? }
-      team1 = better_info[2].split("v")[0]
-      team2 = better_info[4].split("v")[0]
+      team1 = better_info[2].split(" v ")[0]
+      team2 = better_info[4].split(" v ")[0]
       if(team1[0] == "[")
         team1 = team1.split
         team1.shift
@@ -116,12 +116,14 @@ class SportScraper
         team2.shift
         team2 = team2.join(" ")
       end
-      game_date = DateTime.now.beginning_of_day
+      game_date = DateTime.now
       _hash = {sport: sport,league: better_info[0].downcase,time: better_info[1],team1: team1.strip.downcase,team2: team2.strip.downcase,score: better_info[3],status:  "In Progress",date: game_date}
       _hash[:unique_id] = _hash[:league] + _hash[:team1] + _hash[:team2] + _hash[:date].strftime('%Y-%m-%d')
       _hash[:unique_id] = Digest::SHA1.hexdigest _hash[:unique_id]
       unless(_hash[:team1].length < 2 || _hash[:team2].length < 2)
         array << _hash
+      else
+            binding.pry
       end
     end
     return array

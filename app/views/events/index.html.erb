@@ -1,11 +1,11 @@
 <div class="events-header-wrapper">
-  <h1>Daily pot: $3879</h1>
-  <h5>Build your parlay by clicking on a winning team</h5>
+  <h1>Daily pot: $1000</h1>
+  <h5>Build your parlay by clicking on the winning teams</h5>
 </div>
 
-<div class="container">
+<div class="container-events">
 
-    <% counter = 0 %>
+    <% counter = 1 %>
     <% last_league = " " %>
 
     <% @events.each do |event| %>
@@ -13,13 +13,14 @@
         <% if(last_league != " ") %>
           </div>
         <% end %>
+        <% counter = 1  %>
         <div class = "league-container" >
           <p class = "league-name"> <%= event.league.capitalize %> </p>
           <hr>
         <% last_league = event.league %>
       <% end %>
         <div class=  <%=  counter%2 == 0 ? "event-card-white" : "event-card-grey" %> >
-          <h5 id= <%= event.id %> > <%= event.team_a.name %> vs <%= event.team_b.name %> </h5>
+          <h5 id= <%= event.id %> > <%= event.team_a.name.capitalize %> vs <%= event.team_b.name.capitalize %> </h5>
           <p class="date-time"> <%= event.starts_at.strftime('%A, %d %b %l:%M %p') %> </b>
           <% bet = @bets.find_by(event: event) %>
           <div class="bet-button-wrapper">
@@ -36,6 +37,12 @@
       <% counter += 1 %>
     <% end %>
   </div>
+
+    <a href="/sport" >
+   <div class = "betnow">
+      Back to sports page
+    </div>
+
 </div>
 
 <div class="white-blur"></div>
