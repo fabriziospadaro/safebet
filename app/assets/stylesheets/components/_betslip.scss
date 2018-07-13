@@ -1,3 +1,8 @@
+.score {
+  margin-left: 10px;
+}
+
+
 .parlay-wrapper{
   display: center;
   background-color: white;
@@ -16,17 +21,20 @@
   display: flex;
   background-color: #E3E3E3;
   padding: 8px;
+  justify-content: space-between;
 }
 
 .game-info p {
   margin: 0;
+  font-size: larger;
 }
 
 .team-container{
   display: flex;
   background-color: #E3E3E3;
   justify-content: space-around;
-  padding: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .bet-wrapper{
@@ -38,14 +46,21 @@
 
 .green-text{
   color: green;
+  font-size: large;
+
+
 }
 
 .red-text{
   color: red;
+  font-size: large;
+
 }
 
-.blak-text{
+.black-text{
   color: black;
+  font-size:  large;
+
 }
 
 .container-cancel {
@@ -59,7 +74,8 @@
 }
 
 .divider {
-  padding: 0 30px;
+  padding: 0 3%;
+  font-size: larger
 }
 
 .bet-slip-title {
