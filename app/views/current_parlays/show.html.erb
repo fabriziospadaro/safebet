@@ -14,7 +14,7 @@
 
           <div class="game-info">
 
-            <p><%=  bet.event.starts_at.strftime('%l:%M %p') %></p>
+            <p>Starting At:<%=  bet.event.starts_at.strftime('%l:%M %p') %></p>
 
             <p class = <%= (bet.event.status == "In Progress" ? "red-text" : "black-text") %> >
               <%=  bet.event.scraped_score %>
@@ -39,13 +39,7 @@
               <%= Team.find_by(name: "TIE").name %>
             </p>
 
-
-
           </div>
-
-
-
-
         </div>
 
         <div class="container-cancel">

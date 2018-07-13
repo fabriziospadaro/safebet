@@ -14,7 +14,6 @@
         <h3><%= current_user.parlays.size %></h3>
         <p>Total Wins: </p>
         <h3> <%= @wins.size %></h3>
-
       </div>
     </div>
   </div>
@@ -36,11 +35,16 @@
       <div class="bet-wrapper">
         <div class="bet-container-history">
           <div class="game-info">
-            <p class="date-time"> <%= bet.event.starts_at.strftime('%A, %d %b %l:%M %p') %></p>
 
-            <p class = <%= (bet.event.status == "In Progress" ? "red-text" : "black-text") %> >
-              <%=  bet.event.scraped_score %>
-            </p>
+            <p><%=  bet.event.starts_at.strftime('%l:%M %p') %></p>
+
+            <p class = <%= (bet.event.status == "In Progress" ? "red-text" : "black-text") %>
+              ></p>
+
+              <div class="score">
+                <p>Final Score: <%= bet.event.scraped_score %></p>
+              </div>
+
           </div>
           <div class="team-container">
             <p class = <%= (bet.event.team_a == bet.team ? "green-text" : "black-text") %> >
