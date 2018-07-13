@@ -1,14 +1,25 @@
 
 .animation {
-  width: 100wh;
+  width: 100%;
   height: 100vh;
   color: #fff;
-  background: linear-gradient(-45deg,  #07DCA6,   #061223);
-  background-size: 200% 400%;
+  background:  linear-gradient(-45deg, rgba(104, 195, 172, 0.4) 0%, rgba(6, 18, 35, 70%)), url('https://i.pinimg.com/originals/e1/11/9d/e1119d01d80a44c9e1deacda9dde00cd.jpg') 50% no-repeat;
+  background-size: 400% auto, cover;
   -webkit-animation: Gradient 10s ease infinite;
   -moz-animation: Gradient 10s ease infinite;
   animation: Gradient 10s ease infinite;
+  animation: bgrad 5s infinite alternate linear;
+  // background-filter: blur(5px);
 }
+
+// Original colors: linear-gradient(-45deg, rgba(6, 195, 147, 0.6) 0%, rgba(6, 18, 35, 60%))
+
+@keyframes bgrad {
+  to {
+    background-position:right, center;
+  }
+}
+
 
 @-webkit-keyframes Gradient {
   0% {
@@ -46,41 +57,3 @@
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// .animation {
-
-
-//     animation-name: example;
-//     animation-duration: 40s;
-// }
-
-// @-webkit-keyframes example {
-//     from {
-//       background-position: -100vw, 0;}
-//     to {background-position: 0px, 0;}
-// }
