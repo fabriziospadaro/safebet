@@ -10,7 +10,7 @@
     </div>
     <div class="col-xs-12">
       <div class="bet-info">
-        <p>Total Parlays: </p
+        <p>Total Parlays: </p>
         <h3><%= current_user.parlays.size %></h3>
         <p>Total Wins: </p>
         <h3> <%= @wins.size %></h3>
@@ -34,9 +34,10 @@
 
       <% @parlay.bets.each do |bet|  %>
       <div class="bet-wrapper">
-        <div class="bet-container">
+        <div class="bet-container-history">
           <div class="game-info">
-            <p><%=  bet.event.starts_at.strftime('%l:%M %p') %></p>
+            <p class="date-time"> <%= bet.event.starts_at.strftime('%A, %d %b %l:%M %p') %></p>
+
             <p class = <%= (bet.event.status == "In Progress" ? "red-text" : "black-text") %> >
               <%=  bet.event.scraped_score %>
             </p>
@@ -60,5 +61,8 @@
 
 <hr>
 
-</div>
+  <a href="/parlays/index" >
+    <div class = "betnow">
+      Back
+    </div>
 

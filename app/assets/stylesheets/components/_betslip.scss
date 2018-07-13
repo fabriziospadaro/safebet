@@ -11,6 +11,19 @@
     margin-right: auto;
 }
 
+.bet-container-history {
+  background-color: white;
+  width: 94%;
+  margin-left: auto;
+  margin-right: auto;
+  background-shadow: 10px 10px 10px;
+  padding: 0px 16px;
+}
+
+.parlay-history {
+  padding: 6px auto;
+}
+
 .game-info{
   display: flex;
 }
@@ -24,9 +37,12 @@
   font-size: 20px;
 }
 
+
 .bet-wrapper{
   display: flex;
-  padding-top: 50px;
+  padding-top: 22px;
+  justify-content: space-between;
+  margin: auto auto;
 }
 
 .green-text{
