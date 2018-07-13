@@ -2,9 +2,11 @@
 // this avatar works for Navbar
 .avatar {
   width: 150px;
+  padding-left:auto;
+  padding-right:auto;
   border-radius: 50%;
-   border: #07DCA6 2px solid;
-   line-height: 10px;
+   border: #07DCA6 3px solid;
+    line-height: 150px;
 }
 .avatar-large {
   width: 200px;
