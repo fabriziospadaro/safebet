@@ -173,7 +173,7 @@ events_attributes = [
    league: "World Cup 2018",
    status: "In Progress",
    # type of this 'date' parameter is DATETIME
-   starts_at: '2018-07-12T12:30:00',
+   starts_at: '2018-07-13T12:30:00',
    scraped_score: "-",
    unique_event_id: "seed"
 
@@ -187,7 +187,7 @@ events_attributes = [
    league: "World Cup 2018",
    status: "Scheduled",
    # type of this 'date' parameter is DATETIME
-   starts_at: '2018-07-12T19:00:00',
+   starts_at: '2018-07-13T19:00:00',
    scraped_score: "-",
    unique_event_id: "seed"
  },
@@ -200,7 +200,7 @@ events_attributes = [
    league: "World Cup 2018",
    status: "Scheduled",
    # type of this 'date' parameter is DATETIME
-   starts_at: '2018-07-12T20:00:00',
+   starts_at: '2018-07-13T20:00:00',
    scraped_score: "-",
    unique_event_id: "seed"
  },
@@ -213,7 +213,7 @@ events_attributes = [
    league: "World Cup 2018",
     status: "Scheduled",
    # type of this 'date' parameter is DATETIME
-   starts_at: '2018-07-12T21:00:00',
+   starts_at: '2018-07-13T21:00:00',
    scraped_score: "-",
    unique_event_id: "seed"
  },
@@ -226,7 +226,7 @@ events_attributes = [
    league: "World Cup 2018",
     status: "Scheduled",
     # type of this 'date' parameter is DATETIME
-   starts_at: '2018-07-12T22:00:00',
+   starts_at: '2018-07-13T22:00:00',
    scraped_score: "-",
    unique_event_id: "seed"
  },

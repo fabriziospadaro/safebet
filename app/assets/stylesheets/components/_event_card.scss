@@ -5,27 +5,37 @@
 
 .event-card-white {
   background-color: white;
-  margin-bottom: 30px;
   padding: 20px;
-
-
 }
 
 .event-card-grey {
   background-color: #C4C4C4;
-  margin-bottom: 30px;
   padding: 20px;
-  box-shadow: 1px 1px 1px rgba(0,0,0, 0.3);
-
+  box-shadow: 0px 0px 5px rgba(0,0,0, 0.3);
 }
 
 
 
 .league-name {
   margin-left: 5px;
-
+  font-size: 35px;
+  margin-bottom: 5px;
 }
 
+.date-time{
+  margin-top: 5px;
+  font-size: 12px;
+  font-style: italic;
+  margin-left: 10px;
+}
+
+.league-container{
+  border-style: solid;
+  border-width: 1px;
+  border-color: lightgrey;
+  margin-bottom: 20px;
+  padding: 20px;
+}
 
 
 // .btn-link-team
