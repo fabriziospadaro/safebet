@@ -1,13 +1,12 @@
 .banner {
+  font-family: 'Abel', sans-serif;
   color: white;
   text-align: center;
   height: 100vh;
   /* if you have a 70px navbar => height: calc(100vh - 70px); or 100vh*/
-
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  font-family: 'Abel', sans-serif;
 }
 
 .banner-content h1 {
@@ -51,16 +50,17 @@
   color: #FFDEDE;
 }
 
-.banner-title {
-  margin-bottom: 45%;
+.banner-content {
+  // margin-top: 35%;
+  margin-bottom: 50%;
 }
 
 .banner-button {
-  margin-bottom: 35%;
+   margin-bottom: 40%;
 }
 
 .banner-bottom {
-  margin-bottom: 10%;
+  margin-bottom: 0%;
 }
 
 .sign-in-link a {
@@ -69,18 +69,12 @@
   font-size: 18px;
   font-weight: regular;
   color: #07DCA6;
-  text-decoration: underline;
+}
+
+.sign-in-link {
+  margin-bottom: 8%;
+  margin-top: 0;
 }
 
 
-
-
-// .banner p {
-//   font-size: 25px;
-//   font-weight: lighter;
-//   color: rgb(255, 255, 255);
-//   opacity: 0.6;
-//   margin-bottom: 30px;
-//   font-family: 'Abel', sans-serif;
-// }
 

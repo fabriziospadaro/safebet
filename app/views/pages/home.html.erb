@@ -1,29 +1,33 @@
 
-<div class="banner animation" >
 
+<div class="animation" >
 
-  <div class="banner-content">
+  <div class="banner" >
 
-  <div class="banner-title">
-    <h1>Bet On It</h1>
-    <h4>Risk nothing... win daily</h4>
-  </div>
+      <div class="banner-title">
 
-  <div class="banner-button">
-    <p> <%= link_to "Start playing", sport_path, class: "btn btn-primary btn-green" %></p>
-  </div>
+        <div class="banner-content">
+            <h1>Bet On It</h1>
+            <h4>Risk nothing... win daily</h4>
+        </div>
 
-  <div class="banner-bottom">
-    <h5>Already winning?</h5>
-      <div class="sign-in-link">
-       <%= link_to "Sign in", new_user_session_path %>
+          <div class="banner-button">
+            <p> <%= link_to "Start playing", sport_path, class: "btn btn-primary btn-green" %></p>
+          </div>
+
+            <div class="banner-bottom">
+              <h5>Already winning?</h5>
+            </div>
+
+            <div class="sign-in-link">
+                 <%= link_to "Sign in", new_user_session_path %>
+            </div>
+
+       <!-- Ending Div for banner-title -->
+        </div>
+  <!-- Ending Div for banner -->
     </div>
-  </div>
-
-
-  <!-- Ending Div for banner-content -->
-  </div>
-<!-- Ending Div for banner -->
+ <!-- Ending Div for animation -->
 </div>
 
 
