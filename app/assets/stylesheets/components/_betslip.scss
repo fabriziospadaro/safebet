@@ -9,23 +9,31 @@
    width: 70%;
     margin-left: auto;
     margin-right: auto;
+  background-shadow: 10px 10px 10px;
 }
 
 .game-info{
   display: flex;
   background-color: #E3E3E3;
+  padding: 8px;
+}
 
+.game-info p {
+  margin: 0;
 }
 
 .team-container{
   display: flex;
   background-color: #E3E3E3;
   justify-content: space-around;
+  padding: 8px;
 }
 
 .bet-wrapper{
   display: flex;
-  padding-top: 50px;
+  padding-top: 30px;
+  justify-content: space-between;
+  margin: auto auto;
 }
 
 .green-text{
@@ -39,3 +47,33 @@
 .blak-text{
   color: black;
 }
+
+.container-cancel {
+  background-color: #E3E3E3;
+  width: 10%vw;
+  margin-right: 18px;
+  // text-align: center;
+  // vertical-align: middle;
+  display: flex;
+
+}
+
+.divider {
+  padding: 0 30px;
+}
+
+.bet-slip-title {
+  height: 15%vh;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #E3E3E3;
+  color: black;
+  padding: 8px;
+  margin: 0;
+}
+
+.bet-slip-title h3 {
+  font-size: 18px;
+}
+
+
