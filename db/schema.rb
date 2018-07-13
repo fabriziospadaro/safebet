@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2018_07_12_151955) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "leagues"
+    t.text "leagues_string"
   end
 
   create_table "teams", force: :cascade do |t|
