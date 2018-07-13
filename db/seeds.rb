@@ -36,19 +36,19 @@ BaseballLeague = [
 sports_attributes = [
  {
    name: 'Soccer',
-   leagues: SoccerLeague.join("-"),
+   leagues_string: SoccerLeague.join("-"),
  },
  {
    name: 'Basketball',
-   leagues: BasketballLeague.join("-"),
+   leagues_string: BasketballLeague.join("-"),
  },
  {
    name: 'Tennis',
-   leagues: TennisLeague.join("-"),
+   leagues_string: TennisLeague.join("-"),
  },
  {
    name: 'Baseball',
-   leagues: BaseballLeague.join("-"),
+   leagues_string: BaseballLeague.join("-"),
  }
 ]
 Sport.create!(sports_attributes)
