@@ -1,0 +1,5 @@
+<%= generate_bet_link(event, event.team_a, bet) %>
+<%= generate_bet_link(event, event.team_b, bet) %>
+<% if(sport.name.downcase == "soccer")%>
+  <%= generate_bet_link(event, tie, bet) %>
+<% end %>

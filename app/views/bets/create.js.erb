@@ -1,0 +1,7 @@
+function updateBetButtons(html) {
+  var betButtons = document.getElementById('<%= "event_#{@event.id}" %>');
+  if (betButtons) betButtons.innerHTML = html;
+}
+
+var html = '<%= j render "events/bet_buttons", event: @event, tie: @tie, sport: @sport, bet: @bet %>';
+updateBetButtons(html);
