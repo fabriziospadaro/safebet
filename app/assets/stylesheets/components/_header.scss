@@ -1,11 +1,11 @@
 .header {
-  background-color: lightgrey;
+  background-color: $green;
   height: 150px;
   text-align: center;
   vertical-align: middle;
-  line-height: 150px;
   padding-top: 20px;
-
+  padding-bottom: 20px;
+  color: $blue;
 }
 
 

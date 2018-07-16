@@ -2,11 +2,9 @@
   margin-left: 10px;
 }
 
-
 .parlay-wrapper{
   display: center;
   background-color: white;
-
 }
 
 .bet-container{
@@ -35,12 +33,13 @@
 .game-info p {
   margin: 0;
   font-size: larger;
-  
+}
+
 .parlay-history {
   padding: 6px auto;
 }
 
-.team-container{
+.team-container {
   display: flex;
   background-color: #C4C4C4;
   padding: 20px;
@@ -51,27 +50,25 @@
 }
 
 
-.bet-wrapper{
+.bet-wrapper {
   display: flex;
   padding-top: 22px;
   justify-content: space-between;
   margin: auto auto;
 }
 
-.green-text{
+.green-text {
   color: green;
   font-size: large;
 
-
 }
 
-.red-text{
+.red-text {
   color: red;
   font-size: large;
-
 }
 
-.black-text{
+.black-text {
   color: black;
   font-size:  large;
 }
@@ -83,7 +80,6 @@
   // text-align: center;
   // vertical-align: middle;
   display: flex;
-
 }
 
 .divider {
@@ -102,5 +98,5 @@
 }
 
 .bet-slip-title h3 {
-  font-size: 18px;
+  font-size: 60px;
 }
