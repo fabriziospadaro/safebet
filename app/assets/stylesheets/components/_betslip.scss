@@ -1,7 +1,10 @@
+.score {
+  margin-left: 10px;
+}
+
 .parlay-wrapper{
   display: center;
   background-color: white;
-
 }
 
 .bet-container{
@@ -9,43 +12,65 @@
    width: 70%;
     margin-left: auto;
     margin-right: auto;
+}
+
+.bet-container-history {
+  background-color: white;
+  width: 94%;
+  margin-left: auto;
+  margin-right: auto;
   background-shadow: 10px 10px 10px;
+  padding: 0px 16px;
 }
 
 .game-info{
   display: flex;
   background-color: #E3E3E3;
   padding: 8px;
+  justify-content: space-between;
 }
 
 .game-info p {
   margin: 0;
+  font-size: larger;
 }
 
-.team-container{
+.parlay-history {
+  padding: 6px auto;
+}
+
+.team-container {
   display: flex;
-  background-color: #E3E3E3;
+  background-color: #C4C4C4;
+  padding: 20px;
+  box-shadow: 0px 0px 5px rgba(0,0,0, 0.3);
   justify-content: space-around;
-  padding: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
-.bet-wrapper{
+
+.bet-wrapper {
   display: flex;
-  padding-top: 30px;
+  padding-top: 22px;
   justify-content: space-between;
   margin: auto auto;
 }
 
-.green-text{
+.green-text {
   color: green;
+  font-size: large;
+
 }
 
-.red-text{
+.red-text {
   color: red;
+  font-size: large;
 }
 
-.blak-text{
+.black-text {
   color: black;
+  font-size:  large;
 }
 
 .container-cancel {
@@ -55,11 +80,11 @@
   // text-align: center;
   // vertical-align: middle;
   display: flex;
-
 }
 
 .divider {
-  padding: 0 30px;
+  padding: 0 3%;
+  font-size: larger
 }
 
 .bet-slip-title {
@@ -73,7 +98,9 @@
 }
 
 .bet-slip-title h3 {
-  font-size: 18px;
+  font-size: 60px;
 }
-
-
+.bottom-margin{
+  margin-bottom: 60px;
+}
+}

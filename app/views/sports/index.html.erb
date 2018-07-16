@@ -1,29 +1,45 @@
+<%urls = [
+   "https://ak1.picdn.net/shutterstock/videos/4710521/thumb/1.jpg",
+  "http://getwallpapers.com/wallpaper/full/7/7/f/609890.jpg",
+  "https://thumb7.shutterstock.com/display_pic_with_logo/310579/753202234/stock-photo-beautiful-girl-tennis-player-with-a-racket-on-dark-background-wiht-lights-753202234.jpg",
+  "https://media.gettyimages.com/videos/someone-catching-baseball-in-a-mit-on-black-background-video-id165097016?s=640x640",
+  "https://d39a3h63xew422.cloudfront.net/wp-content/uploads/2017/02/22101450/1960-porsche-356-cab-16-1440x960.jpg",
+  "https://smhttp-ssl-60188.nexcesscdn.net/images/made/images/uploads/The_Most_Minimalist_House_Ever_Designed_featured_on_architecture_beast_33_1182_788.jpg",
+  "http://www.bravotv.com/sites/nbcubravotv/files/styles/blog-post--mobile/public/field_blog_image/2017/04/jet-set-hotel-housekeeping.jpg?itok=Lh9G9Z3R&timestamp=1493394425",
+  "https://www.psychologos.ru/images/1_1433244086.jpg"
+  ] %>
+
+
+
+
+
+
 
 
 <div class = "container-fluid">
  <div class = "header">
   <div class = "header-title">
-    <h1>Select a sport</h1>
+    <h1>Daily Pot: $1,000</h1>
+    <h4>Select a sport to start betting</h4>
   </div>
  </div>
 
   <div class = "row">
-    <% @sports.each do |sport| %>
+    <% @sports.each_with_index do |sport, index| %>
       <%=link_to events_path(sport: sport.name) do %>
-        <div class="col-xs-12">
-          <div class="card-sport">
-            <%= sport.name %>
+        <div class="col-xs-12 col-sm-6">
+          <div class="card-sport"  style="background-image: linear-gradient(rgba(0,0,102,0.3),
+      rgba(0,0,102,0.2)), url(<%=urls[index]%>)">
+            <%=  sport.name %>
           </div>
         </div>
       <% end %>
     <% end %>
   </div>
 
-  <a href="/slip" >
-  <div class = "bfixed">
-    CURRENT BETS: 0
-  </div>
-  </a>
+
+<div class="green-tab"></div>
+<%= link_to "Bet Slip: " + @parlays&.bets&.size.to_s, slip_path,class: "bfixed bet-slip" %>
 
 <%# final end%>
 

@@ -11,7 +11,7 @@ class User < ApplicationRecord
     parlays&.last&.bets
   end
 
-  def first_bet_for_event?(event_id)
-    bets.find_by(event: Event.find(event_id)).nil?
+  def first_bet_for_event?(event)
+    bets.find_by(event: event).nil?
   end
 end

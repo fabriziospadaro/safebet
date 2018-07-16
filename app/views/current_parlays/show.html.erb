@@ -1,5 +1,5 @@
 <div class="parlay-wrapper">
-  <% if(@parlay.bets&.size == 0)  %>
+  <% if(@parlay&.bets&.size == 0)  %>
      <a href="/sport" >
          <div class = "betnow">
     Start betting!
@@ -8,13 +8,13 @@
 
   <h3 class="bet-slip-title">Review or cancel your current bets</h3>
 
-    <% @parlay.bets.each do |bet|  %>
+    <% @parlay&.bets&.each do |bet|  %>
       <div class="bet-wrapper">
         <div class="bet-container">
 
           <div class="game-info">
 
-            <p><%=  bet.event.starts_at.strftime('%l:%M %p') %></p>
+            <p>Starting At:<%=  bet.event.starts_at.strftime('%l:%M %p') %></p>
 
             <p class = <%= (bet.event.status == "In Progress" ? "red-text" : "black-text") %> >
               <%=  bet.event.scraped_score %>
@@ -39,18 +39,12 @@
               <%= Team.find_by(name: "TIE").name %>
             </p>
 
-
-
           </div>
-
-
-
-
         </div>
 
         <div class="container-cancel">
           <div style= "">
-            <%= link_to "", post_bet_path(event: bet.event,destroy: true), class:"fas fa-times" %>
+            <%= link_to "", destroy_from_bet_slip_path(id: bet.id), class:"fas fa-times" %>
           </div>
         </div>
       </div>

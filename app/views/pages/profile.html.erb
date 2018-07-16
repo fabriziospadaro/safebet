@@ -10,17 +10,17 @@
       <div class = "col-xs-6">
 
            <div class = "col-xs-6 title" >
-           <p>  WINS  </p>
+           <h5>  WINS  </h5>
            <h3> <%= @wins.size %> </h3>
 
           </div>
           <div class = "col-xs-6 title">
-          <p>  RANKING <p>
+          <h5>  RANKING <h5>
             <h3> 100 </h3>
           </div>
           <div class = "col-xs-12 title">
-           <p>  TOTAL WINNINGS </p>
-          <h3> 1 </h3>
+           <h5>  TOTAL WINNINGS </h5>
+          <h3> $242.12 </h3>
           </div>
       </div>
 
@@ -34,8 +34,9 @@
         </div >
          <div class="col-xs-6 infostyle">
 
-           <i class="fas fa-history inlinelement" style = "color: #07DCA6"></i>
-           <%= link_to "Bet History",parlays_index_path,class: "inlinelement" %>
+           <i class="fas fa-history inlinelement" style = "color: #07DCA6"><%= link_to "Bet History", parlays_index_path, class: "inlinelement" %></i>
+
+
 
       </div>
        <div class="col-xs-6 infostyle">
@@ -47,7 +48,8 @@
 <div class="col-xs-6 infostyle">
    <a href="users/sign_out" >
         <i class="fas fa-sign-out-alt" style = "color: #07DCA6"></i>
-         <p class="inlinelement">Logout </p>
+         <p class="inlinelement"> Logout </p>
+
  </div>
 
       </div>
@@ -56,7 +58,7 @@
        <div class="col-xs-12" style ="height: 100px">
          <a href="/sport" >
          <div class = "betnow" style="margin-top:80px">
-    BET NOW!
+    KEEP BETTING!
   </div>
   </a>
       </div>

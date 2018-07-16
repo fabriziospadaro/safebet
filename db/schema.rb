@@ -35,12 +35,20 @@ ActiveRecord::Schema.define(version: 2018_07_12_151955) do
     t.index ["team_id"], name: "index_bets_on_team_id"
   end
 
+  create_table "event_dates", force: :cascade do |t|
+    t.string "date"
+    t.bigint "sport_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sport_id"], name: "index_event_dates_on_sport_id"
+  end
+
   create_table "events", force: :cascade do |t|
     t.integer "odds"
     t.integer "team_a_id"
     t.integer "team_b_id"
     t.integer "winner_id"
-    t.bigint "sport_id"
+    t.bigint "event_date_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "league"
@@ -51,7 +59,7 @@ ActiveRecord::Schema.define(version: 2018_07_12_151955) do
     t.string "unique_event_id"
     t.datetime "starts_at"
     t.string "time"
-    t.index ["sport_id"], name: "index_events_on_sport_id"
+    t.index ["event_date_id"], name: "index_events_on_event_date_id"
   end
 
   create_table "parlays", force: :cascade do |t|
@@ -109,7 +117,8 @@ ActiveRecord::Schema.define(version: 2018_07_12_151955) do
   add_foreign_key "bet_users", "users"
   add_foreign_key "bets", "events"
   add_foreign_key "bets", "teams"
-  add_foreign_key "events", "sports"
+  add_foreign_key "event_dates", "sports"
+  add_foreign_key "events", "event_dates"
   add_foreign_key "parlays", "users"
   add_foreign_key "payouts", "parlays"
   add_foreign_key "payouts", "users"
