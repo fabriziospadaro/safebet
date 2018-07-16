@@ -4,6 +4,12 @@ puts 'Updating or creating sports/leagues...'
 SoccerLeague = [
 "World Cup 2018",
 "UEFA Europa League Qualifying",
+"Europe Friendlies",
+"Argentina Cup",
+"Iceland Premier League",
+"Copa do Brasil",
+"Russia Division 1",
+"USA MLS",
 "all",
 ]
 
@@ -130,6 +136,7 @@ response = STDIN.gets.chomp
 if(response.downcase == "y")
   Event.destroy_all
 end
+
 count = 0
 Event.where(unique_event_id: "seed").each do |event|
   event.destroy
@@ -137,13 +144,14 @@ Event.where(unique_event_id: "seed").each do |event|
 end
 puts "Removing only seed events...[#{count}]"
 puts 'Creating seed events...'
+
 events_attributes = [
  {
    team_a: Team.find_by(name: "Russia"),
    team_b: Team.find_by(name: "France"),
    # # not played yet - winner_id: Optional / Will be created later
    winner: Team.find_by(name: "Russia"),
-   sport:  Sport.find_by(name: "Soccer"),
+   event_date: EventDate.find_or_create_by(sport: Sport.find_by(name: "Soccer"),date: "2018-07-16"),
    league: "World Cup 2018",
    status: "Finished",
    # type of this 'date' parameter is DATETIME
@@ -156,11 +164,11 @@ events_attributes = [
    team_b: Team.find_by(name: "Argentina"),
    # # not played yet - winner_id: Optional / Game not played yet - false
    winner: Team.find_by(name: "TIE"),
-   sport:  Sport.find_by(name: "Soccer"),
+   event_date: EventDate.find_or_create_by(sport: Sport.find_by(name: "Soccer"),date: "2018-07-16"),
    league: "World Cup 2018",
    status: "Finished",
    # type of this 'date' parameter is DATETIME
-   starts_at: '2018-07-10T06:00:00',
+   starts_at: '2018-07-16T06:00:00',
    scraped_score: "1-1",
    unique_event_id: "seed"
  },
@@ -169,11 +177,11 @@ events_attributes = [
    team_b: Team.find_by(name: "Belgium"),
    # # not played yet - winner_id: Optional / Game not played yet - false
    # winner_id: false,
-   sport:  Sport.find_by(name: "Soccer"),
+   event_date: EventDate.find_or_create_by(sport: Sport.find_by(name: "Soccer"),date: "2018-07-16"),
    league: "World Cup 2018",
    status: "In Progress",
    # type of this 'date' parameter is DATETIME
-   starts_at: '2018-07-13T12:30:00',
+   starts_at: '2018-07-16T12:30:00',
    scraped_score: "-",
    unique_event_id: "seed"
 
@@ -183,11 +191,11 @@ events_attributes = [
    team_b: Team.find_by(name: "Sweden"),
    # # not played yet - winner_id: Optional / Game not played yet - false
    # winner_id: false,
-   sport:  Sport.find_by(name: "Soccer"),
+   event_date: EventDate.find_or_create_by(sport: Sport.find_by(name: "Soccer"),date: "2018-07-13"),
    league: "World Cup 2018",
    status: "Scheduled",
    # type of this 'date' parameter is DATETIME
-   starts_at: '2018-07-13T19:00:00',
+   starts_at: '2018-07-16T19:00:00',
    scraped_score: "-",
    unique_event_id: "seed"
  },
@@ -196,11 +204,11 @@ events_attributes = [
    team_b: Team.find_by(name: "Mexico"),
    # # not played yet - winner_id: Optional / Game not played yet - false
    # winner_id: false,
-   sport:  Sport.find_by(name: "Soccer"),
+   event_date: EventDate.find_or_create_by(sport: Sport.find_by(name: "Soccer"),date: "2018-07-13"),
    league: "World Cup 2018",
    status: "Scheduled",
    # type of this 'date' parameter is DATETIME
-   starts_at: '2018-07-13T21:00:00',
+   starts_at: '2018-07-16T21:00:00',
    scraped_score: "-",
    unique_event_id: "seed"
  },
@@ -209,11 +217,11 @@ events_attributes = [
    team_b: Team.find_by(name: "Uruguay"),
    # # not played yet - winner_id: Optional / Game not played yet - false
    # winner_id: false,
-   sport:  Sport.find_by(name: "Soccer"),
+   event_date: EventDate.find_or_create_by(sport: Sport.find_by(name: "Soccer"),date: "2018-07-13"),
    league: "World Cup 2018",
     status: "Scheduled",
    # type of this 'date' parameter is DATETIME
-   starts_at: '2018-07-13T21:00:00',
+   starts_at: '2018-07-16T21:00:00',
    scraped_score: "-",
    unique_event_id: "seed"
  },
@@ -222,11 +230,11 @@ events_attributes = [
    team_b: Team.find_by(name: "Croatia"),
    # # not played yet - winner_id: Optional / Game not played yet - false
    # winner_id: false,
-   sport:  Sport.find_by(name: "Soccer"),
+   event_date: EventDate.find_or_create_by(sport: Sport.find_by(name: "Soccer"),date: "2018-07-13"),
    league: "World Cup 2018",
     status: "Scheduled",
     # type of this 'date' parameter is DATETIME
-   starts_at: '2018-07-13T22:00:00',
+   starts_at: '2018-07-16T22:00:00',
    scraped_score: "-",
    unique_event_id: "seed"
  },
@@ -235,11 +243,11 @@ events_attributes = [
    team_b: Team.find_by(name: "Colombia"),
    # # not played yet - winner_id: Optional / Game not played yet - false
    # winner_id: false,
-   sport:  Sport.find_by(name: "Soccer"),
+   event_date: EventDate.find_or_create_by(sport: Sport.find_by(name: "Soccer"),date: "2018-07-14"),
    league: "World Cup 2018",
     status: "Scheduled",
   # type of this 'date' parameter is DATETIME
-   starts_at: '2018-07-14T12:00:00',
+   starts_at: '2018-07-17T12:00:00',
    scraped_score: "-",
    unique_event_id: "seed"
  },
