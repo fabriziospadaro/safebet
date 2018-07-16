@@ -19,16 +19,18 @@
           <hr>
         <% last_league = event.league %>
       <% end %>
+        <% team_a = event.team_a %>
+        <% team_b = event.team_b %>
         <div class=  <%=  counter%2 == 0 ? "event-card-white" : "event-card-grey" %> >
-          <h5 id= <%= event.id %> > <%= event.team_a.name.capitalize %> vs <%= event.team_b.name.capitalize %> </h5>
+          <h5 id= <%= event.id %> > <%= team_a.name.capitalize %> vs <%= team_b.name.capitalize %> </h5>
           <p class="date-time"> <%= event.starts_at.strftime('%A, %d %b %l:%M %p') %> </b>
           <% bet = @bets.find_by(event: event) %>
           <div class="bet-button-wrapper">
-            <%= link_to event.team_a.name.capitalize, post_bet_path(event: event,winner: event.team_a,sport: params["sport"]),
-                :class => (!bet.nil? && !bet.team.nil? && bet.team == event.team_a ? "bet-active" : "bet-default") %>
-            <%= link_to event.team_b.name.capitalize, post_bet_path(event: event,winner: event.team_b, sport: params["sport"]),
-                :class => (!bet.nil? && !bet.team.nil? && bet.team == event.team_b ? "bet-active" : "bet-default") %>
-            <% if(@events[0].sport.name.downcase == "soccer")%>
+            <%= link_to team_a.name.capitalize, post_bet_path(event: event,winner: team_a,sport: params["sport"]),
+                :class => (!bet.nil? && !bet.team.nil? && bet.team == team_a ? "bet-active" : "bet-default") %>
+            <%= link_to team_b.name.capitalize, post_bet_path(event: event,winner: team_b, sport: params["sport"]),
+                :class => (!bet.nil? && !bet.team.nil? && bet.team == team_b ? "bet-active" : "bet-default") %>
+            <% if(@sport.name.downcase == "soccer")%>
               <%= link_to "Draw", post_bet_path(event: event,winner: Team.find_by(name: "TIE"), sport: params["sport"]),
                 :class => (!bet.nil? && bet.team == Team.find_by(name: "TIE") ? "bet-active" : "bet-default") %>
             <% end %>
@@ -41,7 +43,7 @@
 
 <div class="white-blur"></div>
 <div class="green-tab"></div>
-<%= link_to "Bet Slip: " + @parlays.bets.size.to_s, slip_path,class: "bfixed bet-slip" %>
+<%= link_to "Bet Slip: " + @parlays&.bets&.size.to_s, slip_path,class: "bfixed bet-slip" %>
 
 
 
