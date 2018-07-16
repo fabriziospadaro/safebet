@@ -10,27 +10,38 @@
 .event-card-white {
   background-color: white;
   padding: 20px;
+  color: $blue;
+  font-size: 20px;
+  h5 {
+    font-size: 20px;
+  }
 }
 
 .event-card-grey {
+  border-radius: 2px;
   background-color: #C4C4C4;
   padding: 20px;
-  box-shadow: 0px 0px 5px rgba(0,0,0, 0.3);
+  color: $blue;
+  font-size: 20px;
+  h5 {
+    font-size: 20px;
+  }
 }
 
 
 
 .league-name {
   margin-left: 5px;
-  font-size: 25px;
+  font-size: 24px;
   margin-bottom: 5px;
+  color: $blue;
 }
 
 .date-time{
   margin-top: 5px;
-  font-size: 12px;
+  font-size: 15px;
   font-style: italic;
-  margin-left: 10px;
+
 }
 
 .league-container{
@@ -39,6 +50,7 @@
   border-color: lightgrey;
   margin-bottom: 20px;
   padding: 20px;
+  background-color: white;
 }
 
 

@@ -1,12 +1,13 @@
 class EventsController < ApplicationController
   def index
     #TO DO WITHLIST ONLY CERTAIN LEAGUES FOR A SPORT
-    sport = Sport.find_by(name: params[:sport])
+    @sport = Sport.find_by(name: params[:sport])
 
-    @events = Event.today(sport)
+    @events = @sport.today_events
 
     @bets = current_user.bets
     @parlay = current_user.parlays&.last
+    @tie = Team.tie
   end
 
 end
