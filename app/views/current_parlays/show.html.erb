@@ -1,47 +1,63 @@
 <div class="parlay-wrapper">
-  <% if(@parlay&.bets&.size == 0)  %>
+
+  <% if(@parlay.bets&.size == 0)  %>
      <a href="/sport" >
-         <div class = "betnow">
+
+  <div class = "betnow">
     Start betting!
   </div>
+
   <% else %>
-
-  <h3 class="bet-slip-title">Review or cancel your current bets</h3>
-
     <% @parlay&.bets&.each do |bet|  %>
       <div class="bet-wrapper">
         <div class="bet-container">
 
-          <div class="game-info">
+  <div class="bet-slip-title" >
+    <h6> Review or cancel your current bets - Your bets have automatically been saved. You can still add bets, modify results by clicking on a new winner, or cancel any events that haven't yet started. </h6>
+  </div>
 
-            <p>Starting At:<%=  bet.event.starts_at.strftime('%l:%M %p') %></p>
-
-            <p class = <%= (bet.event.status == "In Progress" ? "red-text" : "black-text") %> >
-              <%=  bet.event.scraped_score %>
-            </p>
-          </div>
-
-          <div class="team-container">
-            <p class = <%= (bet.event.team_a == bet.team ? "green-text" : "black-text") %> >
-              <%= bet.event.team_a.name.capitalize %>
-            </p>
-
-            <p class="divider">|</p>
-
-            <p class = <%= (bet.event.team_b == bet.team ? "green-text" : "black-text") %> >
-              <%= bet.event.team_b.name.capitalize %>
-            </p>
-
-            <p class="divider">|</p>
+  <div class = "summary">
+    <p> <%=  Date.today.strftime('%d %b %Y') %> </p>
+    <p> <%=  @parlay&.bets&.size.to_s %> - Bet Parlay </p>
+  </div>
 
 
-            <p class = <%= (Team.find_by(name: "TIE") == bet.team ? "green-text" : "black-text") %> >
-              <%= Team.find_by(name: "TIE").name %>
-            </p>
+  <% @parlay.bets.each do |bet|  %>
 
-          </div>
+    <div class="bet-wrapper">
+
+      <div class="bet-container">
+
+        <div class="game-info">
+          <p><%=  bet.event.starts_at.strftime('%l:%M %p') %> CET  </p>
+          <p class = <%= (bet.event.status == "In Progress" ? "red-text" : "black-text") %> __
+            <%=  bet.event.scraped_score %> </p>
+        <!-- ending Div for Game-Info -->
         </div>
 
+        <div class="team-container" style = "box-shadow: none">
+          <p class = <%= (bet.event.team_a == bet.team ? "green-text" : "black-text") %> >
+            <%= bet.event.team_a.name.capitalize %>
+          </p>
+          <p class="divider">|</p>
+          <p class = <%= (bet.event.team_b == bet.team ? "green-text" : "black-text") %> >
+            <%= bet.event.team_b.name.capitalize %>
+          </p>
+          <p class="divider">|</p>
+          <p class = <%= (Team.find_by(name: "TIE") == bet.team ? "green-text" : "black-text") %> >
+            <%= Team.find_by(name: "TIE").name %>
+          </p>
+      <!-- ending Div for Team-Container -->
+        </div>
+
+      <!-- ending Div for Bet-Container -->
+      </div>
+
+          <div class="container-cancel">
+            <% if (bet.event.status == "Scheduled") %>
+                <%= link_to "", post_bet_path(event: bet.event,destroy: true), class: "fas fa-times cross-icon" %>
+            <% end %>
+          </div>
         <div class="container-cancel">
           <div style= "">
             <%= link_to "", destroy_from_bet_slip_path(id: bet.id), class:"fas fa-times" %>
@@ -49,8 +65,13 @@
         </div>
       </div>
     <% end %>
+
           <a href="/sport" >
          <div class = "betnow">
             Back to sports page
   <% end %>
+
+<!-- ending Div for Parlay-Wrapper -->
 </div>
+
+

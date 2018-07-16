@@ -6,8 +6,8 @@ class EventsController < ApplicationController
     @events = @sport.today_events
 
     @bets = current_user.bets
+    @parlay = current_user.parlays&.last
     @tie = Team.tie
-    @parlays = current_user.parlays&.last
   end
 
 end
