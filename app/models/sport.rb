@@ -6,10 +6,13 @@ class Sport < ApplicationRecord
   end
 
   def today_events
-    event_dates.find_by(date: DateTime.now.strftime("%Y-%m-%e")).events.where(status: "Scheduled")
+    events = event_dates.find_by(date: DateTime.now.strftime("%Y-%m-%e")).events.where(status: "Scheduled")
+
+    filter_events = events.select do |e|
+     (leagues.include?(e.league.downcase) || leagues.include?("all"))
+    end
+    return filter_events.sort_by {|obj| obj.league}
+
   end
 
-  def events_by_date(date)
-    event_dates.find_by(date: date.strftime("%Y-%m-%e")).events.where(status: "Finished")
-  end
 end

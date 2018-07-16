@@ -10,6 +10,7 @@ SoccerLeague = [
 "Copa do Brasil",
 "Russia Division 1",
 "USA MLS",
+"all",
 ]
 
 BasketballLeague = [
@@ -135,6 +136,7 @@ response = STDIN.gets.chomp
 if(response.downcase == "y")
   Event.destroy_all
 end
+
 count = 0
 Event.where(unique_event_id: "seed").each do |event|
   event.destroy
@@ -142,7 +144,7 @@ Event.where(unique_event_id: "seed").each do |event|
 end
 puts "Removing only seed events...[#{count}]"
 puts 'Creating seed events...'
-EventDate.destroy_all
+
 events_attributes = [
  {
    team_a: Team.find_by(name: "Russia"),
