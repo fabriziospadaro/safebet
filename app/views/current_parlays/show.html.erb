@@ -8,9 +8,6 @@
   </div>
 
   <% else %>
-    <% @parlay&.bets&.each do |bet|  %>
-      <div class="bet-wrapper">
-        <div class="bet-container">
 
   <div class="bet-slip-title" >
     <h6> Review or cancel your current bets - Your bets have automatically been saved. You can still add bets, modify results by clicking on a new winner, or cancel any events that haven't yet started. </h6>
@@ -55,14 +52,12 @@
 
           <div class="container-cancel">
             <% if (bet.event.status == "Scheduled") %>
-                <%= link_to "", post_bet_path(event: bet.event,destroy: true), class: "fas fa-times cross-icon" %>
+              <%= link_to "", destroy_from_bet_slip_path(id: bet.id), class: "fas fa-times cross-icon"%>
             <% end %>
           </div>
-        <div class="container-cancel">
-          <div style= "">
-            <%= link_to "", destroy_from_bet_slip_path(id: bet.id), class:"fas fa-times" %>
-          </div>
-        </div>
+
+
+    <!-- ending Div for Bet-Wrapper -->
       </div>
     <% end %>
 
@@ -73,5 +68,4 @@
 
 <!-- ending Div for Parlay-Wrapper -->
 </div>
-
 
