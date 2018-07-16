@@ -35,10 +35,15 @@
     <% end %>
   </div>
 
-    <a href="/sport" >
-   <div class = "betnow">
-      Back to sports page
-    </div>
+</div>
+<div class="white-blur">
+  <%= link_to sport_path do %>
+    <i class="fas fa-chevron-left" id="btn-back" ></i>
+  <% end %>
+  <%= link_to "#" do %>
+    <i class="fas fa-chevron-left" id="btn-up"></i>
+  <% end %>
+
 
 </div>
 <div class="bottom-margin"></div>
