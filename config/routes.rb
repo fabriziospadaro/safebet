@@ -8,8 +8,7 @@ Rails.application.routes.draw do
   get 'current_parlays/show'
 
   resources :bets, only: [:create, :update, :destroy]
-
-  get "edit_bet", to: "bets#update_bet", as: :post_bet # delete later
+  get "destroy_from_betslip", to: "bets#destroy_from_betslip", as: :destroy_from_bet_slip
   get "events", to: "events#index", as: :events
   get "sport", to: "sports#index", as: :sport
   get "slip", to: "current_parlays#show", as: :slip
