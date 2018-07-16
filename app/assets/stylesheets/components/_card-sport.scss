@@ -1,19 +1,16 @@
 .card-sport {
-  height: 175px;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 175px;
-  border-bottom: 2px solid grey;
-  font-size: 20px;
-  font-color: $blue;
 
-}
+ height: 40%;
+ text-align: center;
+ vertical-align: middle;
+ line-height: 175px;
+ border-bottom: 2px solid grey;
+ background-size: cover;
+ color:white;
+ font-size: 30px;
+ width: auto;
 
-.card-sport a:link{
-    color:black;
-}
-
-
-.card-sport a:visited{
-    color:black;
+&:hover {
+   color:white;
+ }
 }

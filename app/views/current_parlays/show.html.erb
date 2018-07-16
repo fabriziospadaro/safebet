@@ -44,7 +44,7 @@
 
         <div class="container-cancel">
           <div style= "">
-            <%= link_to "", post_bet_path(event: bet.event,destroy: true), class:"fas fa-times" %>
+            <%= link_to "", destroy_from_bet_slip_path(id: bet.id), class:"fas fa-times" %>
           </div>
         </div>
       </div>
