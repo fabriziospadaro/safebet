@@ -4,7 +4,12 @@ puts 'Updating or creating sports/leagues...'
 SoccerLeague = [
 "World Cup 2018",
 "UEFA Europa League Qualifying",
-"all",
+"Europe Friendlies",
+"Argentina Cup",
+"Iceland Premier League",
+"Copa do Brasil",
+"Russia Division 1",
+"USA MLS",
 ]
 
 BasketballLeague = [
