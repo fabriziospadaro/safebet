@@ -7,10 +7,22 @@
   font-family: 'Abel', sans-serif;
     h6 {
   margin: 0;
-  padding: 20px;
+  padding-top: 20px;
   text-align: center;
   font-size: 18px;
+  letter-spacing: .5px;
   }
+    p {
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-right: 8px;
+  padding-left: 8px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: .5px;
+  }
+
 }
 
 .parlay-wrapper {
@@ -19,7 +31,7 @@
 }
 
 .summary {
-  background-color: #C4C4C4;
+  background-color: #e3e3e3;
   height: 59px;
   text-align: center;
   margin: 0 auto;
@@ -29,12 +41,12 @@
   align-items: center;
   padding: 25px;
   width: 100%;
-}
-
-.summary p {
-  margin: 0;
-  font-size: 18px !important;
-  color: #061223;
+  font-size: 18px;
+    p {
+      margin: 0;
+      font-size: 18px !important;
+      color: #061223;
+    }
 }
 
 
@@ -55,7 +67,7 @@
 .card {
   color: black;
   background-color: white;
-  margin: 20px 0;
+  margin-bottom: 20px;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -79,26 +91,35 @@
 }
 
 .team-a {
+  margin-top: 6px;
 
 }
 
 .time-score {
   margin-top: 10px;
+  display: flex;
 }
 
 .your-bet p {
   margin: 12px;
-  border: 2px;
+  margin-bottom: 20px;
+  border: 1px;
   border-style: solid;
   border-color: #07DCA6;
-  border-radius: 10%;
-  border-width: 50%;
+  border-radius: 10px;
   padding: 8px 16px;
   color: #07DCA6;
   font-size: 18px;
 }
 
+.red-text {
+  color: red;
+  font-size: large;
+}
 
-
+.black-text {
+  color: black;
+  font-size: large;
+}
 
 
