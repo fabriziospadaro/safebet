@@ -14,7 +14,7 @@ module BetsHelper
   private
 
   def create_link(event, team)
-    link_to team.name.capitalize,
+    link_to team.name.titleize,
               bets_path(
                 event: event,
                 winner: team,
@@ -26,7 +26,7 @@ module BetsHelper
   end
 
   def update_or_destroy_link(event, team, bet, verb)
-    link_to team.name.capitalize,
+    link_to team.name.titleize,
               bet_path(
                 bet,
                 event: event,
