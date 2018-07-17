@@ -1,71 +1,74 @@
+<body style="background-color: #E3E3E3">
+
+
 <div class="parlay-wrapper">
 
-  <% if(@bets&.size == 0)  %>
+ <% if(@bets&.size == 0)  %>
+ <a href="/sport" >
+
+   <div class = "betnow">
+     Start betting!
+   </div>
+
+   <% else %>
+
+
+   <div class="bet-slip-title" >
+     <h6>Your bets have automatically been saved.
+       <br>
+     <p> You can still add bets to your parlay or cancel any events that haven't yet started.</p>
+   </div>
+
+   <div class = "summary">
+     <p> <%=  Date.today.strftime('%d %b %Y') %> </p>
+     <p> <%=  @bets&.size.to_s %> Bet Parlay
+     </p>
+   </div>
+
+
+   <div class="cards-container">
+     <% @bets.each do |bet|  %>
+     <div class="card">
+       <div class="top-column">
+         <div class="time-score">
+           <p><%=  bet.event.starts_at.strftime('%l:%M %p') %> CET  </p>
+             <% formated_score =  bet.event.scraped_score.to_s %>
+             <% if(formated_score != "") %>
+                 <% formated_score = (bet.event.status == "In Progress" ? " - Live score: " : " - Result: ") + bet.event.scraped_score  %>
+             <% end %>
+           <p class = <%= (bet.event.status == "In Progress" ? "red-text" : "black-text") %>>
+             <%= formated_score %> </p>
+         </div>
+           <div class="cancel-bet">
+             <% if (bet.event.status == "Scheduled") %>
+             <%= link_to "", destroy_from_bet_slip_path(id: bet.id), class: "fas fa-times"%>
+             <% end %>
+           </div>
+       </div>
+         <div class="team-a">
+           <p><%= bet.event.team_a.name.titleize %> vs. </p>
+         </div>
+         <div class="team-b">
+           <p><%= bet.event.team_b.name.titleize %></p>
+         </div>
+         <div class="your-bet">
+           <p>Your bet: <%= bet.team.name.titleize %></p>
+         </div>
+     </div>
+     <% end %>
+   </div>
+
+
+
+
+     <!-- ending Div for Bet-Wrapper -->
+
      <a href="/sport" >
+      <div class = "betnow">
+       Back to sports page
+       <% end %>
+     </div>
+     <!-- ending Div for Parlay-Wrapper -->
 
-  <div class = "betnow">
-    Start betting!
-  </div>
-
-  <% else %>
-
-  <div class="bet-slip-title" >
-    <h6> Review or cancel your current bets - Your bets have automatically been saved. You can still add bets, modify results by clicking on a new winner, or cancel any events that haven't yet started. </h6>
-  </div>
-
-  <div class = "summary">
-    <p> <%=  Date.today.strftime('%d %b %Y') %> </p>
-    <p> <%=  @bets&.size.to_s %> - Bet Parlay </p>
-  </div>
-
-
-  <% @bets.each do |bet|  %>
-
-    <div class="bet-wrapper">
-
-      <div class="bet-container">
-
-        <div class="game-info">
-          <p><%=  bet.event.starts_at.strftime('%l:%M %p') %> CET  </p>
-          <p class = <%= (bet.event.status == "In Progress" ? "red-text" : "black-text") %> __
-            <%=  bet.event.scraped_score %> </p>
-        <!-- ending Div for Game-Info -->
-        </div>
-
-        <div class="team-container" style = "box-shadow: none">
-          <p class = <%= (bet.event.team_a == bet.team ? "green-text" : "black-text") %> >
-            <%= bet.event.team_a.name.capitalize %>
-          </p>
-          <p class="divider">|</p>
-          <p class = <%= (bet.event.team_b == bet.team ? "green-text" : "black-text") %> >
-            <%= bet.event.team_b.name.capitalize %>
-          </p>
-          <p class="divider">|</p>
-          <p class = <%= (Team.find_by(name: "TIE") == bet.team ? "green-text" : "black-text") %> >
-            <%= Team.find_by(name: "TIE").name %>
-          </p>
-      <!-- ending Div for Team-Container -->
-        </div>
-
-      <!-- ending Div for Bet-Container -->
-      </div>
-
-          <div class="container-cancel">
-            <% if (bet.event.status == "Scheduled") %>
-              <%= link_to "", destroy_from_bet_slip_path(id: bet.id), class: "fas fa-times cross-icon"%>
-            <% end %>
-          </div>
-
-
-    <!-- ending Div for Bet-Wrapper -->
-      </div>
-    <% end %>
-
-          <a href="/sport" >
-         <div class = "betnow">
-            Back to sports page
-  <% end %>
-
-<!-- ending Div for Parlay-Wrapper -->
-</div>
-
+   </div>
+</body>

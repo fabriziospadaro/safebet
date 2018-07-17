@@ -1,39 +1,32 @@
 
 
-<div class="container">
   <div class="header-bet-history">
-    <div class="col-xs-12">
       <div class="bet-info">
         <p>Total Bets: </p>
         <h3> <%= current_user.bet_users.all.size %></h3>
         <p>Longest Parlay: </p>
         <h3> 6 </h3>
       </div>
-    </div>
-    <div class="col-xs-12">
       <div class="bet-info">
         <p>Total Parlays: </p>
         <h3><%= current_user.parlays.size %></h3>
         <p>Total Wins: </p>
         <h3> <%= @wins.size %> </h3>
       </div>
-    </div>
   </div>
-
-
-  <div class="container parlay-history">
-    <hr>
-    <div class="parlay-info">
+    <div class="summary">
     <% @parlays.each do |parlay| %>
       <%  if (parlay.prize > 0) %>
-        <%= link_to (parlay.date.strftime('%Y-%m-%d') + " - WIN") , parlays_show_path(parlay), class: "win" %>
+        <%= link_to (parlay.date.strftime('%d %b %Y') + " - WIN") , parlays_show_path(parlay), class: "win" %>
+        <p> <%=  @parlay&.bets&.size.to_s %> Bet Parlay </p>
        <% else %>
-        <%= link_to (parlay.date.strftime('%Y-%m-%d') + " - LOSS") , parlays_show_path(parlay), class: "loss" %>
+        <%= link_to (parlay.date.strftime('%d %b %Y') + " - LOSS") , parlays_show_path(parlay), class: "loss" %>
+        <p> <%=  @parlay&.bets&.size.to_s %> Bet Parlay </p>
        <% end %>
     <% end %>
-    <hr>
     </div>
-</div>
+<hr>
+
 
   <a href="/sport" >
    <div class = "betnow">
