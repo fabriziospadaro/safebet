@@ -2,6 +2,10 @@
   margin-bottom: 40px;
 }
 
+.league-container h5{
+  color: white;
+  margin-left: 4px;
+}
 
 .teams-button-container {
   padding: 5px;
@@ -10,6 +14,7 @@
 .event-card-white {
   background-color: white;
   padding: 20px;
+  padding-top: 5px;
   color: $blue;
   font-size: 20px;
   h5 {
@@ -18,9 +23,11 @@
 }
 
 .event-card-grey {
-  background-color: #C4C4C4;
+  margin-bottom: 1px;
+  border-radius: 2px;
+  background-color: #061223e3;
   padding: 20px;
-  box-shadow: 0px 0px 5px rgba(0,0,0, 0.3);
+  padding-top: 5px;
   color: $blue;
   font-size: 20px;
   h5 {
@@ -39,9 +46,10 @@
 
 .date-time{
   margin-top: 5px;
-  font-size: 18px;
+  margin-left: 4px;
+  font-size: 15px;
   font-style: italic;
-
+  color: white;
 }
 
 .league-container{
