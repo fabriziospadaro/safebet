@@ -1,71 +1,74 @@
-<div class = "container-fluid" style = "background-color: #061223; height: 100vh">
+<body style="background-color: #061223">
 
- <div class="row flexbox" style = "border-bottom: 2px solid #07DCA6; height:250px">
+  <div class = "container-fluid profile" style = "background-color: #061223; height: 100vh">
 
-   <div class="col-xs-6 flexbox " >
-     <img src='http://d23jjfgld6ecyg.cloudfront.net/poli_thumbnails/1212/260x280.jpg
-http://d23jjfgld6ecyg.cloudfront.net/poli_thumbnails/1212/260x280.jpg
-' class="avatar"/>
-   </div>
+   <div class="row flexbox" style = "border-bottom: 2px solid #07DCA6; height:250px">
 
-   <div class = "col-xs-6 ">
-
-     <div class = "col-xs-6 title" >
-       <p>  WINS  </p>
-       <h3> <%= @wins.size %> </h3>
+     <div class="col-xs-6 flexbox " >
+       <img src='http://d23jjfgld6ecyg.cloudfront.net/poli_thumbnails/1212/260x280.jpg
+  http://d23jjfgld6ecyg.cloudfront.net/poli_thumbnails/1212/260x280.jpg
+  ' class="avatar"/>
      </div>
 
-     <div class = "col-xs-6 title">
-       <p>  RANKING <p>
-       <h3> 100 </h3>
+     <div class = "col-xs-6 ">
+
+       <div class = "col-xs-6 title" >
+         <p>  WINS  </p>
+         <h3> <%= @wins.size %> </h3>
+       </div>
+
+       <div class = "col-xs-6 title">
+         <p>  RANKING <p>
+         <h3> 100 </h3>
+       </div>
+
+       <div class = "col-xs-6 title">
+         <p>  TOTAL WINNINGS </p>
+         <h3> $242.12 </h3>
+       </div>
+
      </div>
 
-     <div class = "col-xs-6 title">
-       <p>  TOTAL WINNINGS </p>
-       <h3> $242.12 </h3>
+   </div>
+
+   <div class="row" >
+
+     <div class= "col-xs-6 infostyle">
+       <i class="fas fa-info-circle iconsize" style = "color: #07DCA6"></i>
+
+         <p>Account info </p>
+
+     </div >
+
+     <div class="col-xs-6 infostyle">
+       <%= link_to parlays_index_path do %>
+       <i class="fas fa-history iconsize" style = "color: #07DCA6"></i>
+       <p> Bet History</p>
+       <% end %>
+     </div>
+
+     <div class="col-xs-6 infostyle">
+       <i class="fas fa-trophy iconsize" style = "color: #07DCA6"></i>
+       <p> Leaderboard</p>
+     </div>
+
+
+     <div class="col-xs-6 infostyle">
+       <%= link_to destroy_user_session_path,method: :delete do %>
+       <i class="fas fa-sign-out-alt iconsize" style = "color: #07DCA6"></i>
+       <p>Log out</p>
+       <% end %>
+
      </div>
 
    </div>
 
- </div>
-
- <div class="row" >
-
-   <div class= "col-xs-6 infostyle">
-     <i class="fas fa-info-circle iconsize" style = "color: #07DCA6"></i>
-
-       <p>Account info </p>
-
-   </div >
-
-   <div class="col-xs-6 infostyle">
-     <%= link_to parlays_index_path do %>
-     <i class="fas fa-history iconsize" style = "color: #07DCA6"></i>
-     <p> Bet History</p>
-     <% end %>
+   <div class="col-xs-12" style ="height: 100px">
+     <a href="/sport" >
+       <div class = "betnow" style="margin-top:80px">
+         KEEP BETTING!
+       </div>
+     </a>
    </div>
-
-   <div class="col-xs-6 infostyle">
-     <i class="fas fa-trophy iconsize" style = "color: #07DCA6"></i>
-     <p> Leaderboard</p>
-   </div>
-
-
-   <div class="col-xs-6 infostyle">
-     <%= link_to destroy_user_session_path,method: :delete do %>
-     <i class="fas fa-sign-out-alt iconsize" style = "color: #07DCA6"></i>
-     <p>Log out</p>
-     <% end %>
-
-   </div>
-
- </div>
-
- <div class="col-xs-12" style ="height: 100px">
-   <a href="/sport" >
-     <div class = "betnow" style="margin-top:80px">
-       KEEP BETTING!
-     </div>
-   </a>
- </div>
-</div>
+  </div>
+</body>
