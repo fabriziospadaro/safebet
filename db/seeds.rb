@@ -2,15 +2,16 @@
 #deleting A SPORT WILL REMOVE ALL THE EVENTS ASSOCIATED WITH HIM VERY DANGEROUS
 puts 'Updating or creating sports/leagues...'
 SoccerLeague = [
-"World Cup 2018",
-"UEFA Europa League Qualifying",
-"Europe Friendlies",
-"Argentina Cup",
-"Iceland Premier League",
-"Copa do Brasil",
-"Russia Division 1",
-"USA MLS",
-"all",
+  "World Cup 2018",
+  "UEFA Europa League Qualifying",
+  "Europe Friendlies",
+  "Argentina Cup",
+  "Iceland Premier League",
+  "Copa do Brasil",
+  "Russia Division 1",
+  "USA MLS",
+  "Caf Champions League",
+  "China Super League",
 ]
 
 BasketballLeague = [

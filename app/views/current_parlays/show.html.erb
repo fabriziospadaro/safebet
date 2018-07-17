@@ -3,72 +3,72 @@
 
 <div class="parlay-wrapper">
 
-  <% if(@parlay.bets&.size == 0)  %>
-  <a href="/sport" >
+ <% if(@bets&.size == 0)  %>
+ <a href="/sport" >
 
-    <div class = "betnow">
-      Start betting!
-    </div>
+   <div class = "betnow">
+     Start betting!
+   </div>
 
-    <% else %>
-
-
-    <div class="bet-slip-title" >
-      <h6>Your bets have automatically been saved.
-        <br>
-      <p> You can still add bets to your parlay or cancel any events that haven't yet started.</p>
-    </div>
-
-    <div class = "summary">
-      <p> <%=  Date.today.strftime('%d %b %Y') %> </p>
-      <p> <%=  @parlay&.bets&.size.to_s %> Bet Parlay
-      </p>
-    </div>
+   <% else %>
 
 
-    <div class="cards-container">
-      <% @parlay.bets.each do |bet|  %>
-      <div class="card">
-        <div class="top-column">
-          <div class="time-score">
-            <p><%=  bet.event.starts_at.strftime('%l:%M %p') %> CET  </p>
-              <% formated_score =  bet.event.scraped_score.to_s %>
-              <% if(formated_score != "") %>
-                  <% formated_score = (bet.event.status == "In Progress" ? " - Live score: " : " - Result: ") + bet.event.scraped_score  %>
-              <% end %>
-            <p class = <%= (bet.event.status == "In Progress" ? "red-text" : "black-text") %>>
-              <%= formated_score %> </p>
-          </div>
-            <div class="cancel-bet">
-              <% if (bet.event.status == "Scheduled") %>
-              <%= link_to "", destroy_from_bet_slip_path(id: bet.id), class: "fas fa-times"%>
-              <% end %>
-            </div>
-        </div>
-          <div class="team-a">
-            <p><%= bet.event.team_a.name.titleize %> vs. </p>
-          </div>
-          <div class="team-b">
-            <p><%= bet.event.team_b.name.titleize %></p>
-          </div>
-          <div class="your-bet">
-            <p>Your bet: <%= bet.team.name.titleize %></p>
-          </div>
-      </div>
-      <% end %>
-    </div>
+   <div class="bet-slip-title" >
+     <h6>Your bets have automatically been saved.
+       <br>
+     <p> You can still add bets to your parlay or cancel any events that haven't yet started.</p>
+   </div>
+
+   <div class = "summary">
+     <p> <%=  Date.today.strftime('%d %b %Y') %> </p>
+     <p> <%=  @bets&.size.to_s %> Bet Parlay
+     </p>
+   </div>
+
+
+   <div class="cards-container">
+     <% @bets.each do |bet|  %>
+     <div class="card">
+       <div class="top-column">
+         <div class="time-score">
+           <p><%=  bet.event.starts_at.strftime('%l:%M %p') %> CET  </p>
+             <% formated_score =  bet.event.scraped_score.to_s %>
+             <% if(formated_score != "") %>
+                 <% formated_score = (bet.event.status == "In Progress" ? " - Live score: " : " - Result: ") + bet.event.scraped_score  %>
+             <% end %>
+           <p class = <%= (bet.event.status == "In Progress" ? "red-text" : "black-text") %>>
+             <%= formated_score %> </p>
+         </div>
+           <div class="cancel-bet">
+             <% if (bet.event.status == "Scheduled") %>
+             <%= link_to "", destroy_from_bet_slip_path(id: bet.id), class: "fas fa-times"%>
+             <% end %>
+           </div>
+       </div>
+         <div class="team-a">
+           <p><%= bet.event.team_a.name.titleize %> vs. </p>
+         </div>
+         <div class="team-b">
+           <p><%= bet.event.team_b.name.titleize %></p>
+         </div>
+         <div class="your-bet">
+           <p>Your bet: <%= bet.team.name.titleize %></p>
+         </div>
+     </div>
+     <% end %>
+   </div>
 
 
 
 
-      <!-- ending Div for Bet-Wrapper -->
+     <!-- ending Div for Bet-Wrapper -->
 
-      <a href="/sport" >
-       <div class = "betnow">
-        Back to sports page
-        <% end %>
-      </div>
-      <!-- ending Div for Parlay-Wrapper -->
+     <a href="/sport" >
+      <div class = "betnow">
+       Back to sports page
+       <% end %>
+     </div>
+     <!-- ending Div for Parlay-Wrapper -->
 
-    </div>
+   </div>
 </body>
