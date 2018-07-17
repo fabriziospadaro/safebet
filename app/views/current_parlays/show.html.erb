@@ -1,6 +1,6 @@
 <div class="parlay-wrapper">
 
-  <% if(@parlay.bets&.size == 0)  %>
+  <% if(@bets&.size == 0)  %>
      <a href="/sport" >
 
   <div class = "betnow">
@@ -15,11 +15,11 @@
 
   <div class = "summary">
     <p> <%=  Date.today.strftime('%d %b %Y') %> </p>
-    <p> <%=  @parlay&.bets&.size.to_s %> - Bet Parlay </p>
+    <p> <%=  @bets&.size.to_s %> - Bet Parlay </p>
   </div>
 
 
-  <% @parlay.bets.each do |bet|  %>
+  <% @bets.each do |bet|  %>
 
     <div class="bet-wrapper">
 

@@ -22,6 +22,7 @@ module BetsHelper
               ),
               method: :post,
               remote: true,
+              data: { disable_with: "Creating bet..." },
               class: ("bet-default")
   end
 
@@ -35,6 +36,7 @@ module BetsHelper
               ),
               method: verb,
               remote: true,
+              data: { disable_with: "Updating bet..." },
               class: (
                 !bet.nil? && !bet.team.nil? && bet.team == team ? "bet-active" : "bet-default"
               )

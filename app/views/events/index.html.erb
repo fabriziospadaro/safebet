@@ -5,6 +5,14 @@
     <h4>Select teams to build your parlay</h4>
   </div>
  </div>
+ <div class="league-filter">
+  <%= form_tag(events_path(sport: @sport.name), method: "get") do %>
+    <%= label_tag("Search by league:") %>
+    <%= hidden_field_tag :sport , @sport.name %>
+    <%= select_tag 'league', options_for_select(@leagues_playing.collect{ |u| [u.titleize, u] },@leagues_playing.first.titleize ), :onchange => "this.form.submit();" %>
+  <% end %>
+
+</div>
 <div class="container-events">
     <% last_league = " " %>
 
@@ -14,7 +22,7 @@
           </div>
         <% end %>
         <% counter = 1  %>
-        <div class = "league-container" >
+        <div class = "league-container" id = "<%= event.league %>" >
           <p class = "league-name"> <%= event.league.titleize %> </p>
           <hr>
         <% last_league = event.league %>
@@ -45,7 +53,7 @@
 </div>
 <div class="bottom-margin"></div>
 <div class="green-tab"></div>
-<%= link_to "Bet Slip: " + @parlay&.bets&.size.to_s, slip_path,class: "bfixed bet-slip" %>
+<%= link_to "Bet Slip: " + @parlay&.bets&.size.to_s, slip_path,class: "bfixed bet-slip",id: "betslip" %>
 
 </body>
 
