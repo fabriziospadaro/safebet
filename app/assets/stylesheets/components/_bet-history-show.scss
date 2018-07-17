@@ -1,0 +1,23 @@
+.parlay-info {
+  background-color: #e3e3e3;
+  height: 59px;
+  text-align: center;
+  margin: 0 auto;
+  width: 90vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px;
+  width: 100%;
+  font-size: 18px;
+    p {
+      margin: 0;
+      font-size: 18px !important;
+      color: #061223;
+    }
+}
+
+.bet-outcome {
+    margin-top: 10px;
+    display: flex;
+}
