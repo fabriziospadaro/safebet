@@ -1,4 +1,7 @@
-<div class="container">
+<body style="background-color: #E3E3E3">
+
+
+<div class="parlay-wrapper">
   <div class="header-bet-history">
     <div class="col-xs-12">
       <div class="bet-info">
@@ -18,55 +21,46 @@
     </div>
   </div>
 
-<div class="container parlay-history">
-    <hr>
     <div class="parlay-info">
       <%  if (@parlay.prize > 0) %>
-    <%= @parlay.date.strftime('%Y-%m-%d') + " - WIN" %>
-      <% else %>
-    <%= @parlay.date.strftime('%Y-%m-%d') + " - LOSS" %>
-    <% end %>
-    <hr>
+        <%= link_to (parlay.date.strftime('%d %b %Y') + " - WIN") , parlays_index_path, class: "win" %>
+        <p> <%=  @parlay&.bets&.size.to_s %> Bet Parlay </p>
+       <% else %>
+        <%= link_to (@parlay.date.strftime('%d %b %Y') + " - LOSS") , parlays_index_path, class: "loss" %>
+        <p> <%=  @parlay&.bets&.size.to_s %> Bet Parlay </p>
+      <% end %>
     </div>
-</div>
 
 
+    <div class="cards-container">
       <% @parlay.bets.each do |bet|  %>
-      <div class="bet-wrapper">
-        <div class="bet-container-history">
-          <div class="game-info">
-
-            <p><%=  bet.event.starts_at.strftime('%l:%M %p') %></p>
-
-            <p class = <%= (bet.event.status == "In Progress" ? "red-text" : "black-text") %>
-              ></p>
-
-              <div class="score">
-                <p>Final Score: <%= bet.event.scraped_score %></p>
-              </div>
-
-          </div>
-          <div class="team-container">
-            <p class = <%= (bet.event.team_a == bet.team ? "green-text" : "black-text") %> >
-              <%= bet.event.team_a.name.capitalize %>
-            </p>
-            <p class="divider">|</p>
-            <p class = <%= (bet.event.team_b == bet.team ? "green-text" : "black-text") %> >
-              <%= bet.event.team_b.name.capitalize %>
-            </p>
-            <p class="divider">|</p>
-            <p class = <%= (Team.find_by(name: "TIE") == bet.team ? "green-text" : "black-text") %> >
-              <%= Team.find_by(name: "TIE").name %>
-            </p>
+      <div class="card">
+        <div class="top-column">
+        <div class="time-score">
+          <p> <%= bet.event.starts_at.strftime('%k:%M') + " " + "CET" + " - " + "Result: "  + bet.event.scraped_score.to_s %> </p>
+          <p class = <%= (bet.event.status == "In Progress" ? "red-text" : "black-text") %> -
+            <%=  bet.event.scraped_score %>> </p>
+        </div>
+          <div class="bet-outcome">
+            <p> <%= (bet.correct?) ? "Outcome: Win" : "Outcome: Loss" %> </p>
           </div>
         </div>
+          <div class="team-a">
+            <p><%= bet.event.team_a.name.titleize %> vs. </p>
+          </div>
+          <div class="team-b">
+            <p><%= bet.event.team_b.name.titleize %></p>
+          </div>
+          <div class="your-bet">
+            <p>Your bet: <%= bet.team.name.titleize %></p>
+          </div>
       </div>
-     <% end %>
-
-<hr>
+      <% end %>
+    </div>
 
   <a href="/parlays/index" >
     <div class = "betnow">
       Back
     </div>
-
+</div>
+</body>
