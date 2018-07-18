@@ -16,7 +16,12 @@
     <h1>Daily Pot: $1,000</h1>
     <h4>Select a sport to start betting</h4>
   </div>
-
+  <% if !@error.nil? %>
+    <div class="alert alert-warning alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <%= @error %>
+  </div>
+  <% end %>
 
   <div class = "row">
     <% @sports.each_with_index do |sport, index| %>
@@ -33,14 +38,13 @@
 
 
 <div class="spacer">
-
 </div>
-
-<div class="green-tab"></div>
-<%= link_to "Bet Slip: " + @parlays&.bets&.size.to_s, slip_path,class: "bfixed bet-slip" %>
+<div class="white-blur"></div>
+<% if (@parlays&.bets&.size > 0) %>
+    <%= link_to "Bet Slip: " + @parlays&.bets&.size.to_s, slip_path,class: "bfixed bet-slip" %>
+<% end %>
 
 <%# final end%>
 
-</div>
 
 

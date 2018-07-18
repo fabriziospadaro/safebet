@@ -6,4 +6,7 @@ class Parlay < ApplicationRecord
   def correct?
     bets.all? { |bet| bet.correct? } && (DateTime.now.strftime('%Y-%m-%d') == date.strftime('%Y-%m-%d'))
   end
+  def today?
+    date == Date.today
+  end
 end
