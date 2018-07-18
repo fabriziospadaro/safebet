@@ -10,4 +10,8 @@ class Parlay < ApplicationRecord
   def today?
     date == Date.today
   end
+
+  def self.current(new_user)
+    new_user.parlays.find_by(date: Date.today)
+  end
 end

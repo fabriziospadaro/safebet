@@ -21,9 +21,6 @@
     <% last_league = " " %>
 
     <% @events.each do |event| %>
-      <% if event.started? %>
-        <% next %>
-      <% end %>
       <% if(last_league != event.league) %>
         <% if(last_league != " ") %>
           </div>
