@@ -14,15 +14,15 @@ class Sport < ApplicationRecord
     return leagues_paying
   end
   def today_events
-    events = event_dates.find_by(date: DateTime.now.strftime("%Y-%m-%e")).events.where(status: "Scheduled")
+    events = event_dates.find_by(date: DateTime.now.strftime("%Y-%m-%e"))&.events&.where(status: "Scheduled")
 
     # filter_events = events.select do |e|
     #   (leagues.include?(e.league.downcase) || leagues.include?("all"))
     # end
 
-    filter_events = events.where(league: leagues)
+    filter_events = events&.where(league: leagues)
 
-    return filter_events.order(:league)
+    return filter_events&.order(:league)
     #sort_by {|obj| obj.league}
 
   end
