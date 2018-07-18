@@ -19,6 +19,8 @@
 <h2>  <%= "User Profile" %> </h2>
 <% elsif current_page?("/parlays/index") || current_page?("/parlays/show/" + "#{params[:id]}") %>
 <h2>  <%= "Bet History" %> </h2>
+<% elsif current_page?("/sport") %>
+<h2>  <%= "Sports" %> </h2>
 
 <% end %>
 <% end %>
