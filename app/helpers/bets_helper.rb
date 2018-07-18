@@ -22,7 +22,7 @@ module BetsHelper
               ),
               method: :post,
               remote: true,
-              data: { disable_with: "Creating bet..." },
+              data: { disable_with: "Saving bet..." },
               class: ("bet-default")
   end
 

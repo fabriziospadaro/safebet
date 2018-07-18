@@ -63,9 +63,8 @@
   flex-direction: column;
 }
 
-.cancel-bet a {
-  display: flex;
-  align-items: center;
+.cancel-bet {
+  a {
   color: #061223;
   font-size: 29px;
   margin: 7px;
