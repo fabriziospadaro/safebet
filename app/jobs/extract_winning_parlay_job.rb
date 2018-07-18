@@ -18,7 +18,7 @@ class ExtractWinningParlayJob < ApplicationJob
     winning_parlays = winning_parlays.select { |parlay| parlays.bets.size == longest}
 
     winning_parlays.each do |parlay|
-      parlay.prize = win_pot / winners.size
+      Parlay.find(parlay.id).update(prize: (win_pot / winners.size))
     end
   end
 end
