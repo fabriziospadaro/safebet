@@ -68,7 +68,8 @@
   color: #061223;
   font-size: 29px;
   margin: 7px;
-  padding-top: 5px;
+  padding: 5px;
+  padding-left: 10px;
   background-color: #E3E3E3;
   border-radius: 15%;
   height: 38px;
@@ -134,7 +135,11 @@
   font-weight: bold;
 }
 
-.your-bet p {
+.your-bet {
+  a {
+    color: #07DCA6
+  }
+  p {
   margin: 12px;
   margin-bottom: 20px;
   border: 1px;
@@ -142,9 +147,10 @@
   border-color: #07DCA6;
   border-radius: 10px;
   padding: 8px 16px;
-  color: #07DCA6;
+  color: #07DCA6  !important;
   font-size: 18px;
   font-weight: bolder;
+  }
 }
 
 .red-text {
