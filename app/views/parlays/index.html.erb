@@ -1,37 +1,48 @@
 
 
-  <div class="header-bet-history">
-      <div class="bet-info">
-        <p>Total Bets: </p>
-        <h3> <%= current_user.bet_users.all.size %></h3>
-        <p>Longest Parlay: </p>
-        <h3> 6 </h3>
-      </div>
-      <div class="bet-info">
-        <p>Total Parlays: </p>
-        <h3><%= current_user.parlays.size %></h3>
-        <p>Total Wins: </p>
-        <h3> <%= @wins.size %> </h3>
-      </div>
+<div class="header-bet-history">
+  <div class="bet-info">
+    <p>Total Bets: </p>
+    <h3> <%= current_user.bet_users.all.size %></h3>
+    <p>Longest Parlay: </p>
+    <h3> 6 </h3>
   </div>
-    <div class="summary">
-    <% @parlays.each do |parlay| %>
-      <%  if (parlay.prize > 0) %>
-        <%= link_to (parlay.date.strftime('%d %b %Y') + " - WIN") , parlays_show_path(parlay), class: "win" %>
-        <p> <%=  @parlay&.bets&.size.to_s %> Bet Parlay </p>
-       <% else %>
-        <%= link_to (parlay.date.strftime('%d %b %Y') + " - LOSS") , parlays_show_path(parlay), class: "loss" %>
-        <p> <%=  @parlay&.bets&.size.to_s %> Bet Parlay </p>
-       <% end %>
+  <div class="bet-info">
+    <p>Total Parlays: </p>
+    <h3><%= current_user.parlays.size %></h3>
+    <p>Total Wins: </p>
+    <h3> <%= @wins.size %> </h3>
+  </div>
+</div>
+<% @parlays.each do |parlay| %>
+  <% if( !parlay.today?) %>
+    <%= link_to parlays_show_path(parlay) do %>
+      <div class="summary">
+        <%  if (parlay.prize > 0) %>
+          <p class ="win"> <%= (parlay.date.strftime('%d %b %Y') + " - WIN") %> </p>
+          <p> <%=  parlay&.bets&.size.to_s %> Bet Parlay </p>
+        <% else %>
+          <p class ="loss"> <%= (parlay.date.strftime('%d %b %Y') + " - LOSS") %> </p>
+          <p> <%= parlay&.bets&.size.to_s %> Bets </p>
+        <% end %>
+      </div>
     <% end %>
-    </div>
+  <% elsif(parlay.bets&.size > 0) %>
+    <%= link_to slip_path do %>
+      <div class="summary">
+          <p class ="loss"> <%= (parlay.date.strftime('%d %b %Y') + " - IN PROGRESS") %> </p>
+          <p> <%=  parlay&.bets&.size.to_s %> Bets </p>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
 
 
 
-  <a href="/sport" >
-   <div class = "betnow">
-      Back to sports page
-    </div>
+<a href="/sport" >
+ <div class = "betnow">
+  Back to sports page
+</div>
 
 
 

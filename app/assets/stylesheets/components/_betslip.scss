@@ -4,7 +4,6 @@
   background-color: #07DCA6;
   color: #061223;
   margin: 0;
-  font-family: 'Abel', sans-serif;
     h6 {
   margin: 0;
   padding-top: 20px;
@@ -35,6 +34,7 @@
   height: 59px;
   text-align: center;
   margin: 0 auto;
+  margin-bottom: 6px;
   width: 90vw;
   display: flex;
   justify-content: space-between;
@@ -50,28 +50,53 @@
     }
 }
 
+.info-container{
+  margin-top: -42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.control-container{
+  display: flex;
+  flex-direction: column;
+}
 
 .cancel-bet a {
   display: flex;
   align-items: center;
   color: #061223;
   font-size: 29px;
-  margin: none;
-  padding: none;
+  margin: 7px;
+  padding: auto;
   background-color: #E3E3E3;
-  border-radius: 75%;
+  border-radius: 15%;
   height: 38px;
   width: 38px;
-  text-align: center;
+}
+
+.edit-bet a {
+  display: flex;
+  align-items: center;
+  color: #061223;
+  font-size: 25px;
+  margin: 7px;
+  padding: 7px;
+  background-color: #E3E3E3;
+  border-radius: 15%;
+  height: 38px;
+  width: 38px;
 }
 
 .card {
   color: black;
   background-color: white;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   display: flex;
   flex-flow: column;
   align-items: center;
+  box-shadow: 3px 2px 8px #acacac;
     p {
       margin: 1px;
       font-size: 18px;
@@ -80,11 +105,15 @@
 
 }
 
+#date-margin {
+  margin-left: 19px;
+}
+
 
 .top-column {
   display: flex;
   justify-content: space-between;
-  width: 88%;
+  width: 96%;
   margin-top: 6px;
     p {
       color: grey;
