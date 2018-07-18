@@ -24,7 +24,7 @@
    </div>
 
    <div class = "summary">
-     <p> <%=  Date.today.strftime('%d %b %Y') %> </p>
+     <p> <%=  DateTime.now.strftime('%d %b %Y') %> </p>
      <p> <%=  @bets&.size.to_s %> Bet Parlay
      </p>
    </div>
@@ -35,7 +35,7 @@
      <div class="card">
        <div class="top-column">
          <div class="time-score">
-           <p><%=  bet.event.starts_at.strftime('%l:%M %p') %> CET  </p>
+           <p id= "date-margin"><%=  bet.event.starts_at.strftime('%l:%M %p') %> CET  </p>
              <% formated_score =  bet.event.scraped_score.to_s %>
              <% if(formated_score != "") %>
                  <% formated_score = (bet.event.status == "In Progress" ? " - Live score: " : " - Result: ") + bet.event.scraped_score  %>
@@ -43,20 +43,29 @@
            <p class = <%= (bet.event.status == "In Progress" ? "red-text" : "black-text") %>>
              <%= formated_score %> </p>
          </div>
-           <div class="cancel-bet">
-             <% if (bet.event.status == "Scheduled") %>
-             <%= link_to "", destroy_from_bet_slip_path(id: bet.id), class: "fas fa-times"%>
-             <% end %>
-           </div>
+          <div class="control-container">
+            <div class="cancel-bet">
+              <% if (bet.event.status == "Scheduled") %>
+                <%= link_to "", destroy_from_bet_slip_path(id: bet.id), class: "fas fa-times"%>
+              <% end %>
+            </div>
+            <div class="edit-bet">
+              <% if (bet.event.status == "Scheduled") %>
+                <%= link_to "", events_path(sport: bet.event.event_date.sport.name, anchor: "bet_" +bet.event.id.to_s ), class: "fas fa-pencil-alt"%>
+              <% end %>
+            </div>
+          </div>
        </div>
-         <div class="team-a">
-           <p><%= bet.event.team_a.name.titleize %> vs. </p>
-         </div>
-         <div class="team-b">
-           <p><%= bet.event.team_b.name.titleize %></p>
-         </div>
-         <div class="your-bet">
-           <p>Your bet: <%= bet.team.name.titleize %></p>
+         <div class="info-container">
+           <div class="team-a">
+             <p><%= bet.event.team_a.name.titleize %> vs. </p>
+           </div>
+           <div class="team-b">
+             <p><%= bet.event.team_b.name.titleize %></p>
+           </div>
+           <div class="your-bet">
+              <p><%= link_to "Your bet: " + bet.team.name.titleize ,events_path(sport: bet.event.event_date.sport.name, anchor: "bet_" +bet.event.id.to_s )%></p>
+           </div>
          </div>
      </div>
      <% end %>
