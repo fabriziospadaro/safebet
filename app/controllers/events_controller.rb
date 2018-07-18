@@ -7,7 +7,7 @@ class EventsController < ApplicationController
 
     @sport = Sport.find_by(name: params[:sport].capitalize)
 
-    @events = @sport.today_events&.includes(:team_a, :team_b).reverse
+    @events = @sport.today_events&.includes(:team_a, :team_b)&.reverse
 
     if(@events&.size.to_i == 0)
       redirect_to sport_path(error: "There are no #{@sport.name} events scheduled for today")

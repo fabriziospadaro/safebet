@@ -3,7 +3,7 @@ function updateBetButtons(html) {
 
   var betslipButton = document.getElementById('<%= "betslip" %>');
   betslipButton.innerHTML = "Bet Slip: <%= current_user.parlays.last.bets.size %> "
-
+  //check if event.started? se true remove the card by event_id
   if (betButtons) betButtons.innerHTML = html;
 }
 
