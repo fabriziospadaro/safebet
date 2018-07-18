@@ -51,7 +51,7 @@
 }
 
 .info-container{
-  margin-top: -42px;
+  margin-top: -68px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -108,6 +108,7 @@
 
 #date-margin {
   margin-left: 19px;
+  color: $blue;
 }
 
 
@@ -115,6 +116,7 @@
   display: flex;
   justify-content: space-between;
   width: 96%;
+  height: 104px;
   margin-top: 6px;
     p {
       color: grey;
@@ -154,7 +156,7 @@
 }
 
 .red-text {
-  color: red;
+  color: red !important;
   font-size: large;
   font-weight: bold;
 }

@@ -20,7 +20,7 @@
    <div class="bet-slip-title" >
      <h6>Your bets have automatically been saved.
        <br>
-     <p> You can still add bets to your parlay or cancel any events that haven't yet started.</p>
+     <p> You can still add, edit, or cancel any bets in your parlay that haven't yet started.</p>
    </div>
 
    <div class = "summary">
@@ -35,7 +35,7 @@
      <div class="card">
        <div class="top-column">
          <div class="time-score">
-           <p id= "date-margin"><%=  bet.event.starts_at.strftime('%l:%M %p') %> CET  </p>
+           <p id= "date-margin"><%=  bet.event.cet_date.strftime('%l:%M %p') %> CET  </p>
              <% formated_score =  bet.event.scraped_score.to_s %>
              <% if(formated_score != "") %>
                  <% formated_score = (bet.event.status == "In Progress" ? " - Live score: " : " - Result: ") + bet.event.scraped_score  %>
@@ -43,18 +43,16 @@
            <p class = <%= (bet.event.status == "In Progress" ? "red-text" : "black-text") %>>
              <%= formated_score %> </p>
          </div>
-          <div class="control-container">
-            <div class="cancel-bet">
-              <% if (bet.event.status == "Scheduled") %>
-                <%= link_to "", destroy_from_bet_slip_path(id: bet.id), class: "fas fa-times"%>
-              <% end %>
+          <% if (bet.event.status == "Scheduled" && !bet.event.started?) %>
+            <div class="control-container">
+              <div class="cancel-bet">
+                  <%= link_to "", destroy_from_bet_slip_path(id: bet.id), class: "fas fa-times"%>
+              </div>
+              <div class="edit-bet">
+                  <%= link_to "", events_path(sport: bet.event.event_date.sport.name, anchor: "bet_" +bet.event.id.to_s ), class: "fas fa-pencil-alt"%>
+              </div>
             </div>
-            <div class="edit-bet">
-              <% if (bet.event.status == "Scheduled") %>
-                <%= link_to "", events_path(sport: bet.event.event_date.sport.name, anchor: "bet_" +bet.event.id.to_s ), class: "fas fa-pencil-alt"%>
-              <% end %>
-            </div>
-          </div>
+          <% end %>
        </div>
          <div class="info-container">
            <div class="team-a">
