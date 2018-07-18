@@ -44,7 +44,7 @@
 <div class="spacer">
 </div>
 <div class="white-blur"></div>
-<% if (@parlays&.bets&.size > 0) %>
+<% if (@parlays&.bets&.size.to_i > 0) %>
     <%= link_to "Bet Slip: " + @parlays&.bets&.size.to_s, slip_path,class: "bfixed bet-slip" %>
 <% end %>
 

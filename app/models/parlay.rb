@@ -4,8 +4,9 @@ class Parlay < ApplicationRecord
   has_many :bets, through: :bet_users, dependent: :destroy
 
   def correct?
-    bets.all? { |bet| bet.correct? } && (DateTime.now.strftime('%Y-%m-%d') == date.strftime('%Y-%m-%d'))
+    (bets.all? { |bet| bet.correct? } && today)
   end
+
   def today?
     date == Date.today
   end
