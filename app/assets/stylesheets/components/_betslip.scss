@@ -51,18 +51,19 @@
 }
 
 
-.cancel-bet a {
-  display: flex;
-  align-items: center;
+.cancel-bet {
+  a {
   color: #061223;
-  font-size: 29px;
+  font-size: 26px;
   margin: none;
   padding: none;
   background-color: #E3E3E3;
   border-radius: 75%;
   height: 38px;
   width: 38px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  }
 }
 
 .card {
