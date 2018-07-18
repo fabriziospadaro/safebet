@@ -21,6 +21,9 @@
     <% last_league = " " %>
 
     <% @events.each do |event| %>
+      <% if event.started? %>
+        <% next %>
+      <% end %>
       <% if(last_league != event.league) %>
         <% if(last_league != " ") %>
           </div>
@@ -33,7 +36,7 @@
       <% end %>
         <div class= "event-card-grey">
           <h5 id= <%="bet_"+event.id.to_s %> > <%= event.team_a.name.titleize %> vs <%= event.team_b.name.titleize %> </h5>
-          <p class="date-time"> <%= event.starts_at.strftime('%l:%M %p - %m/%e/%y') %> </b>
+          <p class="date-time"> <%= event.cet_date.strftime('%l:%M %p - %m/%e/%y') %> </b>
           <% bet = @bets.find_by(event: event) %>
           <div class="bet-button-wrapper"
                id='<%= "event_#{event.id}" %>'

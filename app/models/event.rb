@@ -4,4 +4,13 @@ class Event < ApplicationRecord
   belongs_to :winner, class_name: 'Team', foreign_key: 'winner_id', optional: true
   belongs_to :event_date
 
+  def cet_date
+    starts_at.in_time_zone("CET")
+  end
+
+  def started?
+    now = DateTime.now.in_time_zone("CET")
+    return cet_date < now
+  end
+
 end

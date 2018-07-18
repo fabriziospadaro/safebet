@@ -20,7 +20,7 @@ class Sport < ApplicationRecord
     #   (leagues.include?(e.league.downcase) || leagues.include?("all"))
     # end
 
-    filter_events = events&.where(league: leagues)
+    filter_events = leagues.include?("all") ? events : events&.where(league: leagues)
 
     return filter_events&.order(:league)
     #sort_by {|obj| obj.league}
