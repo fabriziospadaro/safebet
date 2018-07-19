@@ -55,6 +55,23 @@
   }
 }
 
+.summary2 {
+  background-color: #e3e3e3;
+  height: 90px;
+  margin-bottom: 6px;
+  display: flex;
+  font-size: 14px;
+  justify-content: space-between;
+  padding: 20px 40px 20px 40px;
+    p {
+      margin: 0;
+      font-size: 18px !important;
+      color: #061223;
+      font-weight: bold;
+  }
+}
+
+
 .info-container{
   margin-top: -68px;
   display: flex;

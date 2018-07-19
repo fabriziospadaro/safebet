@@ -36,20 +36,15 @@
     <% end %>
   <% elsif(parlay.bets&.size > 0) %>
     <%= link_to slip_path do %>
-      <div class="summary">
-      <div class="row bet-history">
-        <div class="col-xs-4 col-xs-offset-2" >
+      <div class="summary2">
+        <div class="" >
           <p class ="loss"> <%= (parlay.date.strftime('%d %b %Y') + " - IN PROGRESS") %> </p>
+          <p><em>View Details</em></p>
+
         </div>
-        <div class="col-xs-4 col-xs-offset-2" >
+        <div class="" >
           <p> <%=  parlay&.bets&.size.to_s %> Bets </p>
         </div>
-      </div>
-      <div class="row bet-history">
-        <div class="col-xs-6 col-xs-offset-2">
-          <p><em>View Details</em></p>
-        </div>
-      </div>
     </div>
 
     </div>
