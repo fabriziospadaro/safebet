@@ -24,7 +24,7 @@
    </div>
 
    <div class = "summary">
-     <p> <%=  DateTime.now.strftime('%d %b %Y') %> </p>
+     <p> <%=  DateTime.now.in_time_zone("CET").strftime('%d %b %Y') %> </p>
      <p> <%=  @bets&.size.to_s %> Bet Parlay
      </p>
    </div>
@@ -68,18 +68,18 @@
      </div>
      <% end %>
    </div>
+  <% end %>
 
-
-
-
-     <!-- ending Div for Bet-Wrapper -->
-
-     <a href="/sport" >
-      <div class = "betnow">
-       Back to sports page
-       <% end %>
-     </div>
+<div class="white-blur">
+  <%= link_to url_for(:back) do %>
+    <i class="fas fa-chevron-left" id="btn-back" ></i>
+  <% end %>
+  <%= link_to "#" do %>
+    <i class="fas fa-chevron-left" id="btn-up"></i>
+  <% end %>
+</div>
+<div class="bottom-margin"></div>
+<%= link_to "Sport Page", sport_path ,class: "bfixed bet-slip" %>
      <!-- ending Div for Parlay-Wrapper -->
 
-   </div>
 </body>

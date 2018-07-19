@@ -31,12 +31,13 @@
     <%= javascript_pack_tag 'application', defer: true %>
   </head>
   <body>
-
-   <% unless current_page?(root_path)  %>
+    <% if current_user %>
       <%= render 'shared/navbar' %>
-   <% end  %>
+    <% end %>
 
-    <%= render 'shared/flashes' %>
+    <% unless current_page?(root_path)  %>
+      <%= render 'shared/flashes' %>
+    <% end %>
     <%= yield %>
   </body>
 </html>

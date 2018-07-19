@@ -8,9 +8,9 @@ class ParlayAssigner
   end
 
   def current_parlay
-    existing_parlay = @user.parlays.find_by(date: Date.current)
+    existing_parlay = @user.parlays.find_by(date: Date.today.in_time_zone("CET"))
     if existing_parlay.nil?
-      @user.parlays.build(date: Date.current)
+      @user.parlays.build(date: Date.today.in_time_zone("CET"))
       @user.save
       @user.parlays.last
     else

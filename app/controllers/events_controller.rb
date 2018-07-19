@@ -7,14 +7,14 @@ class EventsController < ApplicationController
 
     @sport = Sport.find_by(name: params[:sport].capitalize)
 
-    @events = @sport.today_events&.includes(:team_a, :team_b)&.reverse
+    @events = @sport.today_events&.includes(:team_a, :team_b)&.select { |e| !e.started? }.reverse
 
     if(@events&.size.to_i == 0)
       redirect_to sport_path(error: "There are no #{@sport.name} events scheduled for today")
     else
       @leagues_playing = Sport.todays_leagues(@events)
       @bets = current_user.bets
-      @parlay = current_user.parlays&.last
+      @parlay = Parlay.current(current_user)
       @tie = Team.tie
     end
 

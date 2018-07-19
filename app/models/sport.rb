@@ -14,7 +14,7 @@ class Sport < ApplicationRecord
     return leagues_paying
   end
   def today_events
-    events = event_dates.find_by(date: DateTime.now.strftime("%Y-%m-%e"))&.events&.where(status: "Scheduled")
+    events = event_dates.find_by(date: DateTime.now.in_time_zone("CET").strftime("%Y-%m-%e"))&.events&.where(status: "Scheduled")
 
     # filter_events = events.select do |e|
     #   (leagues.include?(e.league.downcase) || leagues.include?("all"))
