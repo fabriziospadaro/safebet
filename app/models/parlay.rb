@@ -3,8 +3,12 @@ class Parlay < ApplicationRecord
   has_many :bet_users
   has_many :bets, through: :bet_users, dependent: :destroy
 
+  def size
+    return bets&.size.to_i
+  end
+
   def correct?
-    (bets.all? { |bet| bet.correct? } && today)
+    bets.all? { |bet| bet.correct? }
   end
 
   def today?

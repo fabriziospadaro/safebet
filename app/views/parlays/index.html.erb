@@ -22,18 +22,18 @@
       <div class="summary">
         <%  if (parlay.prize > 0) %>
           <p class ="win"> <%= (parlay.date.strftime('%d %b %Y') + " - WIN") %> </p>
-          <p> <%=  parlay&.bets&.size.to_s %> Bet Parlay </p>
+          <p> <%=  parlay.size.to_s %> Bet Parlay </p>
         <% else %>
           <p class ="loss"> <%= (parlay.date.strftime('%d %b %Y') + " - LOSS") %> </p>
-          <p> <%= parlay&.bets&.size.to_s %> Bets </p>
+          <p> <%= parlay.size.to_s %> Bets </p>
         <% end %>
       </div>
     <% end %>
-  <% elsif(parlay.bets&.size > 0) %>
+  <% elsif(parlay.size > 0) %>
     <%= link_to slip_path do %>
       <div class="summary">
           <p class ="loss"> <%= (parlay.date.strftime('%d %b %Y') + " - IN PROGRESS") %> </p>
-          <p> <%=  parlay&.bets&.size.to_s %> Bets </p>
+          <p> <%=  parlay.size.to_s %> Bets </p>
       </div>
     <% end %>
   <% end %>

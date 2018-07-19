@@ -30,8 +30,7 @@
    </div>
 
 
-   <div class="cards-container">
-     <% @bets.each do |bet|  %>
+     <% @bets&.each do |bet|  %>
      <div class="card">
        <div class="top-column">
          <div class="time-score">
