@@ -12,7 +12,11 @@ class Parlay < ApplicationRecord
   end
 
   def today?
-    date == Date.today.in_time_zone("CET")
+    date == Date.today
+  end
+
+  def tomorrow?
+    date == Date.tomorrow
   end
 
   def self.current(new_user)

@@ -22,7 +22,7 @@
 
     <div class="parlay-info">
       <%  if (@parlay.prize > 0) %>
-        <%= link_to (parlay.date.strftime('%d %b %Y') + " - WIN") , parlays_index_path, class: "win" %>
+        <%= link_to (@parlay.date.strftime('%d %b %Y') + " - WIN") , parlays_index_path, class: "win" %>
         <p> <%=  @parlay&.bets&.size.to_s %> Bet Parlay </p>
        <% else %>
         <%= link_to (@parlay.date.strftime('%d %b %Y') + " - LOSS") , parlays_index_path, class: "loss" %>

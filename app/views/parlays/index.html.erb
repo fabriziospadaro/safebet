@@ -17,7 +17,8 @@
   </div>
 </div>
 <% @parlays.each do |parlay| %>
-  <% if(parlay.today?) %>
+  <% if(!parlay.tomorrow?) %>
+
     <%= link_to parlays_show_path(parlay) do %>
       <div class="summary">
         <%  if (parlay.prize > 0) %>
