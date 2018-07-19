@@ -2,6 +2,9 @@
   <title>Sports | Bet On It</title>
 </head>
 
+<body style="background-color: #061124">
+
+
 
 <div class = "container-fluid">
  <div class = "header">
@@ -30,13 +33,13 @@
   </div>
 
 
-<div class="spacer">
-</div>
-<div class="white-blur"></div>
-<% if (@parlays&.bets&.size.to_i > 0) %>
-    <%= link_to "Bet Slip: " + @parlays&.bets&.size.to_s, slip_path,class: "bfixed bet-slip" %>
-<% end %>
 
+<% if (@parlays&.bets&.size.to_i > 0) %>
+  <div class="bottom-margin"></div>
+  <div class="white-blur"></div>
+  <%= link_to "Bet Slip: " + @parlays&.bets&.size.to_s, slip_path,class: "bfixed bet-slip" %>
+<% end %>
+</body>
 <%# final end%>
 
 

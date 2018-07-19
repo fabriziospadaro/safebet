@@ -72,7 +72,7 @@ end
 puts 'Updating or creating seed teams...'
 teams_attributes = [
  {
-   name: 'TIE'
+   name: 'DRAW'
    # Display this team TIE as a winner when the result of a game is a TIE
  },
  {
@@ -164,7 +164,7 @@ events_attributes = [
    team_a: Team.find_by(name: "England"),
    team_b: Team.find_by(name: "Argentina"),
    # # not played yet - winner_id: Optional / Game not played yet - false
-   winner: Team.find_by(name: "TIE"),
+   winner: Team.tie,
    event_date: EventDate.find_or_create_by(sport: Sport.find_by(name: "Soccer"),date: "2018-07-16"),
    league: "World Cup 2018",
    status: "Finished",
@@ -257,22 +257,3 @@ events_attributes = [
 Event.create!(events_attributes)
 puts 'Finished creating seed events!'
 
-
-# ==== REFERENCE === Schema as of 12-30pm, 12 July 2018 ===
-
-# create_table "events", force: :cascade do |t|
-#     t.integer "odds". - OPTIONAL, NOT USING
-#     t.integer "team_a_id" - USING
-#     t.integer "team_b_id" - USING
-#     t.integer "winner_id" - ONLY FOR THE GAMES FINISHED
-#     t.bigint "sport_id" - USING
-#     t.datetime "created_at", null: false
-#     t.datetime "updated_at", null: false
-#     t.string "league" - USING
-#     t.string "status" - USING
-#     t.string "unique_event_id" - OPTIONAL, NOT USING
-#     t.string "scraped_score" - USING
-#     t.integer "team_a_score" - NOT USING FOR NOW
-#     t.integer "team_b_score" - NOT USING FOR NOW
-#     t.datetime "starts_at" - USING
-#     t.index ["sport_id"], name: "index_events_on_sport_id"

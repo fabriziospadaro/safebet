@@ -1,7 +1,7 @@
 class SportsController < ApplicationController
   def index
     @sports = Sport.all.order(:id)
-    @parlays = current_user.parlays&.last
+    @parlays = Parlay.current(current_user)
     @error = params[:error] if (params[:error])
   end
 end
