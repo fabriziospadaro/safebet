@@ -19,14 +19,21 @@
 <% @parlays.each do |parlay| %>
   <% if( !parlay.today?) %>
     <%= link_to parlays_show_path(parlay) do %>
-      <div class="summary">
-        <div class="date-col">
+      <div class="summary2">
+        <div class="">
         <%  if (parlay.prize > 0) %>
           <p class ="win"> <%= (parlay.date.strftime('%d %b %Y') + " - WIN") %> </p>
-          <p> <%=  parlay&.bets&.size.to_s %> Bet Parlay </p>
+          <p><em>View Details</em></p>
+
+          <div class="" >
+          <p> <%=  parlay&.bets&.size.to_s %> Bets </p>
+        </div>
         <% else %>
           <p class ="loss"> <%= (parlay.date.strftime('%d %b %Y') + " - LOSS") %> </p>
-          <p> <%= parlay&.bets&.size.to_s %> Bets </p>
+          <p><em>View Details</em></p>
+          <div class="" >
+          <p> <%=  parlay&.bets&.size.to_s %> Bets </p>
+        </div>
         <% end %>
         </div>
         <div class="details-col">
