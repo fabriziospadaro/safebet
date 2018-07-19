@@ -21,7 +21,7 @@ class ResultFaker
 
     team_a = event.team_a
     team_b = event.team_b
-    tie = Team.find_by(name: "TIE")
+    tie = Team.find_by(name: "DRAW")
 
     # Black magic!
     winner = (score_a > score_b) ? team_a : team_b
