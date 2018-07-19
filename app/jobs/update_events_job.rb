@@ -12,10 +12,14 @@ class UpdateEventsJob < ApplicationJob
     results = SportScraper.scrape_day(option)
 
     puts "---  Scrape done  ---"
+    aa = 0
+    b = 0
+    c = 0
     results.all.each do |a|
       event = Event.find_by(unique_event_id: a[:unique_id])
       #create an event when it's not there
       if(event.nil?)
+        b += 1
         puts "+ Created: #{a[:unique_id]}"
         team1 = Team.find_or_create_by(name: a[:team1])
         team2 = Team.find_or_create_by(name: a[:team2])
@@ -33,12 +37,17 @@ class UpdateEventsJob < ApplicationJob
         Event.create(hash_)
       #already there: just update: score? winner? time? status?
       else
+        c += 1
         puts "/ Updated: #{a[:unique_id]}"
+        prev_state = event.status
         event.update(scraped_score: a[:score], winner: Team.find_by(name: a[:winner]), time: a[:time], status: a[:status])
+        if(prev_state == "Finished")
+          event.update(status: "Finished")
+        end
       end
-
+        aa += 1
     end
-    puts ""
+    puts "OVER #{aa} Events: #{b} Created and #{c} Updated"
     puts ""
     puts "Job done for #{option[:sport]} PEACE"
   end

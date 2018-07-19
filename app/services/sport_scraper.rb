@@ -32,10 +32,10 @@ class SportScraper
           teams = better_info[2].split(" v ")
           #show only schedule for today
           #d.beginning_of_day == dd.beginning_of_day
-          game_date = DateTime.parse(better_info[1])
+          game_date = DateTime.parse(better_info[1]).in_time_zone("CET")
           _hash = {sport: sport,league: better_info[0].downcase,date: game_date,team1: teams[0].strip.downcase,team2: teams[1].strip.downcase,status: "Scheduled"}
           _hash[:unique_id] = _hash[:league] + _hash[:team1] + _hash[:team2] + _hash[:date].strftime('%Y-%m-%d')
-          _hash[:unique_id] = _hash[:unique_id].downcase
+          _hash[:unique_id] = _hash[:unique_id].strip.downcase
           _hash[:unique_id] = Digest::SHA1.hexdigest _hash[:unique_id]
           unless(_hash[:team1].length < 2 || _hash[:team2].length < 2)
             array << _hash
@@ -52,25 +52,21 @@ class SportScraper
   def self.scrape_results(sport,date)
     array = []
     for i in 1..99999
-      if(date.nil?)
-        url = "https://betsapi.com/ce/#{sport}/p.#{i}"
-      else
-        url = "https://betsapi.com/cs/#{sport}/#{date.strftime('%Y-%m-%d')}/p.#{i}"
-      end
+      url = "https://betsapi.com/ce/#{sport}/p.#{i}"
       r = Nokogiri::HTML(open(url))
       table = r.at('table')
       if(!table.search('tr')[0].nil?)
         table.search('tr').each do |tr|
           better_info = tr.text.split("\n").map { |e| e.strip }.reject { |e| e.empty? }
           teams = better_info[2].split(" v ")
-          game_date = DateTime.parse(better_info[1])
+          game_date = DateTime.parse(better_info[1]).in_time_zone("CET")
           _hash = {sport: sport,league: better_info[0].downcase,date: game_date,team1: teams[0].strip.downcase,team2: teams[1].strip.downcase}
           #separate with comma CHECK IT
           score = better_info.last.gsub(",","-")
           score = score.split("-")
           if(score.size > 1)
             if(score[-2].to_i == score[-1].to_i)
-              winner = "TIE"
+              winner = "DRAW"
             else
               winner = score[-2].to_i > score[-1].to_i ? _hash[:team1] : _hash[:team2]
             end
@@ -81,7 +77,7 @@ class SportScraper
             _hash[:status] = "ERROR"
           end
           _hash[:unique_id] = _hash[:league] + _hash[:team1] + _hash[:team2] + _hash[:date].strftime('%Y-%m-%d')
-          _hash[:unique_id] = _hash[:unique_id].downcase
+          _hash[:unique_id] = _hash[:unique_id].strip.downcase
           _hash[:unique_id] = Digest::SHA1.hexdigest _hash[:unique_id]
           unless(_hash[:team1].length < 2 || _hash[:team2].length < 2)
             array << _hash
@@ -99,7 +95,7 @@ class SportScraper
   #a volte il porco di dio mi mette una roba tra parentesi quadre
   def self.scrape_live(sport)
     array = []
-    url = "https://betsapi.com/ci/#{sport}/"
+    url = "https://betsapi.com/ci/#{sport}"
     r = Nokogiri::HTML(open(url))
     table = r.at('table')
     table.search('tr').each do |tr|
@@ -119,7 +115,7 @@ class SportScraper
       game_date = DateTime.now.in_time_zone("CET")
       _hash = {sport: sport,league: better_info[0].downcase,time: better_info[1],team1: team1.strip.downcase,team2: team2.strip.downcase,score: better_info[3],status:  "In Progress",date: game_date}
       _hash[:unique_id] = _hash[:league] + _hash[:team1] + _hash[:team2] + _hash[:date].strftime('%Y-%m-%d')
-      _hash[:unique_id] = _hash[:unique_id].downcase
+      _hash[:unique_id] = _hash[:unique_id].strip.downcase
       _hash[:unique_id] = Digest::SHA1.hexdigest _hash[:unique_id]
       unless(_hash[:team1].length < 2 || _hash[:team2].length < 2)
         array << _hash
