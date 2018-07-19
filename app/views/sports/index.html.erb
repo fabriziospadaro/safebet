@@ -2,17 +2,6 @@
   <title>Sports | Bet On It</title>
 </head>
 
-<%urls = [
-   "https://besthqwallpapers.com/Uploads/11-10-2016/9045/thumb2-football-football-game-football-stadium.jpg",
-
-  "https://besthqwallpapers.com/Uploads/12-1-2018/36969/thumb2-andre-drummond-4k-nba-dunk-basketball-players.jpg",
-
-  "https://besthqwallpapers.com/Uploads/14-12-2016/10854/thumb-roger-federer-swiss-tennis-players-match-atp.jpg",
-
-  "https://besthqwallpapers.com/Uploads/3-2-2018/39408/thumb-noah-syndergaard-4k-baseball-new-york-mets-mlb.jpg"
-
-  ]  %>
-
 
 <div class = "container-fluid">
  <div class = "header">
@@ -28,11 +17,11 @@
   <% end %>
 
   <div class = "row">
-    <% @sports.each_with_index do |sport, index| %>
+    <% @sports.each do |sport| %>
       <%=link_to events_path(sport: sport.name) do %>
         <div class="col-xs-12 col-sm-6">
           <div class="card-sport icon"  style="background-image: linear-gradient(rgba(6,18,35,0.35),
-      rgba(0,0,102,0.2)), url(<%=urls[index]%>)">
+      rgba(0,0,102,0.2)), url('<%= image_url sport.name.downcase %>');">
             <%=  sport.name %>
           </div>
         </div>
