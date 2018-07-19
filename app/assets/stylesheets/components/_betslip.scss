@@ -34,8 +34,9 @@
   height: 90px;
   margin-bottom: 6px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
   width: 100%;
   font-size: 14px;
     .date-col {
