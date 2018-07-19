@@ -43,9 +43,15 @@
               <% end %>
             </li>
 
-             <li>
+            <li>
               <%= link_to slip_path do %>
                 <i class="fa fa-user"></i> <%= t(".bet-slip", default: "Bet Slip") %>
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to parlays_index_path do %>
+                <i class="fa fa-user"></i> <%= t(".bet-history", default: "Bet History") %>
               <% end %>
             </li>
 
@@ -72,7 +78,8 @@
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <li><%= link_to "Your Profile", profile_path %></li>
         <li><%= link_to "Bet Slip", slip_path %></li>
-        <li><%= link_to "Log out", destroy_user_session_path %></li>
+        <li><%= link_to "Bet History", parlays_index_path %></li>
+        <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
       </ul>
     </div>
   </div>

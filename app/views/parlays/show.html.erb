@@ -34,32 +34,41 @@
     <div class="cards-container">
       <% @parlay.bets.each do |bet|  %>
       <div class="card">
+        <div class="card-state" id= <%= (bet.correct?) ? "green-card" : "red-card" %> ></div>
+
         <div class="top-column">
         <div class="time-score">
-          <p> <%= bet.event.starts_at.strftime('%k:%M') + " " + "CET" + " - " + "Result: "  + bet.event.scraped_score.to_s %> </p>
+          <p> <%= bet.event.starts_at.strftime('%k:%M') + " " + "CET" %> </p>
           <p class = <%= (bet.event.status == "In Progress" ? "red-text" : "black-text") %> -
             <%=  bet.event.scraped_score %>> </p>
         </div>
           <div class="bet-outcome">
-            <p> <%= (bet.correct?) ? "Outcome: Win" : "Outcome: Loss" %> </p>
+            <b> <%= (bet.correct?) ? "Outcome: Win" : "Outcome: Loss" %> </b>
           </div>
         </div>
+        <div class="info-container">
           <div class="team-a">
-            <p><%= bet.event.team_a.name.titleize %> vs. </p>
+            <p> [<%= " "+ bet.event.scraped_score&.gsub("-",":").to_s + " " %>] </p>
+            <p><%= bet.event.team_a.name.titleize %> vs <%= bet.event.team_b.name.titleize %> </p>
           </div>
-          <div class="team-b">
-            <p><%= bet.event.team_b.name.titleize %></p>
+          <div class="your-bet" >
+            <p id= <%= (bet.correct?) ? "green--text" : "red--text" %>>Your bet: <%= bet.team.name.titleize %></p>
           </div>
-          <div class="your-bet">
-            <p>Your bet: <%= bet.team.name.titleize %></p>
-          </div>
+        </div>
       </div>
       <% end %>
     </div>
-
-  <a href="/parlays/index" >
-    <div class = "betnow">
-      Back
-    </div>
 </div>
+
+<div class="white-blur">
+  <%= link_to url_for(:back) do %>
+    <i class="fas fa-chevron-left" id="btn-back" ></i>
+  <% end %>
+  <%= link_to "#" do %>
+    <i class="fas fa-chevron-left" id="btn-up"></i>
+  <% end %>
+</div>
+<div class="bottom-margin"></div>
+
+
 </body>

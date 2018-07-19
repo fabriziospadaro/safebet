@@ -1,7 +1,9 @@
 function updateBetButtons(html) {
   var betButtons = document.getElementById('<%= "event_#{@event.id}" %>');
   var betslipButton = document.getElementById('<%= "betslip" %>');
-  betslipButton.innerHTML = "Bet Slip: <%= current_user.parlays.last.bets.size %> "
+    betslipButton.style.display = "<%= Parlay.current(current_user)&.bets&.size.to_i != 0 ? 'block' : 'none' %>";
+    betslipButton.innerHTML = "Bet Slip: <%= Parlay.current(current_user)&.bets&.size %> "
+
   if (betButtons) betButtons.innerHTML = html;
 }
 
