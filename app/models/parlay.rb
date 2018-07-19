@@ -8,10 +8,10 @@ class Parlay < ApplicationRecord
   end
 
   def today?
-    date == Date.today
+    date == Date.today.in_time_zone("CET")
   end
 
   def self.current(new_user)
-    new_user.parlays.find_by(date: Date.today)
+    new_user.parlays.find_by(date: Date.today.in_time_zone("CET"))
   end
 end

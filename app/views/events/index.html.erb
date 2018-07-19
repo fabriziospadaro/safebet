@@ -33,7 +33,7 @@
       <% end %>
         <div class= "event-card-grey">
           <h5 id= <%="bet_"+event.id.to_s %> > <%= event.team_a.name.titleize %> vs <%= event.team_b.name.titleize %> </h5>
-          <p class="date-time"> <%= event.cet_date.strftime('%l:%M %p - %m/%e/%y') %> </b>
+          <p class="date-time"> <%= event.cet_date.strftime('%l:%M %p - %m/%e') %> </b>
           <% bet = @bets.find_by(event: event) %>
           <div class="bet-button-wrapper"
                id='<%= "event_#{event.id}" %>'
@@ -56,7 +56,8 @@
 
 </div>
 <div class="bottom-margin"></div>
-<%= link_to "Bet Slip: " + @parlay&.bets&.size.to_s, slip_path,class: "bfixed bet-slip",id: "betslip" %>
+<% style = Parlay.current(current_user)&.bets&.size.to_i != 0 ? 'display: block;' : 'display: none;' %>
+<%= link_to "Bet Slip: " + @parlay&.bets&.size.to_s, slip_path,class: "bfixed bet-slip", id: "betslip", style: style %>
 
 </body>
 

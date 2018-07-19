@@ -1,0 +1,1031 @@
+Searching 236 files for "Date.today"
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/models/parlay.rb:
+    9
+   10    def today?
+   11:     date == Date.today.in_time_zone("CET")
+   12    end
+   13
+   14    def self.current(new_user)
+   15:     new_user.parlays.find_by(date: Date.today.in_time_zone("CET"))
+   16    end
+   17  end
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/services/parlay_assigner.rb:
+    9
+   10    def current_parlay
+   11:     existing_parlay = @user.parlays.find_by(date: Date.today.in_time_zone("CET"))
+   12      if existing_parlay.nil?
+   13:       @user.parlays.build(date: Date.today.in_time_zone("CET"))
+   14        @user.save
+   15        @user.parlays.last
+
+4 matches across 2 files
+
+
+Searching 236 files for "Date"
+
+/Users/FabrizioSpadaro/Desktop/safebet/package-lock.json:
+ 1829        "integrity": "sha1-8CQcRXMKn8YyOyBtvzjtx0HQuxA=",
+ 1830        "requires": {
+ 1831:         "date-now": "^0.1.4"
+ 1832        }
+ 1833      },
+ ....
+ 2150        }
+ 2151      },
+ 2152:     "date-now": {
+ 2153        "version": "0.1.4",
+ 2154:       "resolved": "https://registry.npmjs.org/date-now/-/date-now-0.1.4.tgz",
+ 2155        "integrity": "sha1-6vQ5/U1ISK105cx9vvIAZyueNFs="
+ 2156      },
+ ....
+ 2454        "requires": {
+ 2455          "is-callable": "^1.1.1",
+ 2456:         "is-date-object": "^1.0.1",
+ 2457          "is-symbol": "^1.0.1"
+ 2458        }
+ ....
+ 4127        }
+ 4128      },
+ 4129:     "is-date-object": {
+ 4130        "version": "1.0.1",
+ 4131:       "resolved": "https://registry.npmjs.org/is-date-object/-/is-date-object-1.0.1.tgz",
+ 4132        "integrity": "sha1-mqIOtq7rv/d/vTPnTKAbM1gdOhY=",
+ 4133        "dev": true
+ ....
+ 5170          "is-builtin-module": "^1.0.0",
+ 5171          "semver": "2 || 3 || 4 || 5",
+ 5172:         "validate-npm-package-license": "^3.0.1"
+ 5173        }
+ 5174      },
+ ....
+ 9380        "integrity": "sha512-yXJmeNaw3DnnKAOKJE51sL/ZaYfWJRl1pK9dr19YFCu0ObS231AB1/LbqTKRAQ5kw8A90rA6fr4riOUpTZvQZA=="
+ 9381      },
+ 9382:     "validate-npm-package-license": {
+ 9383        "version": "3.0.3",
+ 9384:       "resolved": "https://registry.npmjs.org/validate-npm-package-license/-/validate-npm-package-license-3.0.3.tgz",
+ 9385        "integrity": "sha512-63ZOUnL4SIXj4L0NixR3L1lcjO38crAbgrTpl28t8jjrfuiOBL5Iygm+60qPs/KsZGzPNg6Smnc/oY16QTjF0g==",
+ 9386        "requires": {
+
+/Users/FabrizioSpadaro/Desktop/safebet/yarn.lock:
+ 1368    resolved "https://registry.yarnpkg.com/console-browserify/-/console-browserify-1.1.0.tgz#f0241c45730a9fc6323b206dbf38edc741d0bb10"
+ 1369    dependencies:
+ 1370:     date-now "^0.1.4"
+ 1371
+ 1372  console-control-strings@^1.0.0, console-control-strings@~1.1.0:
+ ....
+ 1612      assert-plus "^1.0.0"
+ 1613
+ 1614: date-now@^0.1.4:
+ 1615    version "0.1.4"
+ 1616:   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
+ 1617
+ 1618  debug@2.6.9, debug@^2.1.2, debug@^2.2.0, debug@^2.3.3, debug@^2.6.6, debug@^2.6.8, debug@^2.6.9:
+ ....
+ 1840    dependencies:
+ 1841      is-callable "^1.1.1"
+ 1842:     is-date-object "^1.0.1"
+ 1843      is-symbol "^1.0.1"
+ 1844
+ ....
+ 2794      kind-of "^6.0.0"
+ 2795
+ 2796: is-date-object@^1.0.1:
+ 2797    version "1.0.1"
+ 2798:   resolved "https://registry.yarnpkg.com/is-date-object/-/is-date-object-1.0.1.tgz#9aa20eb6aeebbff77fbd33e74ca01b33581d3a16"
+ 2799
+ 2800  is-descriptor@^0.1.0:
+ ....
+ 3637      is-builtin-module "^1.0.0"
+ 3638      semver "2 || 3 || 4 || 5"
+ 3639:     validate-npm-package-license "^3.0.1"
+ 3640
+ 3641  normalize-path@^2.0.1, normalize-path@^2.1.1:
+ ....
+ 5751    resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
+ 5752
+ 5753: validate-npm-package-license@^3.0.1:
+ 5754    version "3.0.3"
+ 5755:   resolved "https://registry.yarnpkg.com/validate-npm-package-license/-/validate-npm-package-license-3.0.3.tgz#81643bcbef1bdfecd4623793dc4648948ba98338"
+ 5756    dependencies:
+ 5757      spdx-correct "^3.0.0"
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/assets/stylesheets/components/_betslip.scss:
+  107  }
+  108
+  109: #date-margin {
+  110    margin-left: 19px;
+  111    color: $blue;
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/assets/stylesheets/components/_event_card.scss:
+   45  }
+   46
+   47: .date-time{
+   48    margin-top: 5px;
+   49    margin-left: 4px;
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/assets/stylesheets/config/_bootstrap_variables.scss:
+   36  }
+   37
+   38: .was-validated .form-control:invalid,
+   39  .form-control.is-invalid,
+   40: .was-validated .custom-select:invalid,
+   41  .custom-select.is-invalid {
+   42    border-color: $red;
+   43  }
+   44
+   45: .was-validated .form-control:invalid ~ .invalid-feedback,
+   46: .was-validated .form-control:invalid ~ .invalid-tooltip,
+   47  .form-control.is-invalid ~ .invalid-feedback,
+   48  .form-control.is-invalid ~ .invalid-tooltip,
+   49: .was-validated .custom-select:invalid ~ .invalid-feedback,
+   50: .was-validated .custom-select:invalid ~ .invalid-tooltip,
+   51  .custom-select.is-invalid ~ .invalid-feedback,
+   52  .custom-select.is-invalid ~ .invalid-tooltip {
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/controllers/bets_controller.rb:
+   10     current_user.save
+   11     @bet = current_user.bets.last
+   12:    current_user.bet_users.last.update(parlay: ParlayAssigner.call(current_user))
+   13    end
+   14
+   15:   def update
+   16      @bet = Bet.find(params[:id])
+   17:     @bet.update(team: Team.find(params[:winner]))
+   18:     render "update.js.erb"
+   19    end
+   20
+   ..
+   22      @bet = Bet.find(params[:id])
+   23      current_user.bet_users.find_by(bet: @bet).destroy
+   24:     render "update.js.erb"
+   25    end
+   26
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/controllers/parlays_controller.rb:
+    3    def index
+    4      @parlays = current_user.parlays
+    5:     @parlays = @parlays.order(date: :desc)
+    6      @wins = get_wins
+    7    end
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/controllers/payouts_controller.rb:
+    2    def index
+    3      @parlays = current_user.parlays
+    4:     #to get date of parlay  parlay.date
+    5      #if parlay.prize > 0 display "Win" parlay.prize
+    6    end
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/helpers/bets_helper.rb:
+    5      else
+    6        if team != bet.team
+    7:         update_or_destroy_link(event, team, bet, :patch)
+    8        else
+    9:         update_or_destroy_link(event, team, bet, :delete)
+   10        end
+   11      end
+   ..
+   27    end
+   28
+   29:   def update_or_destroy_link(event, team, bet, verb)
+   30      link_to team.name.titleize,
+   31                bet_path(
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/jobs/extract_winning_parlay_job.rb:
+   19
+   20      winning_parlays.each do |parlay|
+   21:       Parlay.find(parlay.id).update(prize: (win_pot / winners.size))
+   22      end
+   23    end
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/jobs/fake_schedule_updater_job.rb:
+    1: class FakeScheduleUpdaterJob < ApplicationJob
+    2    queue_as :default
+    3    #cron
+    4    def perform()
+    5      while true
+    6:       UpdateEventsJob.perform_later
+    7        sleep(3.minutes)
+    8      end
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/jobs/update_events_job.rb:
+    1: class UpdateEventsJob < ApplicationJob
+    2    queue_as :default
+    3
+    .
+   20          team1 = Team.find_or_create_by(name: a[:team1])
+   21          team2 = Team.find_or_create_by(name: a[:team2])
+   22:         hash_ = {team_a: team1, team_b: team2, league: a[:league], status: a[:status],unique_event_id: a[:unique_id],starts_at: a[:date]}
+   23:         hash_[:event_date] = EventDate.find_or_create_by(sport: Sport.find_by(name: a[:sport]), date: hash_[:starts_at].strftime("%Y-%m-%e"))
+   24          if(!a[:score].nil?)
+   25            hash_[:scraped_score] = a[:score]
+   ..
+   32          end
+   33          Event.create(hash_)
+   34:       #already there: just update: score? winner? time? status?
+   35        else
+   36:         puts "/ Updated: #{a[:unique_id]}"
+   37:         event.update(scraped_score: a[:score], winner: Team.find_by(name: a[:winner]), time: a[:time], status: a[:status])
+   38        end
+   39
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/models/event.rb:
+    3    belongs_to :team_b, class_name: 'Team', foreign_key: 'team_b_id'
+    4    belongs_to :winner, class_name: 'Team', foreign_key: 'winner_id', optional: true
+    5:   belongs_to :event_date
+    6
+    7:   def cet_date
+    8      starts_at.in_time_zone("CET")
+    9    end
+   10
+   11    def started?
+   12:     now = DateTime.now.in_time_zone("CET")
+   13:     return cet_date < now
+   14    end
+   15
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/models/event_date.rb:
+    1: class EventDate < ApplicationRecord
+    2    belongs_to :sport
+    3    has_many :events, dependent: :destroy
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/models/parlay.rb:
+    9
+   10    def today?
+   11:     date == Date.today.in_time_zone("CET")
+   12    end
+   13
+   14    def self.current(new_user)
+   15:     new_user.parlays.find_by(date: Date.today.in_time_zone("CET"))
+   16    end
+   17  end
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/models/sport.rb:
+    1  class Sport < ApplicationRecord
+    2:   has_many :event_dates
+    3
+    4    def leagues
+    .
+   15    end
+   16    def today_events
+   17:     events = event_dates.find_by(date: DateTime.now.strftime("%Y-%m-%e"))&.events&.where(status: "Scheduled")
+   18
+   19      # filter_events = events.select do |e|
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/services/parlay_assigner.rb:
+    9
+   10    def current_parlay
+   11:     existing_parlay = @user.parlays.find_by(date: Date.today.in_time_zone("CET"))
+   12      if existing_parlay.nil?
+   13:       @user.parlays.build(date: Date.today.in_time_zone("CET"))
+   14        @user.save
+   15        @user.parlays.last
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/services/result_faker.rb:
+   28      winner = (score_a == score_b) ? tie : winner
+   29
+   30:     event.update(
+   31        scraped_score: "#{score_a}-#{score_b}",
+   32        winner: winner,
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/services/sport_scraper.rb:
+    7    def self.scrape_day(params)
+    8      #convert to scrape parameter format
+    9:     if(!params[:date].nil?)
+   10        params[:results] = true
+   11:       params[:date] = params[:date].to_s.split(" ")[0]
+   12      end
+   13
+   14      live = scrape_live(params[:sport]) if(!params[:live].nil?)
+   15:     results = scrape_results(params[:sport],params[:date]) if(!params[:results].nil?)
+   16      schedule = scrape_schedule(params[:sport]) if(!params[:schedule].nil?)
+   17
+   ..
+   33            #show only schedule for today
+   34            #d.beginning_of_day == dd.beginning_of_day
+   35:           game_date = DateTime.parse(better_info[1])
+   36:           _hash = {sport: sport,league: better_info[0].downcase,date: game_date,team1: teams[0].strip.downcase,team2: teams[1].strip.downcase,status: "Scheduled"}
+   37:           _hash[:unique_id] = _hash[:league] + _hash[:team1] + _hash[:team2] + _hash[:date].strftime('%Y-%m-%d')
+   38            _hash[:unique_id] = _hash[:unique_id].downcase
+   39            _hash[:unique_id] = Digest::SHA1.hexdigest _hash[:unique_id]
+   ..
+   50
+   51    #scrape results of the finishes games for the current day
+   52:   def self.scrape_results(sport,date)
+   53      array = []
+   54      for i in 1..99999
+   55:       if(date.nil?)
+   56          url = "https://betsapi.com/ce/#{sport}/p.#{i}"
+   57        else
+   58:         url = "https://betsapi.com/cs/#{sport}/#{date.strftime('%Y-%m-%d')}/p.#{i}"
+   59        end
+   60        r = Nokogiri::HTML(open(url))
+   ..
+   64            better_info = tr.text.split("\n").map { |e| e.strip }.reject { |e| e.empty? }
+   65            teams = better_info[2].split(" v ")
+   66:           game_date = DateTime.parse(better_info[1])
+   67:           _hash = {sport: sport,league: better_info[0].downcase,date: game_date,team1: teams[0].strip.downcase,team2: teams[1].strip.downcase}
+   68            #separate with comma CHECK IT
+   69            score = better_info.last.gsub(",","-")
+   ..
+   81              _hash[:status] = "ERROR"
+   82            end
+   83:           _hash[:unique_id] = _hash[:league] + _hash[:team1] + _hash[:team2] + _hash[:date].strftime('%Y-%m-%d')
+   84            _hash[:unique_id] = _hash[:unique_id].downcase
+   85            _hash[:unique_id] = Digest::SHA1.hexdigest _hash[:unique_id]
+   ..
+  117          team2 = team2.join(" ")
+  118        end
+  119:       game_date = DateTime.now.in_time_zone("CET")
+  120:       _hash = {sport: sport,league: better_info[0].downcase,time: better_info[1],team1: team1.strip.downcase,team2: team2.strip.downcase,score: better_info[3],status:  "In Progress",date: game_date}
+  121:       _hash[:unique_id] = _hash[:league] + _hash[:team1] + _hash[:team2] + _hash[:date].strftime('%Y-%m-%d')
+  122        _hash[:unique_id] = _hash[:unique_id].downcase
+  123        _hash[:unique_id] = Digest::SHA1.hexdigest _hash[:unique_id]
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/views/bets/create.js.erb:
+    1: function updateBetButtons(html) {
+    2    var betButtons = document.getElementById('<%= "event_#{@event.id}" %>');
+    3    var betslipButton = document.getElementById('<%= "betslip" %>');
+    .
+    9
+   10  var html = '<%= j render "events/bet_buttons", event: @event, tie: @tie, sport: @sport, bet: @bet %>';
+   11: updateBetButtons(html);
+   12
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/views/bets/update.js.erb:
+    1: function updateBetButtons(html) {
+    2    var betButtons = document.getElementById('<%= "event_#{@bet.event.id}" %>');
+    3
+    .
+   13
+   14  var html = '<%= j render "events/bet_buttons", event: @bet.event, tie: @tie, sport: @sport, bet: @bet %>';
+   15: updateBetButtons(html);
+   16
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/views/current_parlays/show.html.erb:
+   25
+   26     <div class = "summary">
+   27:      <p> <%=  DateTime.now.strftime('%d %b %Y') %> </p>
+   28       <p> <%=  @bets&.size.to_s %> Bet Parlay
+   29       </p>
+   ..
+   36         <div class="top-column">
+   37           <div class="time-score">
+   38:            <p id= "date-margin"><%=  bet.event.cet_date.strftime('%l:%M %p') %> CET  </p>
+   39               <% formated_score =  bet.event.scraped_score.to_s %>
+   40               <% if(formated_score != "") %>
+   ..
+   50                </div>
+   51                <div class="edit-bet">
+   52:                   <%= link_to "", events_path(sport: bet.event.event_date.sport.name, anchor: "bet_" +bet.event.id.to_s ), class: "fas fa-pencil-alt"%>
+   53                </div>
+   54              </div>
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/views/devise/registrations/edit.html.erb:
+   17
+   18    <div class="form-actions">
+   19:     <%= f.button :submit, "Update" %>
+   20    </div>
+   21  <% end %>
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/views/events/index.html.erb:
+   34          <div class= "event-card-grey">
+   35            <h5 id= <%="bet_"+event.id.to_s %> > <%= event.team_a.name.titleize %> vs <%= event.team_b.name.titleize %> </h5>
+   36:           <p class="date-time"> <%= event.cet_date.strftime('%l:%M %p - %m/%e/%y') %> </b>
+   37            <% bet = @bets.find_by(event: event) %>
+   38            <div class="bet-button-wrapper"
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/views/parlays/index.html.erb:
+   22        <div class="summary">
+   23          <%  if (parlay.prize > 0) %>
+   24:           <p class ="win"> <%= (parlay.date.strftime('%d %b %Y') + " - WIN") %> </p>
+   25            <p> <%=  parlay&.bets&.size.to_s %> Bet Parlay </p>
+   26          <% else %>
+   27:           <p class ="loss"> <%= (parlay.date.strftime('%d %b %Y') + " - LOSS") %> </p>
+   28            <p> <%= parlay&.bets&.size.to_s %> Bets </p>
+   29          <% end %>
+   ..
+   33      <%= link_to slip_path do %>
+   34        <div class="summary">
+   35:           <p class ="loss"> <%= (parlay.date.strftime('%d %b %Y') + " - IN PROGRESS") %> </p>
+   36            <p> <%=  parlay&.bets&.size.to_s %> Bets </p>
+   37        </div>
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/views/parlays/show.html.erb:
+   23      <div class="parlay-info">
+   24        <%  if (@parlay.prize > 0) %>
+   25:         <%= link_to (parlay.date.strftime('%d %b %Y') + " - WIN") , parlays_index_path, class: "win" %>
+   26          <p> <%=  @parlay&.bets&.size.to_s %> Bet Parlay </p>
+   27         <% else %>
+   28:         <%= link_to (@parlay.date.strftime('%d %b %Y') + " - LOSS") , parlays_index_path, class: "loss" %>
+   29          <p> <%=  @parlay&.bets&.size.to_s %> Bet Parlay </p>
+   30        <% end %>
+
+/Users/FabrizioSpadaro/Desktop/safebet/bin/bundle:
+   24    def cli_arg_version
+   25      return unless invoked_as_script? # don't want to hijack other binstubs
+   26:     return unless "update".start_with?(ARGV.first || " ") # must be running `bundle update`
+   27      bundler_version = nil
+   28:     update_index = nil
+   29      ARGV.each_with_index do |a, i|
+   30:       if update_index && update_index.succ == i && a =~ Gem::Version::ANCHORED_VERSION_PATTERN
+   31          bundler_version = a
+   32        end
+   33        next unless a =~ /\A--bundler(?:[= ](#{Gem::Version::VERSION_PATTERN}))?\z/
+   34        bundler_version = $1 || ">= 0.a"
+   35:       update_index = i
+   36      end
+   37      bundler_version
+
+/Users/FabrizioSpadaro/Desktop/safebet/bin/update:
+   11
+   12  chdir APP_ROOT do
+   13:   # This script is a way to update your development environment automatically.
+   14:   # Add necessary update steps to this file.
+   15
+   16    puts '== Installing dependencies =='
+
+/Users/FabrizioSpadaro/Desktop/safebet/config/routes.rb:
+    8    get 'current_parlays/show'
+    9
+   10:   resources :bets, only: [:create, :update, :destroy]
+   11    get "destroy_from_betslip", to: "bets#destroy_from_betslip", as: :destroy_from_bet_slip
+   12    get "events", to: "events#index", as: :events
+
+/Users/FabrizioSpadaro/Desktop/safebet/config/environments/development.rb:
+   61    # Use an evented file watcher to asynchronously detect changes in source code,
+   62    # routes, locales, etc. This feature depends on the listen gem.
+   63:   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+   64  end
+   65
+
+/Users/FabrizioSpadaro/Desktop/safebet/config/initializers/devise.rb:
+  152    # config.remember_for = 2.weeks
+  153
+  154:   # Invalidates all the remember me tokens when the user signs out.
+  155    config.expire_all_remember_me_on_sign_out = true
+  156
+  ...
+  166    config.password_length = 6..128
+  167
+  168:   # Email regex used to validate email formats. It simply asserts that
+  169    # one (and only one) @ exists in the given string. This is mainly
+  170    # to give user feedback and not to assert the e-mail validity.
+
+/Users/FabrizioSpadaro/Desktop/safebet/config/initializers/simple_form.rb:
+  126    # config.required_by_default = true
+  127
+  128:   # Tell browsers whether to use the native HTML5 validations (novalidate form option).
+  129    # These validations are enabled in SimpleForm's internal config but disabled by default
+  130    # in this configuration, which is recommended due to some quirks from different browsers.
+  131:   # To stop SimpleForm from generating the novalidate option, enabling the HTML5 validations,
+  132    # change this configuration to true.
+  133    config.browser_validations = false
+
+/Users/FabrizioSpadaro/Desktop/safebet/config/initializers/simple_form_bootstrap.rb:
+  418      boolean:       :vertical_boolean,
+  419      check_boxes:   :vertical_collection,
+  420:     date:          :vertical_multi_select,
+  421:     datetime:      :vertical_multi_select,
+  422      file:          :vertical_file,
+  423      radio_buttons: :vertical_collection,
+  ...
+  430    #   boolean:       :custom_boolean,
+  431    #   check_boxes:   :custom_collection,
+  432:   #   date:          :custom_multi_select,
+  433:   #   datetime:      :custom_multi_select,
+  434    #   file:          :custom_file,
+  435    #   radio_buttons: :custom_collection,
+
+/Users/FabrizioSpadaro/Desktop/safebet/config/locales/devise.en.yml:
+   35        send_instructions: "You will receive an email with instructions on how to reset your password in a few minutes."
+   36        send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
+   37:       updated: "Your password has been changed successfully. You are now signed in."
+   38:       updated_not_active: "Your password has been changed successfully."
+   39      registrations:
+   40        destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
+   ..
+   43        signed_up_but_locked: "You have signed up successfully. However, we could not sign you in because your account is locked."
+   44        signed_up_but_unconfirmed: "A message with a confirmation link has been sent to your email address. Please follow the link to activate your account."
+   45:       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirm link to confirm your new email address."
+   46:       updated: "Your account has been updated successfully."
+   47      sessions:
+   48        signed_in: "Signed in successfully."
+
+/Users/FabrizioSpadaro/Desktop/safebet/db/schema.rb:
+   20      t.bigint "bet_id"
+   21      t.bigint "parlay_id"
+   22:     t.datetime "created_at", null: false
+   23:     t.datetime "updated_at", null: false
+   24      t.index ["bet_id"], name: "index_bet_users_on_bet_id"
+   25      t.index ["parlay_id"], name: "index_bet_users_on_parlay_id"
+   ..
+   30      t.bigint "event_id"
+   31      t.bigint "team_id"
+   32:     t.datetime "created_at", null: false
+   33:     t.datetime "updated_at", null: false
+   34      t.index ["event_id"], name: "index_bets_on_event_id"
+   35      t.index ["team_id"], name: "index_bets_on_team_id"
+   36    end
+   37
+   38:   create_table "event_dates", force: :cascade do |t|
+   39:     t.string "date"
+   40      t.bigint "sport_id"
+   41:     t.datetime "created_at", null: false
+   42:     t.datetime "updated_at", null: false
+   43:     t.index ["sport_id"], name: "index_event_dates_on_sport_id"
+   44    end
+   45
+   ..
+   49      t.integer "team_b_id"
+   50      t.integer "winner_id"
+   51:     t.bigint "event_date_id"
+   52:     t.datetime "created_at", null: false
+   53:     t.datetime "updated_at", null: false
+   54      t.string "league"
+   55      t.string "status"
+   ..
+   58      t.integer "team_b_score"
+   59      t.string "unique_event_id"
+   60:     t.datetime "starts_at"
+   61      t.string "time"
+   62:     t.index ["event_date_id"], name: "index_events_on_event_date_id"
+   63    end
+   64
+   65    create_table "parlays", force: :cascade do |t|
+   66      t.bigint "user_id"
+   67:     t.date "date"
+   68:     t.datetime "created_at", null: false
+   69:     t.datetime "updated_at", null: false
+   70      t.integer "prize", default: 0
+   71      t.boolean "withdrawn", default: false
+   ..
+   76      t.bigint "user_id"
+   77      t.bigint "parlay_id"
+   78:     t.datetime "created_at", null: false
+   79:     t.datetime "updated_at", null: false
+   80      t.integer "amount_cents", default: 0, null: false
+   81      t.index ["parlay_id"], name: "index_payouts_on_parlay_id"
+   ..
+   85    create_table "sports", force: :cascade do |t|
+   86      t.string "name"
+   87:     t.datetime "created_at", null: false
+   88:     t.datetime "updated_at", null: false
+   89      t.text "leagues_string"
+   90    end
+   ..
+   92    create_table "teams", force: :cascade do |t|
+   93      t.string "name"
+   94:     t.datetime "created_at", null: false
+   95:     t.datetime "updated_at", null: false
+   96    end
+   97
+   ..
+  100      t.string "encrypted_password", default: "", null: false
+  101      t.string "reset_password_token"
+  102:     t.datetime "reset_password_sent_at"
+  103:     t.datetime "remember_created_at"
+  104      t.integer "sign_in_count", default: 0, null: false
+  105:     t.datetime "current_sign_in_at"
+  106:     t.datetime "last_sign_in_at"
+  107      t.inet "current_sign_in_ip"
+  108      t.inet "last_sign_in_ip"
+  109:     t.datetime "created_at", null: false
+  110:     t.datetime "updated_at", null: false
+  111      t.index ["email"], name: "index_users_on_email", unique: true
+  112      t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  ...
+  118    add_foreign_key "bets", "events"
+  119    add_foreign_key "bets", "teams"
+  120:   add_foreign_key "event_dates", "sports"
+  121:   add_foreign_key "events", "event_dates"
+  122    add_foreign_key "parlays", "users"
+  123    add_foreign_key "payouts", "parlays"
+
+/Users/FabrizioSpadaro/Desktop/safebet/db/seeds.rb:
+   56      Sport.create(sport)
+   57    else
+   58:     Sport.find_by(name: sport[:name]).update(sport)
+   59    end
+   60  end
+   ..
+  153     # # not played yet - winner_id: Optional / Will be created later
+  154     winner: Team.find_by(name: "Russia"),
+  155:    event_date: EventDate.find_or_create_by(sport: Sport.find_by(name: "Soccer"),date: "2018-07-16"),
+  156     league: "World Cup 2018",
+  157     status: "Finished",
+  158:    # type of this 'date' parameter is DATETIME
+  159     starts_at: '2018-07-09T20:00:00',
+  160     scraped_score: "2-1",
+  ...
+  166     # # not played yet - winner_id: Optional / Game not played yet - false
+  167     winner: Team.find_by(name: "TIE"),
+  168:    event_date: EventDate.find_or_create_by(sport: Sport.find_by(name: "Soccer"),date: "2018-07-16"),
+  169     league: "World Cup 2018",
+  170     status: "Finished",
+  171:    # type of this 'date' parameter is DATETIME
+  172     starts_at: '2018-07-16T06:00:00',
+  173     scraped_score: "1-1",
+  ...
+  179     # # not played yet - winner_id: Optional / Game not played yet - false
+  180     # winner_id: false,
+  181:    event_date: EventDate.find_or_create_by(sport: Sport.find_by(name: "Soccer"),date: "2018-07-16"),
+  182     league: "World Cup 2018",
+  183     status: "In Progress",
+  184:    # type of this 'date' parameter is DATETIME
+  185     starts_at: '2018-07-16T12:30:00',
+  186     scraped_score: "-",
+  ...
+  193     # # not played yet - winner_id: Optional / Game not played yet - false
+  194     # winner_id: false,
+  195:    event_date: EventDate.find_or_create_by(sport: Sport.find_by(name: "Soccer"),date: "2018-07-13"),
+  196     league: "World Cup 2018",
+  197     status: "Scheduled",
+  198:    # type of this 'date' parameter is DATETIME
+  199     starts_at: '2018-07-16T19:00:00',
+  200     scraped_score: "-",
+  ...
+  206     # # not played yet - winner_id: Optional / Game not played yet - false
+  207     # winner_id: false,
+  208:    event_date: EventDate.find_or_create_by(sport: Sport.find_by(name: "Soccer"),date: "2018-07-13"),
+  209     league: "World Cup 2018",
+  210     status: "Scheduled",
+  211:    # type of this 'date' parameter is DATETIME
+  212     starts_at: '2018-07-16T21:00:00',
+  213     scraped_score: "-",
+  ...
+  219     # # not played yet - winner_id: Optional / Game not played yet - false
+  220     # winner_id: false,
+  221:    event_date: EventDate.find_or_create_by(sport: Sport.find_by(name: "Soccer"),date: "2018-07-13"),
+  222     league: "World Cup 2018",
+  223      status: "Scheduled",
+  224:    # type of this 'date' parameter is DATETIME
+  225     starts_at: '2018-07-16T21:00:00',
+  226     scraped_score: "-",
+  ...
+  232     # # not played yet - winner_id: Optional / Game not played yet - false
+  233     # winner_id: false,
+  234:    event_date: EventDate.find_or_create_by(sport: Sport.find_by(name: "Soccer"),date: "2018-07-13"),
+  235     league: "World Cup 2018",
+  236      status: "Scheduled",
+  237:     # type of this 'date' parameter is DATETIME
+  238     starts_at: '2018-07-16T22:00:00',
+  239     scraped_score: "-",
+  ...
+  245     # # not played yet - winner_id: Optional / Game not played yet - false
+  246     # winner_id: false,
+  247:    event_date: EventDate.find_or_create_by(sport: Sport.find_by(name: "Soccer"),date: "2018-07-14"),
+  248     league: "World Cup 2018",
+  249      status: "Scheduled",
+  250:   # type of this 'date' parameter is DATETIME
+  251     starts_at: '2018-07-17T12:00:00',
+  252     scraped_score: "-",
+  ...
+  267  #     t.integer "winner_id" - ONLY FOR THE GAMES FINISHED
+  268  #     t.bigint "sport_id" - USING
+  269: #     t.datetime "created_at", null: false
+  270: #     t.datetime "updated_at", null: false
+  271  #     t.string "league" - USING
+  272  #     t.string "status" - USING
+  ...
+  275  #     t.integer "team_a_score" - NOT USING FOR NOW
+  276  #     t.integer "team_b_score" - NOT USING FOR NOW
+  277: #     t.datetime "starts_at" - USING
+  278  #     t.index ["sport_id"], name: "index_events_on_sport_id"
+  279
+
+/Users/FabrizioSpadaro/Desktop/safebet/db/migrate/20180709125522_devise_create_users.rb:
+   10        ## Recoverable
+   11        t.string   :reset_password_token
+   12:       t.datetime :reset_password_sent_at
+   13
+   14        ## Rememberable
+   15:       t.datetime :remember_created_at
+   16
+   17        ## Trackable
+   18        t.integer  :sign_in_count, default: 0, null: false
+   19:       t.datetime :current_sign_in_at
+   20:       t.datetime :last_sign_in_at
+   21        t.inet     :current_sign_in_ip
+   22        t.inet     :last_sign_in_ip
+   ..
+   24        ## Confirmable
+   25        # t.string   :confirmation_token
+   26:       # t.datetime :confirmed_at
+   27:       # t.datetime :confirmation_sent_at
+   28        # t.string   :unconfirmed_email # Only if using reconfirmable
+   29
+   ..
+   31        # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
+   32        # t.string   :unlock_token # Only if unlock strategy is :email or :both
+   33:       # t.datetime :locked_at
+   34
+   35
+
+/Users/FabrizioSpadaro/Desktop/safebet/db/migrate/20180709130234_create_event_dates.rb:
+    1: class CreateEventDates < ActiveRecord::Migration[5.2]
+    2    def change
+    3:     create_table :event_dates do |t|
+    4:       t.string :date
+    5        t.references :sport, foreign_key: true
+    6
+
+/Users/FabrizioSpadaro/Desktop/safebet/db/migrate/20180709130729_create_events.rb:
+    6        t.integer :team_b_id
+    7        t.integer :winner_id
+    8:       t.references :event_date, foreign_key: true
+    9
+   10        t.timestamps
+
+/Users/FabrizioSpadaro/Desktop/safebet/db/migrate/20180709132301_create_parlays.rb:
+    3      create_table :parlays do |t|
+    4        t.references :user, foreign_key: true
+    5:       t.date :date
+    6
+    7        t.timestamps
+
+/Users/FabrizioSpadaro/Desktop/safebet/db/migrate/20180710102604_add_date_to_events.rb:
+    1: class AddDateToEvents < ActiveRecord::Migration[5.2]
+    2    def change
+    3:     add_column :events, :starts_at, :datetime
+    4    end
+    5  end
+
+/Users/FabrizioSpadaro/Desktop/safebet/lib/tasks/event.rake:
+    1  namespace :event do
+    2:   desc "Update all the events"
+    3:   task update_events: :environment do
+    4      Sport.all.each do |sport|
+    5:       UpdateEventsJob.perform_later(sport: sport.name,live: true, schedule: true, results: true)
+    6        puts "Loaded all the events for: #{sport.name}"
+    7      end
+    .
+   10    desc "Fake scheduler"
+   11    task fake_scheduler: :environment do
+   12:     FakeScheduleUpdaterJob.perform_later
+   13    end
+   14  end
+
+/Users/FabrizioSpadaro/Desktop/safebet/test/controllers/bets_controller_test.rb:
+   12    end
+   13
+   14:   test "should get update" do
+   15:     get bets_update_url
+   16      assert_response :success
+   17    end
+
+/Users/FabrizioSpadaro/Desktop/safebet/test/jobs/fake_schedule_updater_job_test.rb:
+    1  require 'test_helper'
+    2
+    3: class FakeScheduleUpdaterJobTest < ActiveJob::TestCase
+    4    # test "the truth" do
+    5    #   assert true
+
+/Users/FabrizioSpadaro/Desktop/safebet/test/jobs/update_events_job_test.rb:
+    1  require 'test_helper'
+    2
+    3: class UpdateEventsJobTest < ActiveJob::TestCase
+    4    # test "the truth" do
+    5    #   assert true
+
+/Users/FabrizioSpadaro/Desktop/safebet/test/models/event_date_test.rb:
+    1  require 'test_helper'
+    2
+    3: class EventDateTest < ActiveSupport::TestCase
+    4    # test "the truth" do
+    5    #   assert true
+
+245 matches across 46 files
+
+
+Searching 236 files for "DateTime"
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/models/event.rb:
+   10
+   11    def started?
+   12:     now = DateTime.now.in_time_zone("CET")
+   13      return cet_date < now
+   14    end
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/models/sport.rb:
+   15    end
+   16    def today_events
+   17:     events = event_dates.find_by(date: DateTime.now.in_time_zone("CET").strftime("%Y-%m-%e"))&.events&.where(status: "Scheduled")
+   18
+   19      # filter_events = events.select do |e|
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/services/sport_scraper.rb:
+   33            #show only schedule for today
+   34            #d.beginning_of_day == dd.beginning_of_day
+   35:           game_date = DateTime.parse(better_info[1])
+   36            _hash = {sport: sport,league: better_info[0].downcase,date: game_date,team1: teams[0].strip.downcase,team2: teams[1].strip.downcase,status: "Scheduled"}
+   37            _hash[:unique_id] = _hash[:league] + _hash[:team1] + _hash[:team2] + _hash[:date].strftime('%Y-%m-%d')
+   ..
+   64            better_info = tr.text.split("\n").map { |e| e.strip }.reject { |e| e.empty? }
+   65            teams = better_info[2].split(" v ")
+   66:           game_date = DateTime.parse(better_info[1])
+   67            _hash = {sport: sport,league: better_info[0].downcase,date: game_date,team1: teams[0].strip.downcase,team2: teams[1].strip.downcase}
+   68            #separate with comma CHECK IT
+   ..
+  117          team2 = team2.join(" ")
+  118        end
+  119:       game_date = DateTime.now.in_time_zone("CET")
+  120        _hash = {sport: sport,league: better_info[0].downcase,time: better_info[1],team1: team1.strip.downcase,team2: team2.strip.downcase,score: better_info[3],status:  "In Progress",date: game_date}
+  121        _hash[:unique_id] = _hash[:league] + _hash[:team1] + _hash[:team2] + _hash[:date].strftime('%Y-%m-%d')
+
+/Users/FabrizioSpadaro/Desktop/safebet/app/views/current_parlays/show.html.erb:
+   25
+   26     <div class = "summary">
+   27:      <p> <%=  DateTime.now.strftime('%d %b %Y') %> </p>
+   28       <p> <%=  @bets&.size.to_s %> Bet Parlay
+   29       </p>
+
+/Users/FabrizioSpadaro/Desktop/safebet/config/initializers/simple_form_bootstrap.rb:
+  419      check_boxes:   :vertical_collection,
+  420      date:          :vertical_multi_select,
+  421:     datetime:      :vertical_multi_select,
+  422      file:          :vertical_file,
+  423      radio_buttons: :vertical_collection,
+  ...
+  431    #   check_boxes:   :custom_collection,
+  432    #   date:          :custom_multi_select,
+  433:   #   datetime:      :custom_multi_select,
+  434    #   file:          :custom_file,
+  435    #   radio_buttons: :custom_collection,
+
+/Users/FabrizioSpadaro/Desktop/safebet/db/schema.rb:
+   20      t.bigint "bet_id"
+   21      t.bigint "parlay_id"
+   22:     t.datetime "created_at", null: false
+   23:     t.datetime "updated_at", null: false
+   24      t.index ["bet_id"], name: "index_bet_users_on_bet_id"
+   25      t.index ["parlay_id"], name: "index_bet_users_on_parlay_id"
+   ..
+   30      t.bigint "event_id"
+   31      t.bigint "team_id"
+   32:     t.datetime "created_at", null: false
+   33:     t.datetime "updated_at", null: false
+   34      t.index ["event_id"], name: "index_bets_on_event_id"
+   35      t.index ["team_id"], name: "index_bets_on_team_id"
+   ..
+   39      t.string "date"
+   40      t.bigint "sport_id"
+   41:     t.datetime "created_at", null: false
+   42:     t.datetime "updated_at", null: false
+   43      t.index ["sport_id"], name: "index_event_dates_on_sport_id"
+   44    end
+   ..
+   50      t.integer "winner_id"
+   51      t.bigint "event_date_id"
+   52:     t.datetime "created_at", null: false
+   53:     t.datetime "updated_at", null: false
+   54      t.string "league"
+   55      t.string "status"
+   ..
+   58      t.integer "team_b_score"
+   59      t.string "unique_event_id"
+   60:     t.datetime "starts_at"
+   61      t.string "time"
+   62      t.index ["event_date_id"], name: "index_events_on_event_date_id"
+   ..
+   66      t.bigint "user_id"
+   67      t.date "date"
+   68:     t.datetime "created_at", null: false
+   69:     t.datetime "updated_at", null: false
+   70      t.integer "prize", default: 0
+   71      t.boolean "withdrawn", default: false
+   ..
+   76      t.bigint "user_id"
+   77      t.bigint "parlay_id"
+   78:     t.datetime "created_at", null: false
+   79:     t.datetime "updated_at", null: false
+   80      t.integer "amount_cents", default: 0, null: false
+   81      t.index ["parlay_id"], name: "index_payouts_on_parlay_id"
+   ..
+   85    create_table "sports", force: :cascade do |t|
+   86      t.string "name"
+   87:     t.datetime "created_at", null: false
+   88:     t.datetime "updated_at", null: false
+   89      t.text "leagues_string"
+   90    end
+   ..
+   92    create_table "teams", force: :cascade do |t|
+   93      t.string "name"
+   94:     t.datetime "created_at", null: false
+   95:     t.datetime "updated_at", null: false
+   96    end
+   97
+   ..
+  100      t.string "encrypted_password", default: "", null: false
+  101      t.string "reset_password_token"
+  102:     t.datetime "reset_password_sent_at"
+  103:     t.datetime "remember_created_at"
+  104      t.integer "sign_in_count", default: 0, null: false
+  105:     t.datetime "current_sign_in_at"
+  106:     t.datetime "last_sign_in_at"
+  107      t.inet "current_sign_in_ip"
+  108      t.inet "last_sign_in_ip"
+  109:     t.datetime "created_at", null: false
+  110:     t.datetime "updated_at", null: false
+  111      t.index ["email"], name: "index_users_on_email", unique: true
+  112      t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+/Users/FabrizioSpadaro/Desktop/safebet/db/seeds.rb:
+  156     league: "World Cup 2018",
+  157     status: "Finished",
+  158:    # type of this 'date' parameter is DATETIME
+  159     starts_at: '2018-07-09T20:00:00',
+  160     scraped_score: "2-1",
+  ...
+  169     league: "World Cup 2018",
+  170     status: "Finished",
+  171:    # type of this 'date' parameter is DATETIME
+  172     starts_at: '2018-07-16T06:00:00',
+  173     scraped_score: "1-1",
+  ...
+  182     league: "World Cup 2018",
+  183     status: "In Progress",
+  184:    # type of this 'date' parameter is DATETIME
+  185     starts_at: '2018-07-16T12:30:00',
+  186     scraped_score: "-",
+  ...
+  196     league: "World Cup 2018",
+  197     status: "Scheduled",
+  198:    # type of this 'date' parameter is DATETIME
+  199     starts_at: '2018-07-16T19:00:00',
+  200     scraped_score: "-",
+  ...
+  209     league: "World Cup 2018",
+  210     status: "Scheduled",
+  211:    # type of this 'date' parameter is DATETIME
+  212     starts_at: '2018-07-16T21:00:00',
+  213     scraped_score: "-",
+  ...
+  222     league: "World Cup 2018",
+  223      status: "Scheduled",
+  224:    # type of this 'date' parameter is DATETIME
+  225     starts_at: '2018-07-16T21:00:00',
+  226     scraped_score: "-",
+  ...
+  235     league: "World Cup 2018",
+  236      status: "Scheduled",
+  237:     # type of this 'date' parameter is DATETIME
+  238     starts_at: '2018-07-16T22:00:00',
+  239     scraped_score: "-",
+  ...
+  248     league: "World Cup 2018",
+  249      status: "Scheduled",
+  250:   # type of this 'date' parameter is DATETIME
+  251     starts_at: '2018-07-17T12:00:00',
+  252     scraped_score: "-",
+  ...
+  267  #     t.integer "winner_id" - ONLY FOR THE GAMES FINISHED
+  268  #     t.bigint "sport_id" - USING
+  269: #     t.datetime "created_at", null: false
+  270: #     t.datetime "updated_at", null: false
+  271  #     t.string "league" - USING
+  272  #     t.string "status" - USING
+  ...
+  275  #     t.integer "team_a_score" - NOT USING FOR NOW
+  276  #     t.integer "team_b_score" - NOT USING FOR NOW
+  277: #     t.datetime "starts_at" - USING
+  278  #     t.index ["sport_id"], name: "index_events_on_sport_id"
+  279
+
+/Users/FabrizioSpadaro/Desktop/safebet/db/migrate/20180709125522_devise_create_users.rb:
+   10        ## Recoverable
+   11        t.string   :reset_password_token
+   12:       t.datetime :reset_password_sent_at
+   13
+   14        ## Rememberable
+   15:       t.datetime :remember_created_at
+   16
+   17        ## Trackable
+   18        t.integer  :sign_in_count, default: 0, null: false
+   19:       t.datetime :current_sign_in_at
+   20:       t.datetime :last_sign_in_at
+   21        t.inet     :current_sign_in_ip
+   22        t.inet     :last_sign_in_ip
+   ..
+   24        ## Confirmable
+   25        # t.string   :confirmation_token
+   26:       # t.datetime :confirmed_at
+   27:       # t.datetime :confirmation_sent_at
+   28        # t.string   :unconfirmed_email # Only if using reconfirmable
+   29
+   ..
+   31        # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
+   32        # t.string   :unlock_token # Only if unlock strategy is :email or :both
+   33:       # t.datetime :locked_at
+   34
+   35
+
+/Users/FabrizioSpadaro/Desktop/safebet/db/migrate/20180710102604_add_date_to_events.rb:
+    1  class AddDateToEvents < ActiveRecord::Migration[5.2]
+    2    def change
+    3:     add_column :events, :starts_at, :datetime
+    4    end
+    5  end
+
+50 matches across 9 files

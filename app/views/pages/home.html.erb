@@ -5,7 +5,9 @@
 
 <div class="animation" >
 </div>
-
+<% if !current_user %>
+  <div class="cheat-vh"></div>
+<% end %>
 <div class="banner" >
 
       <div class="banner-title">
@@ -20,11 +22,15 @@
           </div>
 
             <div class="banner-bottom">
-              <h5>Already winning?</h5>
+              <% if !current_user %>
+                <h5>Already winning?</h5>
+              <% end %>
             </div>
 
             <div class="sign-in-link">
-                 <%= link_to "Sign in", new_user_session_path %>
+                  <% if !current_user %>
+                    <%= link_to "Sign in", new_user_session_path %>
+                  <% end %>
             </div>
 
        <!-- Ending Div for banner-title -->
