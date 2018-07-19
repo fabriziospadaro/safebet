@@ -5,7 +5,7 @@
   width: 100%;
   height: 100vh;
   color: #fff;
-  background:  linear-gradient(-45deg, rgba(104, 195, 172, 0.4) 0%, rgba(6, 18, 35, 70%)), url('<%= image_url home-page-banner %>') 50% no-repeat;
+  background:  linear-gradient(-45deg, rgba(104, 195, 172, 0.4) 0%, rgba(6, 18, 35, 70%)), asset_url('home-page-banner') 50% no-repeat;
   background-size: 400% auto, cover;
   animation: Gradient 16s ease infinite;
   animation: bgrad 7s infinite alternate linear;
