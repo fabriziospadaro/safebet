@@ -22,7 +22,7 @@
 
     <div class="parlay-info">
       <%  if (@parlay.prize > 0) %>
-        <%= link_to (@parlay.date.strftime('%d %b %Y') + " - WIN") , parlays_index_path, class: "win" %>
+        <%= link_to (@parlay.date.strftime('%d %b %Y') + " - WIN") , parlays_index_path, class: "loss" %>
         <p> <%=  @parlay&.bets&.size.to_s %> Bet Parlay </p>
        <% else %>
         <%= link_to (@parlay.date.strftime('%d %b %Y') + " - LOSS") , parlays_index_path, class: "loss" %>
@@ -48,7 +48,7 @@
         </div>
         <div class="info-container">
           <div class="team-a">
-            <p> [<%= " "+ bet.event.scraped_score&.gsub("-",":").to_s + " " %>] </p>
+            <p> <%= bet.event.scraped_score&.gsub("-"," : ").to_s  %> </p>
             <p><%= bet.event.team_a.name.titleize %> vs <%= bet.event.team_b.name.titleize %> </p>
           </div>
           <div class="your-bet" >
