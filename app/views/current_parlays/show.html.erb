@@ -23,9 +23,9 @@
      <p> You can still add, edit, or cancel any bets in your parlay that haven't yet started.</p>
    </div>
 
-   <div class = "summary">
+   <div class = "parlay-info">
      <p> <%=  DateTime.now.in_time_zone("CET").strftime('%d %b %Y') %> </p>
-     <p> <%=  @bets&.size.to_s %> Bet Parlay</p>
+     <p> <%=  @bets&.size.to_s %> Bets </p>
    </div>
 
 

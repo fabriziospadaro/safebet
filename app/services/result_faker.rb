@@ -25,23 +25,44 @@ class ResultFaker
 
   private
 
+  def generate_score_for_sport(sport)
+    case sport.name.downcase
+    when "soccer"
+      return rand(0..4)
+    when "basketball"
+      return rand(50..110)
+    when "tennis"
+      return rand(2..3)
+    when "baseball"
+      return rand(1..10)
+    end
+  end
+
   def fake_event_sucess(bet)
     event = bet.event
-
-    score_a = rand(0..4)
-    score_b = rand(0..4)
-
+    sport = event.event_date.sport
     team_a = event.team_a
     team_b = event.team_b
     tie = Team.find_by(name: "DRAW")
+
+    score_a = generate_score_for_sport(sport)
+    score_b = generate_score_for_sport(sport)
+
+    if(sport.name.downcase != "soccer")
+      while score_a == score_b do
+        score_a = generate_score_for_sport(sport)
+        score_b = generate_score_for_sport(sport)
+      end
+    end
 
     score_a = score_b + 1 if(team_a == bet.team && score_a <= score_b)
 
     score_b = score_a + 1 if(team_b == bet.team && score_b <= score_a)
 
     if(bet.team == tie )
-      score_a = score_b
+        score_a = score_b
     end
+
     winner = (score_a > score_b) ? team_a : team_b
     winner = (score_a == score_b) ? tie : winner
 
@@ -56,8 +77,8 @@ class ResultFaker
 
 
   def assign_winner_and_score(event)
-    score_a = rand(0..5)
-    score_b = rand(0..5)
+    score_a = generate_score_for_sport(event.event_date.sport)
+    score_b = generate_score_for_sport(event.event_date.sport)
 
     team_a = event.team_a
     team_b = event.team_b

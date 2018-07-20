@@ -20,10 +20,10 @@
   <% if(!parlay.tomorrow?) %>
 
     <%= link_to parlays_show_path(parlay) do %>
-      <div class="summary">
+      <div class="parlay-info">
         <%  if (parlay.prize > 0) %>
           <p class ="win"> <%= (parlay.date.strftime('%d %b %Y') + " - WIN") %> </p>
-          <p> <%=  parlay.size.to_s %> Bet Parlay </p>
+          <p> <%=  parlay.size.to_s %> Bets </p>
         <% else %>
           <p class ="loss"> <%= (parlay.date.strftime('%d %b %Y') + " - LOSS") %> </p>
           <p> <%= parlay.size.to_s %> Bets </p>
@@ -32,7 +32,7 @@
     <% end %>
   <% elsif(parlay.size > 0) %>
     <%= link_to slip_path do %>
-      <div class="summary">
+      <div class="parlay-info">
           <p class ="loss"> <%= (parlay.date.strftime('%d %b %Y') + " - IN PROGRESS") %> </p>
           <p> <%=  parlay.size.to_s %> Bets </p>
       </div>
