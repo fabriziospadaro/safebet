@@ -28,8 +28,8 @@ class ResultFaker
   def fake_event_sucess(bet)
     event = bet.event
 
-    score_a = rand(0..5)
-    score_b = rand(0..5)
+    score_a = rand(0..4)
+    score_b = rand(0..4)
 
     team_a = event.team_a
     team_b = event.team_b
@@ -37,11 +37,11 @@ class ResultFaker
 
     score_a = score_b + 1 if(team_a == bet.team && score_a <= score_b)
 
-    score_b = score_a + 1 if(team_a == bet.team && score_b <= score_a)
+    score_b = score_a + 1 if(team_b == bet.team && score_b <= score_a)
 
     if(bet.team == tie )
       score_a = score_b
-
+    end
     winner = (score_a > score_b) ? team_a : team_b
     winner = (score_a == score_b) ? tie : winner
 

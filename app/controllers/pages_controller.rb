@@ -4,18 +4,15 @@ class PagesController < ApplicationController
   def home
   end
 
-  def test
-
-  end
-
   def profile
-     @parlays = current_user.parlays
+    @parlays = current_user.parlays
+    @total_prize_won = 0
+    @total_wins = 0
 
-    @wins = []
-    current_user.parlays.each do |parlay|
-      if parlay.prize > 0
-        @wins << parlay
-      end
+    @parlays&.each do |p|
+      @total_prize_won += p.prize
+      @total_wins += 1 if p.prize > 0
     end
+
   end
 end
